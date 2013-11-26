@@ -1,5 +1,5 @@
 #include "Bibliothek.h"
-pommes
+
 Bibliothek::Bibliothek(void) {
     this->errFileNotFound = false;
     this->errFileRead = false;
@@ -138,5 +138,3 @@ bool Bibliothek::vecError(void) {
 	}
 	return this-> errElNotInVec;
 }
-
-a
