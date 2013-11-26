@@ -27,7 +27,7 @@ void SignalListeErzeuger::dateiAuslesen() {
 			}
 		}
 	}
-	datei.close();
+	
 }
 
 void SignalListeErzeuger::inputAuslesen() {
