@@ -254,7 +254,7 @@ void Menue::menueKopf() {
 	cout << "(3) Schaltwerk" << endl;
 	cout << "Pfad zur Schaltwerksdatei: " << endl;
 	cout << endl;
-	cout << "(4) analyse starten" << endl;
+	cout << "(4) Analyse starten" << endl;
 	cout << endl;
 	cout << "(5) Programm beenden" << endl;
 	cout << endl;
