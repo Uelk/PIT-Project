@@ -3,7 +3,7 @@ using namespace std;
 
 void SignalListeErzeuger::dateiAuslesen() {
 	anzahlSignale = 0;
-	ifstream datei( "C:\\MK\\Dropbox\\IT Praktikum\\Praktikumspaket\\csd.txt" );
+	ifstream datei( datei );
 	while( getline( datei, line )) {
 		if( line.find( "INPUT" )) {
 			inputAuslesen();
@@ -38,10 +38,9 @@ void SignalListeErzeuger::inputAuslesen() {
 
 void SignalListeErzeuger::outputsAuslesen() {
 	line = line.substr( 7 );
-	output = line.substr( 0, line.find( ';' ) - 1 );
-	anzahlSignale++;
+	output = line.substr( 0, line.find( ';' ));
 	for( int i = 0 ; i < output.length() ; i++ ) {
-		if( output.at( i ) == ',' ) {
+		if( output.at( i ) == 's' ) {
 			anzahlSignale++;
 		}
 	}
@@ -49,10 +48,9 @@ void SignalListeErzeuger::outputsAuslesen() {
 
 void SignalListeErzeuger::signalsAuslesen() {
 	line = line.substr( 8 );
-	signals = line.substr( 0, line.find( ';' ) - 1 );
-	anzahlSignale++;
+	signals = line.substr( 0, line.find( ';' ));
 	for( int i = 0 ; i < signals.length() ; i++ ) {
-		if( signals.at( i ) == ',' ) {
+		if( signals.at( i ) == 's' ) {
 			anzahlSignale++;
 		}
 	}
@@ -138,4 +136,24 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 		return true;
 	}
 	return false;
+}
+
+void SignalListeErzeuger::setDateiPfad(string pfad) {
+}
+
+string SignalListeErzeuger::getDateiPfad() {
+	return "";
+}
+
+void SignalListeErzeuger::ausgabeDatei() {
+	cout << "Signale: " << endl;
+	cout << "--------" << endl;
+	cout << "Signalname: " /*<< meinSignalListeErzeuger->signale()*/ << endl;
+	cout << "Signaltyp: " /*<< meinSignaListeErzeuger->getSignalTyp()*/ << endl;
+	cout << "Signalquelle: " /*<< meinSignalListeErzeuger->getQuelle()*/ << endl;
+	cout << "Das Signal hat " /*<< meinSignalListeErzeuger->getAnzahlZiele()*/ << " Ziele" << endl;
+	cout << "Ziel-Gatter: " /*<< meinSignalListeErzeuger->getZiele()*/ << endl;
+}
+
+void SignalListeErzeuger::ausgabeGraphstruktur() {
 }

@@ -172,7 +172,7 @@ void Menue::schaltwerkMenue() {
 	cout << "******************************************" << endl;
 	cout << endl;
 	cout << "Untermenue Schaltwerk" << endl;
-	cout << "(1) Pfad zur Schaltnetzdatei: " /*<< meinSignalListeErzeuger->*/ << endl;
+	cout << "(1) Pfad zur Schaltnetzdatei: " << meinSignalListeErzeuger->getDateiPfad() << endl;
 	cout << "(2) Ausgabe der Schaltnetzdatei" << endl;
 	cout << "(3) Ausgabe der Signale" << endl;
 	cout << "(4) Ausgabe der Graphstruktur" << endl;
@@ -185,19 +185,13 @@ void Menue::schaltwerkMenue() {
 
 	switch (menueEingabe) {
 	case 1:
-		meinSignalListeErzeuger->datei << endl;*/
+		meinSignalListeErzeuger->getDateiPfad();
 		break;
 	case 2:
-		/*  << endl;*/
+		meinSignalListeErzeuger->ausgabeDatei();
 		break;
 	case 3:
-		cout << "Signale: " << endl;
-		cout << "--------" << endl;
-		cout << "Signalname: " /*<< meinSignalListeErzeuger->signale()*/ << endl;
-		cout << "Signaltyp: " /*<< meinSignaListeErzeuger->getSignalTyp()*/ << endl;
-		cout << "Signalquelle: " /*<< meinSignalListeErzeuger->getQuelle()*/ << endl;
-		cout << "Das Signal hat " /*<< meinSignalListeErzeuger->getAnzahlZiele()*/ << " Ziele" << endl;
-		cout << "Ziel-Gatter: " /*<< meinSignalListeErzeuger->getZiele()*/ << endl;
+		meinSignalListeErzeuger->ausgabeDatei();
 		break;
 	case 4:
 		cout << "Graphenstruktur: " << endl;

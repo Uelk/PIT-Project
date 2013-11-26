@@ -2,6 +2,7 @@
 #define SIGNALLISTEERZEUGER_H
 
 #include <string>
+#include <iostream>;
 #include <fstream>
 #include "Signal.h"
 using namespace std;
@@ -29,5 +30,9 @@ private:
 	bool isOutput( string );
 	bool isSignal( string );
 public:
+	void setDateiPfad( string );
+	string getDateiPfad();
+	void ausgabeDatei();
+	void ausgabeGraphstruktur();
 };
 #endif
