@@ -3,16 +3,16 @@
 
 #include "Faktoren.h"
 #include "Bibliothek.h"
-//#include "SignalListeErzeuger.h"
-//#include "GraphErzeuger.h"
-//#include "LaufzeitAnalysator.h"
+#include "SignalListeErzeuger.h"
+#include "GraphErzeuger.h"
+#include "LaufzeitAnalysator.h"
 using namespace std;
 
 class Menue {
 private:
 	Faktoren* meineFaktoren;
 	Bibliothek* meineBibliothek;
-//	SignalListeErzeuger* meinSignalListeErzeuger;
+	SignalListeErzeuger* meinSignalListeErzeuger;
 	//GraphErzeuger meinGraphErzeuger;
 	//LaufzeitAnalysator meinLaufzeitAnalysator;
     void faktorenMenue();
