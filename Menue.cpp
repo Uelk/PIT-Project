@@ -14,11 +14,11 @@
 using namespace std;
 
 Menue::Menue() {
-    meineFaktoren = new Faktoren();
-    meineBibliothek = new Bibliothek ();
-    //meinSignalListeErzeuger = new SignalListeErzeuger ();
-    //meinGraphErzeuger = new GraohErzeuger ();
-    //meinLaufzeitAnalysator = new LaufzeitAnalysator ();
+	meineFaktoren = new Faktoren();
+	meineBibliothek = new Bibliothek();
+	meinSignalListeErzeuger = new SignalListeErzeuger();
+    //meinGraphErzeuger = new GraohErzeugers();
+    //meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
 Menue::~Menue () {
