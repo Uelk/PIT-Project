@@ -185,21 +185,24 @@ void Menue::schaltwerkMenue() {
 
 	switch (menueEingabe) {
 	case 1:
-		meinSignalListeErzeuger->getDateiPfad();
+		//
+		system("pause");
+		schaltwerkMenue();
 		break;
 	case 2:
 		meinSignalListeErzeuger->ausgabeDatei();
+		system("pause");
+		schaltwerkMenue();
 		break;
 	case 3:
-		meinSignalListeErzeuger->ausgabeDatei();
+		meinSignalListeErzeuger->ausgabeSignale();
+		system("pause");
+		schaltwerkMenue();
 		break;
 	case 4:
-		cout << "Graphenstruktur: " << endl;
-		cout << "----------------" << endl;
-		cout << "Gattername: " /*<< meinGraphErzeuger->getName()*/ << endl;
-		cout << "Gattertyp: " /*<< meinGraphErzeuger->getTyp()*/ << endl;
-		cout << "--> Das Gatter hat " /*<< meinGraphErzeuger->getAnzahlNachfolger()*/ << " Zeile" << endl;
-		cout << "Angeschlossene Gatter: " /*<< meinGraphErzeuger->getNachfolger()*/ << endl;
+		//**AusgabeGraphenstruktur
+		system("pause");
+		schaltwerkMenue();
 		break;
 	case 5:
 		break;

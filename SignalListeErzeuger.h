@@ -33,6 +33,6 @@ public:
 	void setDateiPfad( string );
 	string getDateiPfad();
 	void ausgabeDatei();
-	void ausgabeGraphstruktur();
+	void ausgabeSignale();
 };
 #endif
