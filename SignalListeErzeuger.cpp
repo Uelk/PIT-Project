@@ -39,6 +39,7 @@ void SignalListeErzeuger::inputAuslesen() {
 void SignalListeErzeuger::outputsAuslesen() {
 	line = line.substr( 7 );
 	output = line.substr( 0, line.find( ';' ) - 1 );
+	anzahlSignale++;
 	for( int i = 0 ; i < output.length() ; i++ ) {
 		if( output.at( i ) == ',' ) {
 			anzahlSignale++;
@@ -49,6 +50,7 @@ void SignalListeErzeuger::outputsAuslesen() {
 void SignalListeErzeuger::signalsAuslesen() {
 	line = line.substr( 8 );
 	signals = line.substr( 0, line.find( ';' ) - 1 );
+	anzahlSignale++;
 	for( int i = 0 ; i < signals.length() ; i++ ) {
 		if( signals.at( i ) == ',' ) {
 			anzahlSignale++;
@@ -57,6 +59,7 @@ void SignalListeErzeuger::signalsAuslesen() {
 }
 
 void SignalListeErzeuger::clockAuslesen() {
+	anzahlSignale++;
 	line = line.substr( 6 );
 	int pos = line.find( ',' );
 	clockName = line.substr( 0, pos );
@@ -76,7 +79,8 @@ void SignalListeErzeuger::clockAuslesen() {
 
 void SignalListeErzeuger::signalTypenErkennung() {
 	string name;
-	for( int i = 0; i < anzahlSignale; i++ ) {
+	signale[0].setSignalTyp( signale[0].eingang );
+	for( int i = 1; i < anzahlSignale; i++ ) {
 		name = 's' + to_string(i);
 		if( name.length() < 4 ) {
 			name = name.insert( 1, 4 - name.length(), '0' );
