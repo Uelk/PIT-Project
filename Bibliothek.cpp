@@ -138,3 +138,5 @@ bool Bibliothek::vecError(void) {
 	}
 	return this-> errElNotInVec;
 }
+
+a

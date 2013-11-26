@@ -185,7 +185,7 @@ void Menue::schaltwerkMenue() {
 
 	switch (menueEingabe) {
 	case 1:
-		/* meinSignalListeErzeuger->datei << endl;*/
+		meinSignalListeErzeuger->datei << endl;*/
 		break;
 	case 2:
 		/*  << endl;*/
