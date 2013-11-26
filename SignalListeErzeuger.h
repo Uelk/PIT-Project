@@ -30,9 +30,10 @@ private:
 	bool isOutput( string );
 	bool isSignal( string );
 public:
+	int getAnzahlSignale();
 	void setDateiPfad( string );
 	string getDateiPfad();
 	void ausgabeDatei();
-	void ausgabeGraphstruktur();
+	void ausgabeSignale();
 };
 #endif

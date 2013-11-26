@@ -30,6 +30,10 @@ void SignalListeErzeuger::dateiAuslesen() {
 	datei.close();
 }
 
+int SignalListeErzeuger::getAnzahlSignale() {
+	return anzahlSignale;
+}
+
 void SignalListeErzeuger::inputAuslesen() {
 	line = line.substr( 6 );
 	input = line.substr( 0, line.find( ';' ) - 1 );
@@ -146,14 +150,32 @@ string SignalListeErzeuger::getDateiPfad() {
 }
 
 void SignalListeErzeuger::ausgabeDatei() {
-	cout << "Signale: " << endl;
-	cout << "--------" << endl;
-	cout << "Signalname: " /*<< meinSignalListeErzeuger->signale()*/ << endl;
-	cout << "Signaltyp: " /*<< meinSignaListeErzeuger->getSignalTyp()*/ << endl;
-	cout << "Signalquelle: " /*<< meinSignalListeErzeuger->getQuelle()*/ << endl;
-	cout << "Das Signal hat " /*<< meinSignalListeErzeuger->getAnzahlZiele()*/ << " Ziele" << endl;
-	cout << "Ziel-Gatter: " /*<< meinSignalListeErzeuger->getZiele()*/ << endl;
+	
 }
 
-void SignalListeErzeuger::ausgabeGraphstruktur() {
+void SignalListeErzeuger::ausgabeSignale() {
+	cout << "Signale: " << endl;
+	cout << "--------" << endl;
+	cout << "Signalname: " << clockName << endl;
+	cout << "Signaltyp: " << signale[0].getSignalTyp() << endl;
+	cout << "Signalquelle: " << "keine Quellen" << endl;
+	cout << "--> DasSignal hat " << signale[0].getAnzahlZiele() << " Ziele" << endl;
+
+	string name;
+	for( int i = 1; i < anzahlSignale; i++ ) {
+		name = 's' + to_string(i);
+		if( name.length() < 4 ) {
+			name = name.insert( 1, 4 - name.length(), '0' );
+		}
+		cout << "Signalname: " << name << endl;
+		cout << "Signaltyp: " << signale[i].getSignalTyp() << endl;
+		cout << "Signalquelle: " << signale[i].getQuelle() << endl;
+		cout << "->Das Signal hat " << signale[i].getAnzahlZiele() << " Ziele" << endl;
+		cout << "Ziel-Gatter: "; 
+		for( int j = 0; j < signale[i].getAnzahlZiele(); j++) {
+			cout << signale[i].getZiel(j) << " ";
+		}
+		cout << endl;
+		cout << "--------" << endl;
+	}
 }
