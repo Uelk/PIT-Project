@@ -2,7 +2,7 @@
 #define SIGNALLISTEERZEUGER_H
 
 #include <string>
-#include <iostream>;
+#include <iostream>
 #include <fstream>
 #include "Signal.h"
 using namespace std;

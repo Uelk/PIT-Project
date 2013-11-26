@@ -12,7 +12,7 @@ class Menue {
 private:
 	Faktoren* meineFaktoren;
 	Bibliothek* meineBibliothek;
-	SignalListeErzeuger* meinSignalListeErzeuger;
+//	SignalListeErzeuger* meinSignalListeErzeuger;
 	//GraphErzeuger meinGraphErzeuger;
 	//LaufzeitAnalysator meinLaufzeitAnalysator;
     void faktorenMenue();
