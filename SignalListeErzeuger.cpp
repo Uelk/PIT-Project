@@ -30,6 +30,10 @@ void SignalListeErzeuger::dateiAuslesen() {
 	datei.close();
 }
 
+int SignalListeErzeuger::getAnzahlSignale() {
+	return anzahlSignale;
+}
+
 void SignalListeErzeuger::inputAuslesen() {
 	line = line.substr( 6 );
 	input = line.substr( 0, line.find( ';' ) - 1 );
