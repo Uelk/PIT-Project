@@ -137,14 +137,12 @@ void Menue::bibliothekMenue() {
 
 	switch(menueEingabe) {
 	case 1:
-		cout << "Geben Sie einen neuen Dateipfad an! (Einfache '\\' mit '\\\\' ersetzen!):" << endl;
+		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 		cin >> dateiPfad;
 		if(!meineBibliothek->pfadEinlesen(dateiPfad)) {
 			cout << "Ungueltiger Dateipfad" << endl;
-
 			system("pause");
 		}
-
 		bibliothekMenue();
 		break;
 	case 2:
@@ -178,18 +176,26 @@ void Menue::schaltwerkMenue() {
 	cout << "(4) Ausgabe der Graphstruktur" << endl;
 	cout << "(5) Hauptmenue" << endl;
 	cout << endl;
+	cout << endl;
 	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
 
 	int menueEingabe;
+	string dateiPfad;
 	cin >> menueEingabe;
-
 	switch (menueEingabe) {
 	case 1:
-		//
-		system("pause");
+		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
+		cin >> dateiPfad;
+		if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
+			cout << "Ungueltiger Dateipfad" << endl;
+			system("pause");
+		}
 		schaltwerkMenue();
 		break;
 	case 2:
+		cout << endl;
+		cout << "Dateiausgabe:" << endl;
+		cout << endl;
 		meinSignalListeErzeuger->ausgabeDatei();
 		system("pause");
 		schaltwerkMenue();

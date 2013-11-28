@@ -3,8 +3,8 @@ using namespace std;
 
 void SignalListeErzeuger::dateiAuslesen() {
 	anzahlSignale = 0;
-	ifstream datei( datei );
-	while( getline( datei, line )) {
+	ifstream file( datei );
+	while( getline( file, line )) {
 		if( line.find( "INPUT" )) {
 			inputAuslesen();
 		}
@@ -20,14 +20,14 @@ void SignalListeErzeuger::dateiAuslesen() {
 		if( line.find( "BEGIN" )) {
 			signale = new Signal[anzahlSignale];
 			signalTypenErkennung();
-			getline( datei, line );
+			getline( file, line );
 			while( line.find( "END" ) != -1 ) {
 				schaltnetzwerkBeschreibungAuslesen();
-				getline( datei, line );
+				getline( file, line );
 			}
 		}
 	}
-	datei.close();
+	file.close();
 }
 
 int SignalListeErzeuger::getAnzahlSignale() {
@@ -142,15 +142,31 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 	return false;
 }
 
-void SignalListeErzeuger::setDateiPfad(string pfad) {
+bool SignalListeErzeuger::setDateiPfad(string pfad) {
+	ifstream file( pfad );
+	if(!file.fail()) {
+		datei = pfad;
+		dateiAuslesen();
+		return true;
+	} else {
+		return false;
+	}
+	file.close();
 }
 
 string SignalListeErzeuger::getDateiPfad() {
-	return "";
+	return datei;
 }
 
 void SignalListeErzeuger::ausgabeDatei() {
-	
+	string zeile;
+	int i = 0;
+	ifstream file( datei );
+	while( getline( file, zeile )) {
+		i++;
+		cout << i << ' ' << zeile << endl;
+	}
+	file.close();
 }
 
 void SignalListeErzeuger::ausgabeSignale() {

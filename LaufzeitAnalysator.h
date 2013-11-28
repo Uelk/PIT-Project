@@ -10,9 +10,9 @@ using namespace std;
 
 class LaufzeitAnalysator {
 private:
-    void laufzeit( double, double, double, double, double, double,);
-    
+	void laufzeit( double, double, double, double, double, double );
+
 public:
-    
+
 };
 #endif

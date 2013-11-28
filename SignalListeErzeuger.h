@@ -31,7 +31,7 @@ private:
 	bool isSignal( string );
 public:
 	int getAnzahlSignale();
-	void setDateiPfad( string );
+	bool setDateiPfad( string );
 	string getDateiPfad();
 	void ausgabeDatei();
 	void ausgabeSignale();
