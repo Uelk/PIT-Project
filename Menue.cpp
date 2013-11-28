@@ -261,7 +261,7 @@ void Menue::menueKopf() {
 	cout << "Pfad zur Bibliotheksdatei: " << meineBibliothek->getPfad() << endl;
 	cout << endl;
 	cout << "(3) Schaltwerk" << endl;
-	cout << "Pfad zur Schaltwerksdatei: " << endl;
+	cout << "Pfad zur Schaltwerksdatei: " << meinSignalListeErzeuger->getDateiPfad() << endl;
 	cout << endl;
 	cout << "(4) Analyse starten" << endl;
 	cout << endl;

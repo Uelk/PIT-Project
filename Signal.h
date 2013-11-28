@@ -13,9 +13,10 @@ private:
 public:
 	Signal();
 	~Signal();
-	enum signalTypen { eingang, intern, ausgang, unbekannt } signalTyp;
+	enum signalTypen { eingang, intern, ausgang, unbekannt };
+	signalTypen signalTyp;
+	signalTypen getSignalTyp();
 	int getAnzahlZiele();
-	enum signalTypen getSignalTyp();
 	string getQuelle();
 	string getQuellenTyp();
 	string getZiel( int );
