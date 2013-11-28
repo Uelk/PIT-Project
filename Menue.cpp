@@ -106,6 +106,7 @@ void Menue::faktorenMenue () {
 	case 4:
 		meineFaktoren->ausgabeFaktoren();
 		system("pause");
+		faktorenMenue();
 		break;
 	case 5:
 		break;
