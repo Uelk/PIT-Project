@@ -19,5 +19,6 @@ public:
 	~GraphErzeuger();
 	void setBibliothek( Bibliothek* );
 	void setSignale( Signal*, short );
+	void erzeugeGraph();
 };
 #endif

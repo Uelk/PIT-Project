@@ -185,7 +185,7 @@ void SignalListeErzeuger::ausgabeSignale() {
 	cout << "--------" << endl;
 	cout << "Signalname: " << clockName << endl;
 	cout << "Signaltyp: Unbekannt" << endl;
-	cout << "Signalquelle: " << endl;
+	cout << "Signalquelle: keine" << endl;
 	cout << "--> DasSignal hat " << signale[0].getAnzahlZiele() << " Ziele" << endl;
 	cout << "Ziel-Gatter: ";
 	for( int i = 0; i < signale[0].getAnzahlZiele(); i++ ) {

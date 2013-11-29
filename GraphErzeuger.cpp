@@ -16,3 +16,7 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 	signale = sig;
 	anzahlSignale = anz;
 }
+
+void GraphErzeuger::erzeugeGraph() {
+
+}
