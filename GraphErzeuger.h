@@ -9,13 +9,15 @@ using namespace std;
 
 class GraphErzeuger {
 private:
-    Bibliothek* bibliothek;
-    ListenElement* startElement;
-    ListenElement* endElement;
-    Signal* signale;
-    short anzahlSignale;
+	Bibliothek* bibliothek;
+	ListenElement* startElement;
+	ListenElement* endElement;
+	Signal* signale;
+	short anzahlSignale;
 public:
-    
-    
+	GraphErzeuger();
+	~GraphErzeuger();
+	void setBibliothek( Bibliothek* );
+	void setSignale( Signal*, short );
 };
 #endif
