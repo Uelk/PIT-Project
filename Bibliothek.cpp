@@ -21,7 +21,8 @@ Gattertyp* Bibliothek::getBibElement(string typ) {
 			return this->bibElemente[i] ;
 		}
 	}
-return NULL;}
+	return NULL;
+}
 
 void Bibliothek::dateiAusgabe(void) {
     string line;
@@ -30,7 +31,7 @@ void Bibliothek::dateiAusgabe(void) {
     if( infile.is_open()) {
         i = 1;
         while(getline(infile, line)) {
-            cout << "(" << i++ << ")" << line <<endl;
+            cout << "(" << i++ << ") " << line <<endl;
         }
         infile.close();
     } else {

@@ -131,6 +131,7 @@ short Faktoren::getProzess() {
 }
 
 void Faktoren::getFaktoren( double spgFaktor, double tmpFaktor, double przFaktor ) {
+
 }
 
 bool Faktoren::setSpannung( double spannung ) {

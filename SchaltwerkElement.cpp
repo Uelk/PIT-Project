@@ -2,26 +2,20 @@
 #include "SchaltwerkElement.h"
 using namespace std;
 
-SchaltwerkElement::SchaltwerkElement( void ) {
-	name = "";
-	laufzeitEinzelgatter = 0;
-	anzahlNachfolger = 0;
-	isEingangsElement = NULL;
-	isAusgangsElement = NULL;
-	anzahlEingangssignale = 0;
-}
-
 SchaltwerkElement::SchaltwerkElement( Gattertyp* gTyp ) {
 	SchaltwerkElement::name.clear();
 	typ = gTyp;
 	laufzeitEinzelgatter = 0.0;
-//	nachfolgerElemente* = NULL;
+	nachfolgerElemente[0] = NULL;
+	nachfolgerElemente[1] = NULL;
+	nachfolgerElemente[2] = NULL;
+	nachfolgerElemente[3] = NULL;
+	nachfolgerElemente[4] = NULL;
 	anzahlNachfolger = 0;
 	isEingangsElement = NULL;
 	isAusgangsElement = NULL;
 	anzahlEingangssignale = 0.0;
 }
-
 
 SchaltwerkElement::~SchaltwerkElement() {
 }

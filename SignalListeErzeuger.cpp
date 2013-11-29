@@ -81,7 +81,7 @@ void SignalListeErzeuger::clockAuslesen() {
 
 void SignalListeErzeuger::signalTypenErkennung() {
 	string name;
-	signale[0].setSignalTyp( signale[0].eingang );
+	signale[0].setSignalTyp( signale[0].unbekannt );
 	for( int i = 1; i < anzahlSignale; i++ ) {
 		name = 's' + to_string(i);
 		if( name.length() < 4 ) {
@@ -184,7 +184,7 @@ void SignalListeErzeuger::ausgabeSignale() {
 	cout << "Signale: " << endl;
 	cout << "--------" << endl;
 	cout << "Signalname: " << clockName << endl;
-	cout << "Signaltyp: " << signale[0].getSignalTyp() << endl;
+	cout << "Signaltyp: Unbekannt" << endl;
 	cout << "Signalquelle: " << endl;
 	cout << "--> DasSignal hat " << signale[0].getAnzahlZiele() << " Ziele" << endl;
 	cout << "Ziel-Gatter: ";
@@ -201,6 +201,23 @@ void SignalListeErzeuger::ausgabeSignale() {
 			name = name.insert( 1, 4 - name.length(), '0' );
 		}
 		cout << "Signalname: " << name << endl;
+		cout << "Signaltyp: ";
+		int typ = signale[i].getSignalTyp();
+		switch(typ) {
+		case 0:
+			cout << "Eingang";
+			break;
+		case 1:
+			cout << "Intern";
+			break;
+		case 2:
+			cout << "Ausgang";
+			break;
+		case 3:
+			cout << "Unbekannt";
+			break;
+		}
+		cout << endl;
 		cout << "Signaltyp: " << signale[i].getSignalTyp() << endl;
 		cout << "Signalquelle: ";
 		if( signale[i].getQuelle().length() == 0) {

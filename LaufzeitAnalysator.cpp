@@ -1,7 +1,11 @@
 #include "LaufzeitAnalysator.h"
+using namespace std;
 
-#include "LaufzeitAnalysator.h"
+LaufzeitAnalysator::LaufzeitAnalysator() {
+}
 
-// Laufzeitformel vorbereiten
-void LaufzeitAnalysator::laufzeit( double grundlaufzeit, double lastFaktor, double last, double tempFaktor, double spannFaktor, double proFaktor) {
+LaufzeitAnalysator::~LaufzeitAnalysator() {
+}
+
+void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 }

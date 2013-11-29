@@ -10,9 +10,17 @@ using namespace std;
 
 class LaufzeitAnalysator {
 private:
-	void laufzeit( double, double, double, double, double, double );
+	Faktoren* faktoren;
+	ListenElement* startElement;
+	long frequenz;
+	string uebergangspfad;
+	string ausgangspfad;
+	double laufzeitUebergangspfad;
+	double laufzeitAusgangspfad;
+	void berechneLaufzeitEinzelgatter();
 
 public:
-
-};
+	LaufzeitAnalysator();
+	~LaufzeitAnalysator();
+}
 #endif

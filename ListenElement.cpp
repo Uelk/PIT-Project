@@ -1,8 +1,8 @@
 #include "Listenelement.h"
 
 ListenElement::ListenElement() {
-schaltwerkElement = NULL;
-next = NULL;
+	schaltwerkElement = NULL;
+	next = NULL;
 }
 
 ListenElement::~ListenElement() {
