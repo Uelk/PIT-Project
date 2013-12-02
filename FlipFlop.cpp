@@ -4,7 +4,7 @@
 Flipflop::Flipflop( void ) {}
 Flipflop::~Flipflop( void ) {}
 
-// Methoden
+// Methoden und Eigenschaften
 bool Flipflop::getIsFlipflop( void ) {
 	return true;
 }
