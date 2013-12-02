@@ -1,6 +1,7 @@
 #include "SignalListeErzeuger.h"
 using namespace std;
 
+// Datei auslesen; Leseschnittpunkte festlegen
 void SignalListeErzeuger::dateiAuslesen() {
 	anzahlSignale = 0;
 	ifstream file( datei );
@@ -30,16 +31,19 @@ void SignalListeErzeuger::dateiAuslesen() {
 	file.close();
 }
 
+// Rückgabe Anzahl Signale
 int SignalListeErzeuger::getAnzahlSignale() {
 	return anzahlSignale;
 }
 
+// Inputsignal auswerten
 void SignalListeErzeuger::inputAuslesen() {
 	line = line.substr( 6 );
 	input = line.substr( 0, line.find( ';' ) );
 	anzahlSignale++;
 }
 
+// Outputsignale auswerten
 void SignalListeErzeuger::outputsAuslesen() {
 	line = line.substr( 7 );
 	output = line.substr( 0, line.find( ';' ));
@@ -50,6 +54,7 @@ void SignalListeErzeuger::outputsAuslesen() {
 	}
 }
 
+// Signale auswerten
 void SignalListeErzeuger::signalsAuslesen() {
 	line = line.substr( 8 );
 	signals = line.substr( 0, line.find( ';' ));
@@ -60,6 +65,7 @@ void SignalListeErzeuger::signalsAuslesen() {
 	}
 }
 
+// Frequenz auswerten
 void SignalListeErzeuger::clockAuslesen() {
 	anzahlSignale++;
 	line = line.substr( 6 );
@@ -79,6 +85,7 @@ void SignalListeErzeuger::clockAuslesen() {
 	}
 }
 
+// Bestimmung der Signaltypen
 void SignalListeErzeuger::signalTypenErkennung() {
 	string name;
 	signale[0].setSignalTyp( signale[0].unbekannt );
@@ -99,18 +106,19 @@ void SignalListeErzeuger::signalTypenErkennung() {
 	}
 };
 
+// Schaltnetzwerk auswerten
 void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 	line = line.substr( 0, line.find( ';' ) - 1 );
-	string gatterName = line.substr( 0, 4 );
+	string gatterName = line.substr( 0, 4 ); // Gatter bestimmen
 	line = line.substr( 5 );
-	string gatterTyp = line.substr( 0, line.find( '(' ));
+	string gatterTyp = line.substr( 0, line.find( '(' )); // Gattertyp bestimmen
 	line = line.substr( line.find( '(' ) + 1 );
-	string ausgangName = line.substr( line.find_last_of( ',' ) + 1 );
+	string ausgangName = line.substr( line.find_last_of( ',' ) + 1 ); // Outputsignal finden
 	line = line.substr( 0, line.find_last_of( ',' ) );
 	int signalNummer = atoi( ausgangName.substr( 1, 3 ).c_str());
-	signale[signalNummer].setQuelle( gatterName );
-	signale[signalNummer].setQuellenTyp( gatterTyp );
-	while( line.find( ',' ) != -1 ) {
+	signale[signalNummer].setQuelle( gatterName ); // Quelle festlegen
+	signale[signalNummer].setQuellenTyp( gatterTyp ); // Quellentyp festlegen
+	while( line.find( ',' ) != -1 ) { // Eingangssignale abarbeiten
 		if( line.substr( 0, line.find( ',' )).find( clockName ) != -1 ) {
 			signale[0].zielHinzufuegen( gatterName, signale[0].getAnzahlZiele() );
 			signale[0].setAnzahlZiele( signale[0].getAnzahlZiele() + 1 );
@@ -122,6 +130,7 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 			line = line.substr( 5 );
 		}
 	}
+    // Speichern des letzten Eingangssignals
 	if( line.find( clockName ) != -1 ) {
 		signale[0].zielHinzufuegen( gatterName, signale[0].getAnzahlZiele() );
 		signale[0].setAnzahlZiele( signale[0].getAnzahlZiele() + 1 );
@@ -132,6 +141,7 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 	}
 }
 
+// Inputsignal vorhanden?
 bool SignalListeErzeuger::isInput( string signal ) {
 	if( input.find( signal ) != -1 ) {
 		return true;
@@ -139,6 +149,7 @@ bool SignalListeErzeuger::isInput( string signal ) {
 	return false;
 }
 
+// Outputsignal vorhanden?
 bool SignalListeErzeuger::isOutput( string signal ) {
 	if( output.find( signal ) != -1 ) {
 		return true;
@@ -146,6 +157,7 @@ bool SignalListeErzeuger::isOutput( string signal ) {
 	return false;
 }
 
+// Signal vorhanden?
 bool SignalListeErzeuger::isSignal( string signal ) {
 	if( signals.find( signal ) != -1 ) {
 		return true;
@@ -153,9 +165,10 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 	return false;
 }
 
-bool SignalListeErzeuger::setDateiPfad(string pfad) {
+// Überprüfen, ob Dateiauslese möglich
+bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
-	if(!file.fail()) {
+	if( !file.fail()) {
 		datei = pfad;
 		dateiAuslesen();
 		return true;
@@ -165,10 +178,12 @@ bool SignalListeErzeuger::setDateiPfad(string pfad) {
 	file.close();
 }
 
+// Datei zurückgeben
 string SignalListeErzeuger::getDateiPfad() {
 	return datei;
 }
 
+// Datei ausgeben
 void SignalListeErzeuger::ausgabeDatei() {
 	string zeile;
 	int i = 0;
@@ -180,6 +195,7 @@ void SignalListeErzeuger::ausgabeDatei() {
 	file.close();
 }
 
+// Ausgabe der Signalauswertung in der Konsole
 void SignalListeErzeuger::ausgabeSignale() {
 	cout << "Signale: " << endl;
 	cout << "--------" << endl;
