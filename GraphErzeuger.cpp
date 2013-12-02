@@ -34,10 +34,9 @@ void GraphErzeuger::saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElem
 	schaltwerkElement->setName( curSignal.getQuelle() );
 	schaltwerkElement->setAnzahlNachfolger( curSignal.getAnzahlZiele() );
 	for( int i = 0; i < curSignal.getAnzahlZiele(); i++ ) {
-		schaltwerkElement->nachfolgerHinzufuegen();
+		//schaltwerkElement->nachfolgerHinzufuegen();
 	}
 }
-
 
 void GraphErzeuger::ausgabeGraph() {
 
