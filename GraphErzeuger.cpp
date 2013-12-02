@@ -38,11 +38,28 @@ void saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElement, Signal cur
 	}
 }
 
-void ausgabeGraph() {
-	cout << "Graphstruktur" << endl;
-	cout << "-------" << endl;
-	cout << "Gattername" << endl;
-	cout << "Gattertyp" << endl;
-	cout << "Das Gatter hat " << "Ziele" << endl;
-	cout << "Angeschlossene Gatter" << endl;
+
+void GraphErzeuger::ausgabeGraph() {
+
+	for(int i = 0; i<anzahlElemente;i++)
+        {
+                int anzahlNachfolger = signale->getSchaltwerkElement()->getAnzahlNachfolger();
+                cout << "Gattername: " << ~LISTENELEMENT~->getSchaltwerkElement()->getName() << endl;
+                cout << "Gattertyp: " << ~LISTENELEMENT~->getSchaltwerkElement()->getTyp()->getName() << endl;
+                cout << "--> Das Gatter hat " << anzahlNachfolger << (anzahlNachfolger == 1 ? " Ziel" : " Ziele") << endl;
+                cout << "Angeschlossene Gatter:";
+                for (int j = 0; j < anzahlNachfolger; j++)
+                {
+                        cout << " " << ~LISTENELEMENT~->getSchaltwerkElement()->getNachfolger(j)->getName();
+                }
+                cout << endl << endl;
+
+                ~LISTENELEMENT~ = tempLE->getNextElement();
+        }
+        system("pause");
 }
+
+/*else{
+		 cout << "Fehler! Ein unbenutztes Signal wurde gefunden\n";
+         system("pause");
+		}*/
