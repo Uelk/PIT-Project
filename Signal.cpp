@@ -17,7 +17,7 @@ Signal::~Signal() {
 }
 
 int Signal::getAnzahlZiele() {
-    return anzahlZiele;
+	return anzahlZiele;
 }
 
 Signal::signalTypen Signal::getSignalTyp() {
