@@ -30,7 +30,7 @@ void GraphErzeuger::erzeugeGraph() {
 	}
 }
 
-void saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElement, Signal curSignal ) {
+void GraphErzeuger::saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElement, Signal curSignal ) {
 	schaltwerkElement->setName( curSignal.getQuelle() );
 	schaltwerkElement->setAnzahlNachfolger( curSignal.getAnzahlZiele() );
 	for( int i = 0; i < curSignal.getAnzahlZiele(); i++ ) {
