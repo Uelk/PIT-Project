@@ -34,7 +34,7 @@ public:
 	void dateiAusgabe( void ); //Ausgabe der Datei auf den Bildschirm
 	void dateiAuswerten( void ); //Einlesen und Auswerten der Bib-Datei
 	bool pfadEinlesen ( string pfad ); //Pfad zur Bib-Datei in Atribut spreichern
-	void openError( void ); //Fehler beim Öffnen der Datei
+	void openError( void ); //Fehler beim šffnen der Datei
 	void readError( void ); //Fehler beim Lesen der Datei
 	bool vecError( void ); //Wurde das gesuchte Element in dem Vector gefunden?
 };
