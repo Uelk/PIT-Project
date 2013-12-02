@@ -7,7 +7,7 @@ Gattertyp::Gattertyp( void ){
 Gattertyp::~Gattertyp( void ){
 }
 
-//Methoden:
+// Methoden und Eigenschaften
 bool Gattertyp::getIsFlipflop( void ) {
 	return false;
 }
