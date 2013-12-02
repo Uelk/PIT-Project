@@ -39,21 +39,16 @@ void GraphErzeuger::saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElem
 }
 
 void GraphErzeuger::ausgabeGraph() {
-
-	
-
-	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement)
-        {
-                cout << "Gattername: " << temporLE->getSchaltwerkElement()->getName() << endl;
-                cout << "Gattertyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
-				cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << (( temporLE->getSchaltwerkElement()->getAnzahlNachfolger()) == 1 ? " Ziel" : " Ziele") << endl;
-                cout << "Angeschlossene Gatter:";
-                for (int j = 0; j < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); j++)
-                {
-                        cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(j)->getName();
-                }
-                cout << endl << endl;
-				}
+	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement()) {
+		cout << "Gattername: " << temporLE->getSchaltwerkElement()->getName() << endl;
+		cout << "Gattertyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
+		cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << (( temporLE->getSchaltwerkElement()->getAnzahlNachfolger()) == 1 ? " Ziel" : " Ziele") << endl;
+		cout << "Angeschlossene Gatter:";
+		for (int j = 0; j < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); j++) {
+			cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(j)->getName();
+		}
+		cout << endl << endl;
+	}
 }
 
 /*else{
