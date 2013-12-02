@@ -17,7 +17,7 @@ Menue::Menue() {
 	meineFaktoren = new Faktoren();
 	meineBibliothek = new Bibliothek();
 	meinSignalListeErzeuger = new SignalListeErzeuger();
-    //meinGraphErzeuger = new GraohErzeugers();
+    //meinGraphErzeuger = new GraphErzeuger();
     //meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
