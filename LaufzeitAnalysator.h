@@ -3,16 +3,25 @@
 
 #include <iostream>
 #include "ListenElement.h"
-#include "GraphErzeuger.h"
+//#include "GraphErzeuger.h"
 #include "Faktoren.h"
-#include "Bibliothek.h"
+//#include "Bibliothek.h"
 using namespace std;
 
 class LaufzeitAnalysator {
 private:
-    void laufzeit( double, double, double, double, double, double,);
-    
+	Faktoren* faktoren;
+	ListenElement* startElement;
+	long frequenz;
+	string uebergangspfad;
+	string ausgangspfad;
+	double laufzeitUebergangspfad;
+	double laufzeitAusgangspfad;
+	void berechneLaufzeitEinzelgatter();
+
 public:
-    
+	LaufzeitAnalysator();
+	~LaufzeitAnalysator();
+	void ausgabeErgebnis();
 };
 #endif

@@ -14,7 +14,7 @@ private:
 	Bibliothek* meineBibliothek;
 	SignalListeErzeuger* meinSignalListeErzeuger;
 	//GraphErzeuger meinGraphErzeuger;
-	//LaufzeitAnalysator meinLaufzeitAnalysator;
+	LaufzeitAnalysator meinLaufzeitAnalysator;
     void faktorenMenue();
 	void bibliothekMenue();
 	void schaltwerkMenue();

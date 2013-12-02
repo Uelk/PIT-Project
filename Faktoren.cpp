@@ -1,6 +1,7 @@
 #include "Faktoren.h"
 using namespace std;
 
+// Berechnung Spannungsfaktor
 bool Faktoren::berechneSpannungFaktor( double spg ) {
 	const int laenge = 7;
 	double spgFaktorTabelle[laenge][2];
@@ -22,6 +23,7 @@ bool Faktoren::berechneSpannungFaktor( double spg ) {
 	return true;
 }
 
+// Berechnung Temperaturfaktor
 bool Faktoren::berechneTemperaturFaktor( double temp ) {
 	const int laenge = 15;
 	double tempFaktorTabelle[laenge][2];
@@ -59,6 +61,7 @@ bool Faktoren::berechneTemperaturFaktor( double temp ) {
 	return true;
 }
 
+// Berechnung Prozessfaktor
 bool Faktoren::berechneProzessFaktor( short prz ) {
 	const int laenge = 3;
 	double prozessFaktorTabelle[laenge][2];
@@ -75,7 +78,9 @@ bool Faktoren::berechneProzessFaktor( short prz ) {
 	return false;
 }
 
+// übergebenes Array nach Wert untersuchen
 double Faktoren::berechneFaktor( double value, double arr[][2], int laenge ) {
+    // Wert im Array vorhanden
 	for( int i = 0; i < laenge; i++ ) {
 		if( arr[i][0] == value ) {
 			return arr[i][1];
@@ -86,6 +91,7 @@ double Faktoren::berechneFaktor( double value, double arr[][2], int laenge ) {
 	double y1;
 	double x2;
 	double y2;
+    // wert im Array nicht vorhanden
 	for( int i = 0; i < laenge; i++ ) {
 		if( arr[i][0] <= value ) {
 			x1_pos = i; 
@@ -98,6 +104,7 @@ double Faktoren::berechneFaktor( double value, double arr[][2], int laenge ) {
 	return interpolation( value, x1, x2, y1, y2 );
 }
 
+// Interpolation zwischen 2 Werten
 double Faktoren::interpolation( double value, double x1, double x2, double y1, double y2 ) {
 	double steigung = ( y2 - y1 ) / ( x2 - x1 );
 	double deltaX = value - x1;
@@ -118,36 +125,45 @@ Faktoren::~Faktoren() {
 	ItivDev_ReleaseDevice(DevPtr);
 }
 
+// Spannungswert holen
 double Faktoren::getSpannung() {
 	return spannung;
 }
 
+// Temperaturwert holen
 double Faktoren::getTemperatur() {
 	return temperatur;
 }
 
+// Prozesstyp holen
 short Faktoren::getProzess() {
 	return ( short ) prozess;
 }
 
+// Faktorenwerte holen
 void Faktoren::getFaktoren( double spgFaktor, double tmpFaktor, double przFaktor ) {
+
 }
 
+// Spannung festlegen
 bool Faktoren::setSpannung( double spannung ) {
 	Faktoren::spannung = spannung;
 	return true;
 }
 
+// Temperatur festlegen
 bool Faktoren::setTemperatur( double temperatur ) {
 	Faktoren::temperatur = temperatur;
 	return true;
 }
 
+// Prozess festlegen
 bool Faktoren::setProzess( short prozess ) {
 	Faktoren::prozess = prozess;
 	return true;
 }
 
+// Ausgabe berechneter Faktoren
 void Faktoren::ausgabeFaktoren() {
 	cout << "Faktoren: KV: ";
 	cout << Faktoren::spannungFaktor;
