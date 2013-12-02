@@ -34,7 +34,7 @@ void saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElement, Signal cur
 	schaltwerkElement->setName( curSignal.getQuelle() );
 	schaltwerkElement->setAnzahlNachfolger( curSignal.getAnzahlZiele() );
 	for( int i = 0; i < curSignal.getAnzahlZiele(); i++ ) {
-		schaltwerkElement->nachfolgerHinzufuegen()
+		schaltwerkElement->nachfolgerHinzufuegen();
 	}
 }
 
