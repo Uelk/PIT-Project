@@ -20,5 +20,6 @@ public:
 	void setBibliothek( Bibliothek* );
 	void setSignale( Signal*, short );
 	void erzeugeGraph();
+	void ausgabeGraph();
 };
 #endif

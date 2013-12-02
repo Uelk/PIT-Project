@@ -18,5 +18,24 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 }
 
 void GraphErzeuger::erzeugeGraph() {
+	startElement = new ListenElement();
+	endElement = startElement;
+	for( int i; i < anzahlSignale; i++ ) {
+		if( signale[i].getSignalTyp == signale[i].intern ) {
+			if(startElement =endElement) {
+				startElement->setSchaltwerkElement(new SchaltwerkElement());
+			} else {
+				
+			}
+		}
+	}
+}
 
+void ausgabeGraph() {
+	cout << "Graphstruktur" << endl;
+	cout << "-------" << endl;
+	cout << "Gattername" << endl;
+	cout << "Gattertyp" << endl;
+	cout << "Das Gatter hat " << "Ziele" << endl;
+	cout << "Angeschlossene Gatter" << endl;
 }

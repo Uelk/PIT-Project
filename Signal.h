@@ -13,7 +13,7 @@ private:
 public:
 	Signal();
 	~Signal();
-	enum signalTypen { eingang, intern, ausgang, unbekannt };
+	static enum signalTypen { eingang, intern, ausgang, unbekannt };
 	signalTypen signalTyp;
 	signalTypen getSignalTyp();
 	int getAnzahlZiele();
