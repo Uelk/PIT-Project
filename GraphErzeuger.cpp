@@ -41,22 +41,20 @@ void saveSchaltwerkElementData( SchaltwerkElement* schaltwerkElement, Signal cur
 
 void GraphErzeuger::ausgabeGraph() {
 
-	for(int i = 0; i<anzahlElemente;i++)
+	
+
+	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement)
         {
-                int anzahlNachfolger = signale->getSchaltwerkElement()->getAnzahlNachfolger();
-                cout << "Gattername: " << ~LISTENELEMENT~->getSchaltwerkElement()->getName() << endl;
-                cout << "Gattertyp: " << ~LISTENELEMENT~->getSchaltwerkElement()->getTyp()->getName() << endl;
-                cout << "--> Das Gatter hat " << anzahlNachfolger << (anzahlNachfolger == 1 ? " Ziel" : " Ziele") << endl;
+                cout << "Gattername: " << temporLE->getSchaltwerkElement()->getName() << endl;
+                cout << "Gattertyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
+				cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << (( temporLE->getSchaltwerkElement()->getAnzahlNachfolger()) == 1 ? " Ziel" : " Ziele") << endl;
                 cout << "Angeschlossene Gatter:";
-                for (int j = 0; j < anzahlNachfolger; j++)
+                for (int j = 0; j < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); j++)
                 {
-                        cout << " " << ~LISTENELEMENT~->getSchaltwerkElement()->getNachfolger(j)->getName();
+                        cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(j)->getName();
                 }
                 cout << endl << endl;
-
-                ~LISTENELEMENT~ = tempLE->getNextElement();
-        }
-        system("pause");
+				}
 }
 
 /*else{
