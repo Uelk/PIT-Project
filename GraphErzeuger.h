@@ -20,7 +20,7 @@ public:
 	void setBibliothek( Bibliothek* );
 	void setSignale( Signal*, short );
 	void erzeugeGraph();
-	void saveSchaltwerkElementData( SchaltwerkElement*, Signal);
+	void saveSchaltwerkElementData( SchaltwerkElement*, Signal );
 	void ausgabeGraph();
 };
 #endif
