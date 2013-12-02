@@ -24,6 +24,34 @@ Menue::Menue() {
 Menue::~Menue () {
 }
 
+// Ausgabe des Hauptmenüs
+void Menue::menueKopf() {
+	system("cls");
+	cout << "******************************************" << endl;
+	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
+	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
+	cout << "******************************************" << endl;
+	cout << endl;
+	cout << "(1) Aeussere Faktoren" << endl;
+	cout << "Spannung [Volt]: " << meineFaktoren->getSpannung() << endl;
+	cout << "Temperatur [Grad Celsius]: " << meineFaktoren->getTemperatur() << endl;
+	cout << "Prozess (1=slow, 2=typical, 3=fast): " << meineFaktoren->getProzess() << endl;
+	cout << endl;
+	cout << "(2) Bibliothek" << endl;
+	cout << "Pfad zur Bibliotheksdatei: " << meineBibliothek->getPfad() << endl;
+	cout << endl;
+	cout << "(3) Schaltwerk" << endl;
+	cout << "Pfad zur Schaltwerksdatei: " << meinSignalListeErzeuger->getDateiPfad() << endl;
+	cout << endl;
+	cout << "(4) Analyse starten" << endl;
+	cout << endl;
+	cout << "(5) Programm beenden" << endl;
+	cout << endl;
+	cout << endl;
+	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
+}
+
+// Auswahl Untermenü
 void Menue::start() {
 	menueKopf ();
 	int menueEingabe;
@@ -55,6 +83,7 @@ void Menue::start() {
 	}
 }
 
+// Ausgabe Untermenü Aeussere Faktoren
 void Menue::faktorenMenue () {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -62,7 +91,7 @@ void Menue::faktorenMenue () {
 	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
 	cout << "******************************************" << endl;
 	cout << endl;
-	cout << "Untermenue Aussere Faktoren" << endl;
+	cout << "Untermenue Aeussere Faktoren" << endl;
 	cout << "(1) Spannung [Volt]: " << meineFaktoren->getSpannung() << endl;
 	cout << "(2) Temperatur [Grad Celsius]: " << meineFaktoren->getTemperatur() << endl;
 	cout << "(3) Prozess (1=slow, 2=typical; 3=fast): " << meineFaktoren->getProzess() << endl;
@@ -78,6 +107,7 @@ void Menue::faktorenMenue () {
 
 	switch(menueEingabe) {
 	case 1:
+        // Spannung festlegen
 		double spannung;
 		cout << "Geben Sie den neuen Spannungswert ein: ";
 		cin >> spannung;
@@ -85,6 +115,7 @@ void Menue::faktorenMenue () {
 		faktorenMenue();
 		break;
 	case 2:
+        // Temperatur festlegen
 		double temperatur;
 		cout << "Geben Sie einen neuen Temperaturwert ein: ";
 		cin >> temperatur;
@@ -92,6 +123,7 @@ void Menue::faktorenMenue () {
 		faktorenMenue();
 		break;
 	case 3:
+        // Prozesstyp festlegen
 		short prozess;
 		cout << "Geben Sie einen neuen Prozesstyp ein: ";
 		cin >> prozess;
@@ -104,11 +136,13 @@ void Menue::faktorenMenue () {
 		faktorenMenue();
 		break;
 	case 4:
+        // Ausgabe errechneter Faktoren
 		meineFaktoren->ausgabeFaktoren();
 		system("pause");
 		faktorenMenue();
 		break;
 	case 5:
+        // zurück zum Hauptmenü
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
@@ -117,6 +151,7 @@ void Menue::faktorenMenue () {
 	}
 }
 
+// Ausgabe Untermenü Bibliothek
 void Menue::bibliothekMenue() {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -138,6 +173,7 @@ void Menue::bibliothekMenue() {
 
 	switch(menueEingabe) {
 	case 1:
+        // Eingabe Dateipfad
 		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 		cin >> dateiPfad;
 		if(!meineBibliothek->pfadEinlesen(dateiPfad)) {
@@ -147,6 +183,7 @@ void Menue::bibliothekMenue() {
 		bibliothekMenue();
 		break;
 	case 2:
+        // Anzeigen der Bibliothekdatei
 		meineBibliothek->dateiAusgabe();
 		meineBibliothek->openError();
 		meineBibliothek->readError();
@@ -154,6 +191,7 @@ void Menue::bibliothekMenue() {
 		bibliothekMenue();
 		break;
 	case 3:
+        // zurück zum Hauptmenü
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
@@ -163,6 +201,7 @@ void Menue::bibliothekMenue() {
 	}
 }
 
+// Ausgabe Untermenü Schaltwerkmenü
 void Menue::schaltwerkMenue() {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -185,6 +224,7 @@ void Menue::schaltwerkMenue() {
 	cin >> menueEingabe;
 	switch (menueEingabe) {
 	case 1:
+        // Eingabe Dateipfad
 		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 		cin >> dateiPfad;
 		if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
@@ -194,6 +234,7 @@ void Menue::schaltwerkMenue() {
 		schaltwerkMenue();
 		break;
 	case 2:
+        // Anzeigen der Schaltwerkdatei
 		cout << endl;
 		cout << "Dateiausgabe:" << endl;
 		cout << endl;
@@ -202,16 +243,18 @@ void Menue::schaltwerkMenue() {
 		schaltwerkMenue();
 		break;
 	case 3:
+        // Ausgabe Signale
 		meinSignalListeErzeuger->ausgabeSignale();
 		system("pause");
 		schaltwerkMenue();
 		break;
 	case 4:
-		//**AusgabeGraphenstruktur
+		// Ausgabe Graphenstruktur
 		system("pause");
 		schaltwerkMenue();
 		break;
 	case 5:
+        // zurück zum Hauptmenü
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
@@ -220,6 +263,7 @@ void Menue::schaltwerkMenue() {
 	}
 }
 
+// Ausgabe der Schaltwerkanalyse
 void Menue::analyse() {
 	cout << "Analyse: " << endl;
 	cout << "--------" << endl;
@@ -244,30 +288,4 @@ if ( algorithmusVariable >= maxFrequenz ) {
 }
 
 */
-}
-
-void Menue::menueKopf() {
-	system("cls");
-	cout << "******************************************" << endl;
-	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
-	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
-	cout << "******************************************" << endl;
-	cout << endl;
-	cout << "(1) Aeussere Faktoren" << endl;
-	cout << "Spannung [Volt]: " << meineFaktoren->getSpannung() << endl;
-	cout << "Temperatur [Grad Celsius]: " << meineFaktoren->getTemperatur() << endl;
-	cout << "Prozess (1=slow, 2=typical, 3=fast): " << meineFaktoren->getProzess() << endl;
-	cout << endl;
-	cout << "(2) Bibliothek" << endl;
-	cout << "Pfad zur Bibliotheksdatei: " << meineBibliothek->getPfad() << endl;
-	cout << endl;
-	cout << "(3) Schaltwerk" << endl;
-	cout << "Pfad zur Schaltwerksdatei: " << meinSignalListeErzeuger->getDateiPfad() << endl;
-	cout << endl;
-	cout << "(4) Analyse starten" << endl;
-	cout << endl;
-	cout << "(5) Programm beenden" << endl;
-	cout << endl;
-	cout << endl;
-	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
 }
