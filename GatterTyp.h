@@ -10,8 +10,8 @@ using namespace std;
 
 class GatterTyp {
 public:
-    GatterTyp(void);
-    ~GatterTyp(void);
+    GatterTyp();
+    ~GatterTyp();
     
     //Methoden
 	string getName();
