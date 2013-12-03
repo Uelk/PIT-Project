@@ -8,23 +8,23 @@ GatterTyp::~GatterTyp(){
 }
 
 // Methoden und Eigenschaften
-bool GatterTyp::getIsFlipflop( void ) {
+bool GatterTyp::getIsFlipflop() {
 	return false;
 }
 
-string GatterTyp::getName( void ) {
+string GatterTyp::getName() {
 	return this->name;
 }
 
-double GatterTyp::getGrundLaufzeit( void ) {
+double GatterTyp::getGrundLaufzeit() {
 		return this->grundLaufzeit;
 }
 
-short GatterTyp::getLastFaktor( void ) {
+short GatterTyp::getLastFaktor() {
 		return this->lastFaktor;
 }
 
-short GatterTyp::getLastKapazitaet( void ) {
+short GatterTyp::getLastKapazitaet() {
 		return this->lastKapazitaet;
 }
 
