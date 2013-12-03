@@ -8,7 +8,7 @@
 #include "Faktoren.h"
 #include "Bibliothek.h"
 #include "SignalListeErzeuger.h"
-//#include "GraphErzeuger.h"
+#include "GraphErzeuger.h"
 //#include "LaufzeitAnalysator.h"
 
 using namespace std;
@@ -17,7 +17,7 @@ Menue::Menue() {
 	meineFaktoren = new Faktoren();
 	meineBibliothek = new Bibliothek();
 	meinSignalListeErzeuger = new SignalListeErzeuger();
-    //meinGraphErzeuger = new GraphErzeuger();
+    meinGraphErzeuger = new GraphErzeuger();
     //meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
@@ -230,6 +230,11 @@ void Menue::schaltwerkMenue() {
 		if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
 			cout << "Ungueltiger Dateipfad" << endl;
 			system("pause");
+		} else {
+			//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren lassen
+			meinGraphErzeuger->setBibliothek( meineBibliothek );
+			meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
+			meinGraphErzeuger->erzeugeGraph();
 		}
 		schaltwerkMenue();
 		break;
@@ -250,6 +255,7 @@ void Menue::schaltwerkMenue() {
 		break;
 	case 4:
 		// Ausgabe Graphenstruktur
+		meinGraphErzeuger->ausgabeGraph();
 		system("pause");
 		schaltwerkMenue();
 		break;

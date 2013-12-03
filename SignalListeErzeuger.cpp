@@ -165,7 +165,7 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 	return false;
 }
 
-// Überprüfen, ob Dateiauslese möglich
+// Überprüfen, ob Dateiauslesen möglich
 bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
 	if( !file.fail()) {
@@ -193,6 +193,10 @@ void SignalListeErzeuger::ausgabeDatei() {
 		cout << i << ' ' << zeile << endl;
 	}
 	file.close();
+}
+
+Signal* SignalListeErzeuger::getSignalListe() {
+	return signale;
 }
 
 // Ausgabe der Signalauswertung in der Konsole

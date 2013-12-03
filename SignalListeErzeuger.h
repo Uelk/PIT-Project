@@ -34,6 +34,7 @@ public:
 	bool setDateiPfad( string );
 	string getDateiPfad();
 	void ausgabeDatei();
+	Signal* getSignalListe();
 	void ausgabeSignale();
 };
 #endif

@@ -21,7 +21,10 @@ public:
 	void setBibliothek( Bibliothek* );
 	void setSignale( Signal*, short );
 	void erzeugeGraph();
-	void saveSchaltwerkElementData( SchaltwerkElement*, Signal );
+	void erzeugeListe();
+	void gatterZieleHinzufuegen();
+	Signal* findeSignal( string );
+	SchaltwerkElement* findeSchaltwerkElement( string );
 	void ausgabeGraph();
 };
 #endif

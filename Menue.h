@@ -13,8 +13,8 @@ private:
 	Faktoren* meineFaktoren;
 	Bibliothek* meineBibliothek;
 	SignalListeErzeuger* meinSignalListeErzeuger;
-	//GraphErzeuger meinGraphErzeuger;
-	LaufzeitAnalysator meinLaufzeitAnalysator;
+	GraphErzeuger* meinGraphErzeuger;
+	LaufzeitAnalysator* meinLaufzeitAnalysator;
     void faktorenMenue();
 	void bibliothekMenue();
 	void schaltwerkMenue();
