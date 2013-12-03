@@ -1,5 +1,4 @@
 #include "GraphErzeuger.h"
-
 using namespace std;
 
 GraphErzeuger::GraphErzeuger() {
@@ -50,8 +49,3 @@ void GraphErzeuger::ausgabeGraph() {
 		cout << endl << endl;
 	}
 }
-
-/*else{
-		 cout << "Fehler! Ein unbenutztes Signal wurde gefunden\n";
-         system("pause");
-		}*/
