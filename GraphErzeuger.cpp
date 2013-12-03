@@ -23,8 +23,12 @@ void GraphErzeuger::erzeugeGraph() {
 	startElement->setSchaltwerkElement(new SchaltwerkElement());
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( !signale[i].getQuelle().empty() ) {
-			if( startElement == endElement ) {
-				saveSchaltwerkElementData(startElement->getSchaltwerkElement(), signale[i]);
+			if(!signale[i].getAnzahlZiele = 0){ //Methode zur Überprüfung eines Unbenutzten Signals -> Keine Ziele vorhanden
+				if( startElement == endElement ) {
+					saveSchaltwerkElementData(startElement->getSchaltwerkElement(), signale[i]);
+				}
+			}else{
+			cout << "Fehler! Ein unbenutztes Signal wurde gefunden\n";
 			}
 		}
 	}
@@ -51,7 +55,3 @@ void GraphErzeuger::ausgabeGraph() {
 	}
 }
 
-/*else{
-		 cout << "Fehler! Ein unbenutztes Signal wurde gefunden\n";
-         system("pause");
-		}*/
