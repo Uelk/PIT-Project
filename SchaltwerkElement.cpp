@@ -3,8 +3,8 @@
 using namespace std;
 
 // Alle Attribute mit Wert 0 bzw. NULL initialisieren
-SchaltwerkElement::SchaltwerkElement( Gattertyp* gTyp ) {
-	SchaltwerkElement::name.clear();
+SchaltwerkElement::SchaltwerkElement( GatterTyp* gTyp ) {
+	name.clear();
 	typ = gTyp;
 	laufzeitEinzelgatter = 0.0;
 	nachfolgerElemente[0] = NULL;
@@ -27,7 +27,7 @@ string SchaltwerkElement::getName() {
 }
 
 // Rückgabe Typ
-Gattertyp* SchaltwerkElement::getTyp() {
+GatterTyp* SchaltwerkElement::getTyp() {
 	return typ;
 }
 

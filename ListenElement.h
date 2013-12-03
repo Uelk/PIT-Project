@@ -13,7 +13,7 @@ public:
 	~ListenElement();
 	SchaltwerkElement* getSchaltwerkElement();
 	ListenElement* getNextElement();
-	void setSchaltwerkElement( SchaltwerkElement* schaltwerkEl );
-	void setNextElement( ListenElement* nextEl );
+	void setSchaltwerkElement( SchaltwerkElement* );
+	void setNextElement( ListenElement* );
 };
 #endif 

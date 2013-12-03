@@ -5,6 +5,7 @@
 #include "Bibliothek.h"
 #include "Signal.h"
 #include "ListenElement.h"
+#include "GatterTyp.h"
 using namespace std;
 
 class GraphErzeuger {

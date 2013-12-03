@@ -1,5 +1,5 @@
-#ifndef GATTERTYP_H
-#define GATTERTYP_H
+#ifndef GatterTyp_H
+#define GatterTyp_H
 
 #include <iostream>
 #include <stdio.h>
@@ -8,10 +8,10 @@
 #include <string>
 using namespace std;
 
-class Gattertyp {
+class GatterTyp {
 public:
-    Gattertyp(void);
-    ~Gattertyp(void);
+    GatterTyp(void);
+    ~GatterTyp(void);
     
     //Methoden
 	string getName();

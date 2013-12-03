@@ -8,7 +8,7 @@ using namespace std;
 class SchaltwerkElement {
 private:
 	string name;
-	Gattertyp* typ;
+	GatterTyp* typ;
 	double laufzeitEinzelgatter;
 	SchaltwerkElement* nachfolgerElemente[5];
 	int anzahlNachfolger;
@@ -18,9 +18,9 @@ private:
 public:
 	SchaltwerkElement( void );
 	~SchaltwerkElement( void );
-	SchaltwerkElement( Gattertyp* gTyp );
+	SchaltwerkElement( GatterTyp* gTyp );
 	string getName();
-	Gattertyp* getTyp();
+	GatterTyp* getTyp();
 	double getLaufzeitEinzelgatter();
 	SchaltwerkElement* getNachfolger( int pos );
 	int getAnzahlNachfolger();

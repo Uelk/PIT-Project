@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include "Gattertyp.h"
+#include "GatterTyp.h"
 #include "Flipflop.h"
 #include "helper.h"
 #include <Windows.h>
@@ -19,7 +19,7 @@ using namespace std;
 
 class Bibliothek {
 private:
-    vector <Gattertyp*> bibElemente;
+    vector <GatterTyp*> bibElemente;
     string datei;
     bool errFileNotFound;
     bool errFileRead;
@@ -30,7 +30,7 @@ public:
     
     //Methoden
     string getPfad(); //Pfad und Dateinamen auslesen
-	Gattertyp* getBibElement( string typ );
+	GatterTyp* getBibElement( string typ );
 	void dateiAusgabe( void ); //Ausgabe der Datei auf den Bildschirm
 	void dateiAuswerten( void ); //Einlesen und Auswerten der Bib-Datei
 	bool pfadEinlesen ( string pfad ); //Pfad zur Bib-Datei in Atribut spreichern

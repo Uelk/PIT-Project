@@ -1,53 +1,53 @@
-#include "Gattertyp.h"
+#include "GatterTyp.h"
 using namespace std;
 
-Gattertyp::Gattertyp( void ){
+GatterTyp::GatterTyp(){
 }
 
-Gattertyp::~Gattertyp( void ){
+GatterTyp::~GatterTyp(){
 }
 
 // Methoden und Eigenschaften
-bool Gattertyp::getIsFlipflop( void ) {
+bool GatterTyp::getIsFlipflop( void ) {
 	return false;
 }
 
-string Gattertyp::getName( void ) {
+string GatterTyp::getName( void ) {
 	return this->name;
 }
 
-double Gattertyp::getGrundLaufzeit( void ) {
+double GatterTyp::getGrundLaufzeit( void ) {
 		return this->grundLaufzeit;
 }
 
-short Gattertyp::getLastFaktor( void ) {
+short GatterTyp::getLastFaktor( void ) {
 		return this->lastFaktor;
 }
 
-short Gattertyp::getLastKapazitaet( void ) {
+short GatterTyp::getLastKapazitaet( void ) {
 		return this->lastKapazitaet;
 }
 
-short Gattertyp::getEingaenge() {
+short GatterTyp::getEingaenge() {
 		return this->eingaenge;
 }
 
-void Gattertyp::setName( string n ) {
+void GatterTyp::setName( string n ) {
 		this->name = n;
 }
 
-void Gattertyp::setGrundLaufzeit( double gl ) {
+void GatterTyp::setGrundLaufzeit( double gl ) {
 		this->grundLaufzeit = gl;
 }
 
-void Gattertyp::setLastFaktor( short lf ) {
+void GatterTyp::setLastFaktor( short lf ) {
 		this->lastFaktor = lf;
 }
 
-void Gattertyp::setLastKapazitaet( short lk ) {
+void GatterTyp::setLastKapazitaet( short lk ) {
 	    this->lastKapazitaet = lk;
 }
 
-void Gattertyp::setEingaenge( short ei ) {
+void GatterTyp::setEingaenge( short ei ) {
 		this->eingaenge = ei;
 }

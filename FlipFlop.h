@@ -2,10 +2,10 @@
 #define FLIPFLOP_H
 
 #pragma once
-#include "gattertyp.h"
+#include "GatterTyp.h"
 using namespace std;
 
-class Flipflop : public Gattertyp {
+class Flipflop : public GatterTyp {
 private:
     short setupTime;
     short holdTime;

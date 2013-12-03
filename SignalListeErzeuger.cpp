@@ -111,13 +111,13 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 	line = line.substr( 0, line.find( ';' ) - 1 );
 	string gatterName = line.substr( 0, 4 ); // Gatter bestimmen
 	line = line.substr( 5 );
-	string gatterTyp = line.substr( 0, line.find( '(' )); // Gattertyp bestimmen
+	string GatterTyp = line.substr( 0, line.find( '(' )); // GatterTyp bestimmen
 	line = line.substr( line.find( '(' ) + 1 );
 	string ausgangName = line.substr( line.find_last_of( ',' ) + 1 ); // Outputsignal finden
 	line = line.substr( 0, line.find_last_of( ',' ) );
 	int signalNummer = atoi( ausgangName.substr( 1, 3 ).c_str());
 	signale[signalNummer].setQuelle( gatterName ); // Quelle festlegen
-	signale[signalNummer].setQuellenTyp( gatterTyp ); // Quellentyp festlegen
+	signale[signalNummer].setQuellenTyp( GatterTyp ); // Quellentyp festlegen
 	while( line.find( ',' ) != -1 ) { // Eingangssignale abarbeiten
 		if( line.substr( 0, line.find( ',' )).find( clockName ) != -1 ) {
 			signale[0].zielHinzufuegen( gatterName, signale[0].getAnzahlZiele() );

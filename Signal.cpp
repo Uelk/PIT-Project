@@ -57,8 +57,8 @@ void Signal::setQuelle( string gatterName ) {
 }
 
 // Quellentyp bestimmen
-void Signal::setQuellenTyp( string gatterTyp ) {
-    quellenTyp = gatterTyp;
+void Signal::setQuellenTyp( string GatterTyp ) {
+    quellenTyp = GatterTyp;
 }
 
 // Ziel hinzufügen

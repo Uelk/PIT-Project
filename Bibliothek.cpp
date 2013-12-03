@@ -16,7 +16,7 @@ string Bibliothek::getPfad() {
 }
 
 // Bib-Element auslesen
-Gattertyp* Bibliothek::getBibElement( string typ ) {
+GatterTyp* Bibliothek::getBibElement( string typ ) {
     for( unsigned int i = 0; i < bibElemente.size() ; i++ ) {
 		if(( bibElemente[i]->getName()).compare(typ) == 0 ) {
 			this->errElNotInVec = false;
@@ -50,7 +50,7 @@ void Bibliothek::dateiAuswerten( void ) {
     short  IWert;
     string inifile = this->datei + ".ini";
     char* pToken;
-    Gattertyp* gt;
+    GatterTyp* gt;
     Flipflop* ff;
     
     ifstream infile( this->datei );
@@ -89,10 +89,10 @@ void Bibliothek::dateiAuswerten( void ) {
 		ff->setLastFaktor( IWert );
 		IWert = GetPrivateProfileIntA( pToken, "ct", 0, inifile.c_str());
 		ff->setLastKapazitaetClock( IWert );
-		this->bibElemente.push_back(( Gattertyp* ) ff );
+		this->bibElemente.push_back(( GatterTyp* ) ff );
   //      cout << "Flipflop " << pToken << " ed=" << IWert << " tpx " << SWert << endl; // Do something with string
 	  } else  /* Auswerten als Gatter */ {
-		gt = new Gattertyp();
+		gt = new GatterTyp();
 		gt->setName( pToken );
 	    IWert = GetPrivateProfileIntA( pToken, "ei", 0, inifile.c_str());
 		gt->setEingaenge( IWert );
