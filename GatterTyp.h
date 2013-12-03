@@ -10,8 +10,8 @@ using namespace std;
 
 class GatterTyp {
 public:
-    GatterTyp(void);
-    ~GatterTyp(void);
+    GatterTyp();
+    ~GatterTyp();
     
     //Methoden
 	string getName();
@@ -19,7 +19,7 @@ public:
 	short getLastFaktor();
 	short getLastKapazitaet();
 	short getEingaenge();
-	virtual	bool getIsFlipflop( void );
+	virtual	bool getIsFlipflop();
 	void setName( string n );
 	void setGrundLaufzeit( double gl );
 	void setLastFaktor( short lf );
