@@ -20,10 +20,14 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 void GraphErzeuger::erzeugeGraph() {
 	startElement = new ListenElement();
 	endElement = startElement;
-	startElement->setSchaltwerkElement( new SchaltwerkElement( new GatterTyp() ) );
+	startElement->setSchaltwerkElement( new SchaltwerkElement( new GatterTyp() ));
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( !signale[i].getQuelle().empty() ) {
 			if( startElement == endElement ) {
+				saveSchaltwerkElementData(startElement->getSchaltwerkElement(), signale[i]);
+			} else {
+				endElement = new ListenElement();
+				endElement->setSchaltwerkElement( new SchaltwerkElement( new GatterTyp() ));
 				saveSchaltwerkElementData(startElement->getSchaltwerkElement(), signale[i]);
 			}
 		}
