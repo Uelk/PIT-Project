@@ -23,7 +23,7 @@ void GraphErzeuger::erzeugeGraph() {
 	startElement->setSchaltwerkElement( new SchaltwerkElement( new GatterTyp() ) );
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( !signale[i].getQuelle().empty() ) {
-			if(!signale[i].getAnzahlZiele == 0){
+			if(signale[i].getAnzahlZiele != 0){
 				if( startElement == endElement ) {
 					saveSchaltwerkElementData(startElement->getSchaltwerkElement(), signale[i]);
 				}
