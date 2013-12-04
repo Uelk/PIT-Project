@@ -19,7 +19,7 @@ public:
 	short getLastFaktor();
 	short getLastKapazitaet();
 	short getEingaenge();
-	virtual	bool getIsFlipflop();
+	virtual	bool getIsFlipFlop();
 	void setName( string n );
 	void setGrundLaufzeit( double gl );
 	void setLastFaktor( short lf );

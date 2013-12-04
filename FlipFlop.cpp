@@ -1,34 +1,33 @@
-#include "Flipflop.h"
+#include "FlipFlop.h"
 
-
-Flipflop::Flipflop( void ) {}
-Flipflop::~Flipflop( void ) {}
+FlipFlop::FlipFlop( void ) {}
+FlipFlop::~FlipFlop( void ) {}
 
 // Methoden und Eigenschaften
-bool Flipflop::getIsFlipflop( void ) {
+bool FlipFlop::getIsFlipFlop( void ) {
 	return true;
 }
 
-short Flipflop::getSetupTime() {
+short FlipFlop::getSetupTime() {
 		return this->setupTime;
 }
 
-short Flipflop::getHoldTime() {
+short FlipFlop::getHoldTime() {
 		return this->holdTime;
 }
 
-short Flipflop::getLastKapazitaetClock() {
+short FlipFlop::getLastKapazitaetClock() {
 	return lastKapazitaetClock;
 }
 
-void Flipflop::setSetupTime( short st ) {
+void FlipFlop::setSetupTime( short st ) {
 	this->setupTime = st;
 }
 
-void Flipflop::setHoldTime( short ht ) {
+void FlipFlop::setHoldTime( short ht ) {
 	this->holdTime = ht;
 }
 
-void Flipflop::setLastKapazitaetClock( short lkc ) {
+void FlipFlop::setLastKapazitaetClock( short lkc ) {
 	this->lastKapazitaetClock = lkc;
 }

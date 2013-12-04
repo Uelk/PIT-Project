@@ -285,13 +285,4 @@ void Menue::analyse() {
 	cout << endl;
 	cout << "Die maximal zulaessige Frequenz fuer das Schaltnetz/-werk betraegt: " /*<< add Algorithmus */ << " MHz" << endl;
 	cout << endl;
-/*
-if ( algorithmusVariable >= maxFrequenz ) {
-	cout << "Die Bedingung fuer die Taktfrequenz vom Schaltnetz/-werk ist nicht erfüllt!" << endl;
-	cout << "Die Taktfrequenz " << frequenzVariable << " ist groesser als die maximale Frequenz!" << endl;
-} else {
-	cout << "Die Bedingung fuer die Taktfrequenz vom Schaltnetz/-werk ist erfüllt!" << endl;
-}
-
-*/
 }

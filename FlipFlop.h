@@ -1,21 +1,20 @@
-#ifndef FLIPFLOP_H
-#define FLIPFLOP_H
+#ifndef FlipFlop_H
+#define FlipFlop_H
 
-#pragma once
 #include "GatterTyp.h"
 using namespace std;
 
-class Flipflop : public GatterTyp {
+class FlipFlop : public GatterTyp {
 private:
     short setupTime;
     short holdTime;
     short lastKapazitaetClock;
 public:
-    Flipflop( void );
-    ~Flipflop( void );
+    FlipFlop( void );
+    ~FlipFlop( void );
     
     //Methoden
-    bool getIsFlipflop( void );
+    bool getIsFlipFlop( void );
     short getSetupTime();
     short getHoldTime();
 	short getLastKapazitaetClock();

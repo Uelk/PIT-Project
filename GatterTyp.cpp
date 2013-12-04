@@ -8,7 +8,7 @@ GatterTyp::~GatterTyp(){
 }
 
 // Methoden und Eigenschaften
-bool GatterTyp::getIsFlipflop() {
+bool GatterTyp::getIsFlipFlop() {
 	return false;
 }
 

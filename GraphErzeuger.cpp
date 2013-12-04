@@ -31,7 +31,8 @@ void GraphErzeuger::erzeugeListe() {
 				startElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
 			} else {
-				endElement = new ListenElement();
+				endElement->setNextElement( new ListenElement() );
+				endElement = endElement->getNextElement();
 				endElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
 			}
@@ -45,7 +46,7 @@ void GraphErzeuger::erzeugeListe() {
 }
 
 void GraphErzeuger::gatterZieleHinzufuegen() {
-	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement()) {
+	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		Signal* korrespondSignal = findeSignal( temporLE->getSchaltwerkElement()->getName() );
 		SchaltwerkElement* curSchaltwerkElement = temporLE->getSchaltwerkElement();
 		for( int i = 0; i<korrespondSignal->getAnzahlZiele(); i++ ) {
@@ -57,7 +58,7 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 }
 
 Signal* GraphErzeuger::findeSignal( string gatterName ) {
-	for( int i = 0; i<anzahlSignale; i++) {
+	for( int i = 0; i<anzahlSignale; i++ ) {
 		if( signale[i].getQuelle().find( gatterName ) != -1 ) {
 			return &signale[i];
 		}
@@ -66,7 +67,7 @@ Signal* GraphErzeuger::findeSignal( string gatterName ) {
 }
 
 SchaltwerkElement* GraphErzeuger::findeSchaltwerkElement( string gatterName ) {
-	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement()) {
+	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		if( temporLE->getSchaltwerkElement()->getName().find( gatterName ) != -1 ) {
 			return temporLE->getSchaltwerkElement();
 		}
@@ -75,15 +76,15 @@ SchaltwerkElement* GraphErzeuger::findeSchaltwerkElement( string gatterName ) {
 }
 
 void GraphErzeuger::ausgabeGraph() {
-	for(ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement()) {
+	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		cout << "Gattername: " << temporLE->getSchaltwerkElement()->getName() << endl;
-		/*cout << "GatterTyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
-		cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << (( temporLE->getSchaltwerkElement()->getAnzahlNachfolger()) == 1 ? " Ziel" : " Ziele") << endl;
+		cout << "GatterTyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
+		cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << " Ziele" << endl;
 		cout << "Angeschlossene Gatter:";
-		for (int j = 0; j < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); j++) {
-			cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(j)->getName();
+		for (int i = 0; i < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); i++) {
+			cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(i)->getName();
 		}
-		cout << endl << endl;*/
+		cout << endl << endl;
 	}
 	system("pause");
 }
