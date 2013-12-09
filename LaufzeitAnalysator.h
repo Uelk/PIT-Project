@@ -19,7 +19,6 @@ private:
 	double laufzeitAusgangspfad;
 	void berechneLaufzeitEinzelgatter();
 	SchaltwerkElement* SWE;
-	Faktoren* faktoren;
 
 public:
 	LaufzeitAnalysator();
