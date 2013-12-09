@@ -17,14 +17,14 @@ Menue::Menue() {
 	meineFaktoren = new Faktoren();
 	meineBibliothek = new Bibliothek();
 	meinSignalListeErzeuger = new SignalListeErzeuger();
-    meinGraphErzeuger = new GraphErzeuger();
+//    meinGraphErzeuger = new GraphErzeuger();
     //meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
 Menue::~Menue () {
 }
 
-// Ausgabe des Hauptmenüs
+// Ausgabe des Hauptmenues
 void Menue::menueKopf() {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -51,7 +51,7 @@ void Menue::menueKopf() {
 	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
 }
 
-// Auswahl Untermenü
+// Auswahl Untermenue
 void Menue::start() {
 	menueKopf ();
 	int menueEingabe;
@@ -83,7 +83,7 @@ void Menue::start() {
 	}
 }
 
-// Ausgabe Untermenü Aeussere Faktoren
+// Ausgabe Untermenue Aeussere Faktoren
 void Menue::faktorenMenue () {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -142,7 +142,7 @@ void Menue::faktorenMenue () {
 		faktorenMenue();
 		break;
 	case 5:
-        // zurück zum Hauptmenü
+        // zurueck zum Hauptmenue
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
@@ -151,7 +151,7 @@ void Menue::faktorenMenue () {
 	}
 }
 
-// Ausgabe Untermenü Bibliothek
+// Ausgabe Untermenue Bibliothek
 void Menue::bibliothekMenue() {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -191,7 +191,7 @@ void Menue::bibliothekMenue() {
 		bibliothekMenue();
 		break;
 	case 3:
-        // zurück zum Hauptmenü
+        // zurueck zum Hauptmenue
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
@@ -201,7 +201,7 @@ void Menue::bibliothekMenue() {
 	}
 }
 
-// Ausgabe Untermenü Schaltwerkmenü
+// Ausgabe Untermenue Schaltwerkmenue
 void Menue::schaltwerkMenue() {
 	system("cls");
 	cout << "******************************************" << endl;
@@ -255,12 +255,12 @@ void Menue::schaltwerkMenue() {
 		break;
 	case 4:
 		// Ausgabe Graphenstruktur
-		meinGraphErzeuger->ausgabeGraph();
+//		meinGraphErzeuger->ausgabeGraph();
 		system("pause");
 		schaltwerkMenue();
 		break;
 	case 5:
-        // zurück zum Hauptmenü
+        // zurueck zum Hauptmenue
 		break;
 	default:
 		cout << endl << "Ungueltige Eingabe!" << endl;
