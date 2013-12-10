@@ -13,7 +13,7 @@ string Bibliothek::getPfad() {
 	return datei;
 }
 
-// Bib-Element auslesen
+// Bib-Elemente auslesen
 GatterTyp* Bibliothek::getBibElement( string typ ) {
     for( int i = 0; i < bibElemente.size() ; i++ ) {
 		if( bibElemente[i]->getName().find(typ) != -1 ) {
