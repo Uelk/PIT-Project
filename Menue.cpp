@@ -255,7 +255,7 @@ void Menue::schaltwerkMenue() {
 		break;
 	case 4:
 		// Ausgabe Graphenstruktur
-//		meinGraphErzeuger->ausgabeGraph();
+		meinGraphErzeuger->ausgabeGraph();
 		system("pause");
 		schaltwerkMenue();
 		break;

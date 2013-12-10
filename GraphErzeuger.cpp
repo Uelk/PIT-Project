@@ -41,8 +41,8 @@ void GraphErzeuger::erzeugeListe() {
 		}
 	}
 	ueberpruefungUnbenutzesSignal();
-	ueberpruefungUnbeschaltetesGatter();
-	ueberpruefungAnzahlGatterZiele();
+	//ueberpruefungUnbeschaltetesGatter();
+	//ueberpruefungAnzahlGatterZiele();
 }
 
 void GraphErzeuger::gatterZieleHinzufuegen() {

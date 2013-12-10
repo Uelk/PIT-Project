@@ -7,7 +7,7 @@ void SignalListeErzeuger::dateiAuslesen() {
 	ifstream file( datei );
 	while( getline( file, line )) {
 		if( line.find( "INPUT" ) != -1 ) {
-			inputAuslesen();
+			inputsAuslesen();
 		}
 		if( line.find( "OUTPUT" ) != -1 ) {
 			outputsAuslesen();
@@ -36,11 +36,16 @@ int SignalListeErzeuger::getAnzahlSignale() {
 	return anzahlSignale;
 }
 
-// Inputsignal auswerten
-void SignalListeErzeuger::inputAuslesen() {
+// Inputsignale auswerten
+void SignalListeErzeuger::inputsAuslesen() {
 	line = line.substr( 6 );
 	input = line.substr( 0, line.find( ';' ) );
-	anzahlSignale++;
+	
+	for( int i = 0; i < input.length(); i++ ) {
+		if( input.at( i ) == 's' ) {
+			anzahlSignale++;
+		}
+	}
 }
 
 // Outputsignale auswerten

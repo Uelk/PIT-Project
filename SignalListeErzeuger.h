@@ -20,7 +20,7 @@ private:
 	string schaltnetz;
 	long frequenz;
 	void dateiAuslesen();
-	void inputAuslesen();
+	void inputsAuslesen();
 	void outputsAuslesen();
 	void signalsAuslesen();
 	void clockAuslesen();
