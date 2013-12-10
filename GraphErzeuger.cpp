@@ -25,7 +25,7 @@ void GraphErzeuger::erzeugeGraph() {
 void GraphErzeuger::erzeugeListe() {
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( !signale[i].getQuelle().empty() ) {
-			if( startElement == NULL ) {
+			if( startElement == NULL ) { // erstes Listenelement samt SchaltwerkElement hinzufuegen
 				startElement = new ListenElement();
 				endElement = startElement;
 				startElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
@@ -57,6 +57,7 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 	}
 }
 
+// Zum Gatter zugehoeriges Ausgangssignal finden
 Signal* GraphErzeuger::findeSignal( string gatterName ) {
 	for( int i = 0; i<anzahlSignale; i++ ) {
 		if( signale[i].getQuelle().find( gatterName ) != -1 ) {
@@ -66,6 +67,7 @@ Signal* GraphErzeuger::findeSignal( string gatterName ) {
 	return NULL;
 }
 
+// Zum Gatter zugehoeriges SchaltwerkElement finden
 SchaltwerkElement* GraphErzeuger::findeSchaltwerkElement( string gatterName ) {
 	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		if( temporLE->getSchaltwerkElement()->getName().find( gatterName ) != -1 ) {
@@ -75,6 +77,7 @@ SchaltwerkElement* GraphErzeuger::findeSchaltwerkElement( string gatterName ) {
 	return NULL;
 }
 
+// Ueberpruefen, ob ein Signal vom Typ EINGANG, oder INTERN unbenutzt ist
 void GraphErzeuger::ueberpruefungUnbenutzesSignal() {
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( signale[i].getAnzahlZiele() == 0 && signale[i].getSignalTyp() != signale[i].ausgang) {
@@ -89,6 +92,7 @@ void GraphErzeuger::ueberpruefungUnbeschaltetesGatter() {
 }
 
 void GraphErzeuger::ueberpruefungAnzahlGatterZiele() {
+
 }
 
 void GraphErzeuger::ausgabeGraph() {
