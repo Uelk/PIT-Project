@@ -17,7 +17,7 @@ Menue::Menue() {
 	meineFaktoren = new Faktoren();
 	meineBibliothek = new Bibliothek();
 	meinSignalListeErzeuger = new SignalListeErzeuger();
-//    meinGraphErzeuger = new GraphErzeuger();
+	meinGraphErzeuger = new GraphErzeuger();
     //meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
@@ -231,7 +231,7 @@ void Menue::schaltwerkMenue() {
 			cout << "Ungueltiger Dateipfad" << endl;
 			system("pause");
 		} else {
-			//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren lassen
+			//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
 			meinGraphErzeuger->setBibliothek( meineBibliothek );
 			meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
 			meinGraphErzeuger->erzeugeGraph();
