@@ -30,9 +30,9 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 	double przFaktor;
 	double tmpFaktor;
 	//Werte der Faktoren erfragen
-	spgFaktor = faktoren->getProzess;
-	tmpFaktor = faktoren->getSpannung;
-	przFaktor = faktoren->getTemperatur;
+	spgFaktor = faktoren->getProzess();
+	tmpFaktor = faktoren->getSpannung();
+	przFaktor = faktoren->getTemperatur();
 
 	
 	do{
