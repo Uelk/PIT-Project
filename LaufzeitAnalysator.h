@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include "ListenElement.h"
-//#include "GraphErzeuger.h"
+#include "GraphErzeuger.h"
 #include "Faktoren.h"
-//#include "Bibliothek.h"
+#include "Bibliothek.h"
 using namespace std;
 
 class LaufzeitAnalysator {
@@ -22,6 +22,7 @@ private:
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
+	void starteAnalyse();
 	void ausgabeErgebnis();
 };
 #endif

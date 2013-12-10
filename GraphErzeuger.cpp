@@ -37,12 +37,12 @@ void GraphErzeuger::erzeugeListe() {
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
 			}
 		} else {
-			if( signale[i].getAnzahlZiele() == 0 ) {
-				cout << "Unbenutzes Eingangssignal Gefunden!" << endl;
-				system("pause");
-			}
+			
 		}
 	}
+	ueberpruefungUnbenutzesSignal();
+	ueberpruefungUnbeschaltetesGatter();
+	ueberpruefungAnzahlGatterZiele();
 }
 
 void GraphErzeuger::gatterZieleHinzufuegen() {
@@ -75,6 +75,22 @@ SchaltwerkElement* GraphErzeuger::findeSchaltwerkElement( string gatterName ) {
 	return NULL;
 }
 
+void GraphErzeuger::ueberpruefungUnbenutzesSignal() {
+	for( int i = 0; i < anzahlSignale; i++ ) {
+		if( signale[i].getAnzahlZiele() == 0 && signale[i].getSignalTyp() != signale[i].ausgang) {
+			cout << "Unbenutzes Signal Gefunden!" << endl;
+			system("pause");
+		}
+	}
+}
+
+void GraphErzeuger::ueberpruefungUnbeschaltetesGatter() {
+
+}
+
+void GraphErzeuger::ueberpruefungAnzahlGatterZiele() {
+}
+
 void GraphErzeuger::ausgabeGraph() {
 	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		cout << "Gattername: " << temporLE->getSchaltwerkElement()->getName() << endl;
@@ -86,5 +102,4 @@ void GraphErzeuger::ausgabeGraph() {
 		}
 		cout << endl << endl;
 	}
-	system("pause");
 }

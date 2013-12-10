@@ -25,6 +25,9 @@ public:
 	void gatterZieleHinzufuegen();
 	Signal* findeSignal( string );
 	SchaltwerkElement* findeSchaltwerkElement( string );
+	void ueberpruefungUnbenutzesSignal();
+	void ueberpruefungUnbeschaltetesGatter();
+	void ueberpruefungAnzahlGatterZiele();
 	void ausgabeGraph();
 };
 #endif

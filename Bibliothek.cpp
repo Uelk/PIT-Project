@@ -31,7 +31,7 @@ void Bibliothek::dateiAusgabe() {
     if( infile.is_open()) {
         i = 1;
         while( getline ( infile, line )) {
-            cout << i++ << "	" << line <<endl;
+            cout << i++ << " " << line <<endl;
         }
 	}
 }

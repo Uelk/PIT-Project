@@ -7,6 +7,9 @@ LaufzeitAnalysator::LaufzeitAnalysator() {
 LaufzeitAnalysator::~LaufzeitAnalysator() {
 }
 
+void LaufzeitAnalysator::starteAnalyse() {
+}
+
 void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 }
 
