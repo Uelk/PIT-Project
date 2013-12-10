@@ -9,7 +9,7 @@ class SchaltwerkElement {
 private:
 	string name;
 	GatterTyp* typ;
-	double laufzeitEinzelgatter;
+	double LaufzeitEinzelgatter;
 	SchaltwerkElement* nachfolgerElemente[5];
 	int anzahlNachfolger;
 	bool isEingangsElement;

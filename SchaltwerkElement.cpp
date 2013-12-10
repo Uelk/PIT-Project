@@ -6,7 +6,7 @@ using namespace std;
 SchaltwerkElement::SchaltwerkElement( GatterTyp* gTyp ) {
 	name.clear();
 	typ = gTyp;
-	laufzeitEinzelgatter = 0.0;
+	LaufzeitEinzelgatter = 0.0;
 	nachfolgerElemente[0] = NULL;
 	nachfolgerElemente[1] = NULL;
 	nachfolgerElemente[2] = NULL;
@@ -26,37 +26,37 @@ string SchaltwerkElement::getName() {
 	return name;
 }
 
-// Rückgabe Typ
+// Rueckgabe Typ
 GatterTyp* SchaltwerkElement::getTyp() {
 	return typ;
 }
 
-// Rückgabe Laufzeit des Einzelgatters
+// Rueckgabe Laufzeit des Einzelgatters
 double SchaltwerkElement::getLaufzeitEinzelgatter() {
-	return laufzeitEinzelgatter;
+	return LaufzeitEinzelgatter;
 }
 
-// Rückgabe der Nachfolgerelemente
+// Rueckgabe der Nachfolgerelemente
 SchaltwerkElement* SchaltwerkElement::getNachfolger( int pos ) {
 	return nachfolgerElemente[pos];
 }
 
-// Rückgabe Anzahl der Nachfolger
+// Rueckgabe Anzahl der Nachfolger
 int SchaltwerkElement::getAnzahlNachfolger() {
 	return anzahlNachfolger;
 }
 
-// Rückgabe Anzahl der Eingangssignale
+// Rueckgabe Anzahl der Eingangssignale
 short SchaltwerkElement::getAnzahlEingangssignale() {
 	return anzahlEingangssignale;
 }
 
-// Rückgabe des Eingangelements
+// Rueckgabe des Eingangelements
 bool SchaltwerkElement::getIsEingangsElement() {
 	return isEingangsElement;
 }
 
-// Rückgabe des Ausgangelements
+// Rueckgabe des Ausgangelements
 bool SchaltwerkElement::getIsAusgangsElement() {
 	return isAusgangsElement;
 }
@@ -93,5 +93,5 @@ void SchaltwerkElement::setIsAusgangsElement( bool isAusgangsEl ) {
 
 // Laufzeit des Einzelgatters festlegen
 void SchaltwerkElement::setLaufzeitEinzelgatter( double lfz ) {
-	laufzeitEinzelgatter = lfz;
+	LaufzeitEinzelgatter = lfz;
 }

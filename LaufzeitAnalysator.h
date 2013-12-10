@@ -18,11 +18,13 @@ private:
 	double laufzeitUebergangspfad;
 	double laufzeitAusgangspfad;
 	void berechneLaufzeitEinzelgatter();
+	SchaltwerkElement* SWE;
 
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
-	void starteAnalyse();
+	void setSchaltwerkElement(SchaltwerkElement*);
+	void setFaktoren (Faktoren*);
 	void ausgabeErgebnis();
 };
 #endif
