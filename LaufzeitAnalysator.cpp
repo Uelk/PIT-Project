@@ -18,7 +18,7 @@ void LaufzeitAnalysator::setFaktoren(Faktoren* fakt){
 void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 	
 	GatterTyp* temporGatterTyp;
-	ListenElement* temporLE;
+	ListenElement* temporLE = startElement;
 	SchaltwerkElement* temporSWE;
 
 	double tpdactual;
