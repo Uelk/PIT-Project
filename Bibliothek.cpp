@@ -44,7 +44,7 @@ void Bibliothek::dateiAuswerten() {
 		while( getline ( file, line )) {
 			if( line.find( "[[Bausteine]]" ) != -1 ) {
 				getline ( file, line );
-				//Gatterelemente der Liste hinzufügen
+				//Gatterelemente der Liste hinzufuegen
 				while( !line.empty() ) {
 					if( line.find("dff") != -1 ) {
 						bibElemente.push_back( new FlipFlop() );
@@ -54,7 +54,7 @@ void Bibliothek::dateiAuswerten() {
 					bibElemente.back()->setName( line );
 					getline ( file, line );
 				}
-				//Entitäten auslesen bis Dateiende
+				//Entitaeten auslesen bis Dateiende
 				while( line.find( "#endfile" ) == -1 ) {
 					getline ( file, line );
 					line = line.substr( 1 );
@@ -141,7 +141,7 @@ bool Bibliothek::pfadEinlesen( string pfad ) {
     file.close(); 
 }
 
-// Fehler beim Öffnen
+// Fehler beim Oeffnen
 void Bibliothek::openError() {
 	if( errFileNotFound ) {
 		cout << endl  << "Beim Oeffnen der Datei ist ein Fehler aufgetreten" << endl;

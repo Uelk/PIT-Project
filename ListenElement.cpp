@@ -9,12 +9,12 @@ ListenElement::ListenElement() {
 ListenElement::~ListenElement() {
 }
 
-// Rückgabe Schaltwerkelement
+// Rueckgabe Schaltwerkelement
 SchaltwerkElement* ListenElement::getSchaltwerkElement() {
 	return schaltwerkElement;
 }
 
-// Rückgabe des nächsten Elements
+// Rueckgabe des naechsten Elements
 ListenElement* ListenElement::getNextElement() {
 	return next;
 }
@@ -24,7 +24,7 @@ void ListenElement::setSchaltwerkElement( SchaltwerkElement* schaltwerkEl ) {
 	schaltwerkElement = schaltwerkEl;
 }
 
-// nächstes Element festlegen
+// naechstes Element festlegen
 void ListenElement::setNextElement( ListenElement* nextEl ) {
 	next = nextEl;
 }

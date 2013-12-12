@@ -21,7 +21,7 @@ SchaltwerkElement::SchaltwerkElement( GatterTyp* gTyp ) {
 SchaltwerkElement::~SchaltwerkElement() {
 }
 
-// Rückgabe Name
+// Rueckgabe Name
 string SchaltwerkElement::getName() {
 	return name;
 }

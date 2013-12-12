@@ -1,8 +1,3 @@
-// Menue.cpp
-// Informationstechnik Praktikum WS 13/14
-//
-// Created by Benedikt, Marius and Joshua
-
 #include <iostream>
 #include "Menue.h"
 #include "Faktoren.h"
