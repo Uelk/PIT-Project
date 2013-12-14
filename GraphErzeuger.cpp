@@ -20,6 +20,9 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 void GraphErzeuger::erzeugeGraph() {
 	erzeugeListe();
 	gatterZieleHinzufuegen();
+	clkZieleEintragen();
+	ueberpruefungUnbenutzesSignal();
+	ueberpruefungGatterBeschaltung();
 }
 
 void GraphErzeuger::erzeugeListe() {
@@ -30,7 +33,7 @@ void GraphErzeuger::erzeugeListe() {
 				endElement = startElement;
 				startElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
-			} else {
+			} else { // folgende Listenelemente samt SchaltwerkElement hinzufuegen
 				endElement->setNextElement( new ListenElement() );
 				endElement = endElement->getNextElement();
 				endElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
@@ -40,9 +43,6 @@ void GraphErzeuger::erzeugeListe() {
 			
 		}
 	}
-	ueberpruefungUnbenutzesSignal();
-	//ueberpruefungUnbeschaltetesGatter();
-	//ueberpruefungAnzahlGatterZiele();
 }
 
 void GraphErzeuger::gatterZieleHinzufuegen() {
@@ -50,10 +50,22 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 		Signal* korrespondSignal = findeSignal( temporLE->getSchaltwerkElement()->getName() );
 		SchaltwerkElement* curSchaltwerkElement = temporLE->getSchaltwerkElement();
 		for( int i = 0; i<korrespondSignal->getAnzahlZiele(); i++ ) {
+			// Nachfolgendes SchaltwerkElement eintragen
 			curSchaltwerkElement->nachfolgerHinzufuegen( findeSchaltwerkElement( korrespondSignal->getZiel(i) ), 
 				curSchaltwerkElement->getAnzahlNachfolger() );
+			// Variable für Anzahl der Nachfolger inkrementieren
 			curSchaltwerkElement->setAnzahlNachfolger( curSchaltwerkElement->getAnzahlNachfolger() + 1 );
+			// Anzahl der beschalteten Eingaenge des Nachfolger Elementes inkrementieren
+			findeSchaltwerkElement( korrespondSignal->getZiel(i) )->setAnzahlEingangssignale(
+				findeSchaltwerkElement( korrespondSignal->getZiel(i) )->getAnzahlEingangssignale() + 1 );
 		}
+	}
+}
+
+void GraphErzeuger::clkZieleEintragen() {
+	for( int i = 0; i < signale[0].getAnzahlZiele(); i++ ) {
+		SchaltwerkElement* element = findeSchaltwerkElement( signale[0].getZiel(i) );
+		element->setAnzahlEingangssignale( element->getAnzahlEingangssignale() + 1 );
 	}
 }
 
@@ -87,12 +99,23 @@ void GraphErzeuger::ueberpruefungUnbenutzesSignal() {
 	}
 }
 
-void GraphErzeuger::ueberpruefungUnbeschaltetesGatter() {
+void GraphErzeuger::ueberpruefungGatterBeschaltung() {
+	short anzahlGatterEingaenge;
+	short anzahlBeschalteterGatterEingaenge;
 
-}
-
-void GraphErzeuger::ueberpruefungAnzahlGatterZiele() {
-
+	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
+		anzahlGatterEingaenge = temporLE->getSchaltwerkElement()->getTyp()->getEingaenge();
+		anzahlBeschalteterGatterEingaenge = temporLE->getSchaltwerkElement()->getAnzahlEingangssignale();
+		if( anzahlBeschalteterGatterEingaenge == 0 ) { // voellig unbeschaltet
+			cout << "Gaenzlich unbeschaltetes Gatter gefunden:" << temporLE->getSchaltwerkElement()->getName() << endl;
+			system("pause");
+		} else {
+			if( anzahlBeschalteterGatterEingaenge < anzahlGatterEingaenge ) { // teilweise unbeschaltet
+				cout << "Teilweise unbeschaltetes Gatter gefunden:" << temporLE->getSchaltwerkElement()->getName() << endl;
+				system("pause");
+			}
+		}
+	}
 }
 
 void GraphErzeuger::ausgabeGraph() {

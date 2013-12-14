@@ -16,7 +16,6 @@ void LaufzeitAnalysator::setFaktoren(Faktoren* fakt){
 }
 
 void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
-	
 	GatterTyp* temporGatterTyp;
 	ListenElement* temporLE;
 	SchaltwerkElement* temporSWE;
@@ -33,7 +32,6 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 	spgFaktor = faktoren->getProzess();
 	tmpFaktor = faktoren->getSpannung();
 	przFaktor = faktoren->getTemperatur();
-
 	
 	do{
 		temporSWE = temporLE->getSchaltwerkElement();
@@ -50,7 +48,7 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 		temporSWE->setLaufzeitEinzelgatter(tpdactual);
 
 	temporLE = temporLE->getNextElement();
-	}while(temporLE != NULL);
+	} while( temporLE != NULL );
 
 	//tpdactual = (tpd0+ Kl*Clast) * Kt(tmpFaktor)*Kv(spgFaktor)*Kp(przFaktor))
 }
