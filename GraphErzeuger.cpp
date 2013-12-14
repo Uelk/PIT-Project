@@ -45,19 +45,24 @@ void GraphErzeuger::erzeugeListe() {
 	}
 }
 
+// Funktion zum Eintragen der Quellen und Ziele in die vorhandene Liste
 void GraphErzeuger::gatterZieleHinzufuegen() {
-	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
-		Signal* korrespondSignal = findeSignal( temporLE->getSchaltwerkElement()->getName() );
-		SchaltwerkElement* curSchaltwerkElement = temporLE->getSchaltwerkElement();
-		for( int i = 0; i<korrespondSignal->getAnzahlZiele(); i++ ) {
-			// Nachfolgendes SchaltwerkElement eintragen
-			curSchaltwerkElement->nachfolgerHinzufuegen( findeSchaltwerkElement( korrespondSignal->getZiel(i) ), 
-				curSchaltwerkElement->getAnzahlNachfolger() );
-			// Variable für Anzahl der Nachfolger inkrementieren
-			curSchaltwerkElement->setAnzahlNachfolger( curSchaltwerkElement->getAnzahlNachfolger() + 1 );
-			// Anzahl der beschalteten Eingaenge des Nachfolger Elementes inkrementieren
-			findeSchaltwerkElement( korrespondSignal->getZiel(i) )->setAnzahlEingangssignale(
-				findeSchaltwerkElement( korrespondSignal->getZiel(i) )->getAnzahlEingangssignale() + 1 );
+	for( int i = 0; i < anzahlSignale; i++ ) {
+		if( signale[i].getSignalTyp() == signale[i].eingang ) { // Eingangssignal nur mit Ziel
+			for( int j = 0; j < signale[i].getAnzahlZiele(); j++ ) {
+				SchaltwerkElement* zielElement = findeSchaltwerkElement( signale[i].getZiel(j) );
+				zielElement->setAnzahlEingangssignale( zielElement->getAnzahlEingangssignale() + 1 );
+			}
+		} else { // Interne Signale mit Quelle und Ziel
+			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );
+			for( int j = 0; j < signale[i].getAnzahlZiele(); j++ ) {
+				SchaltwerkElement* zielElement = findeSchaltwerkElement( signale[i].getZiel(j) );
+				quellenElement->nachfolgerHinzufuegen( zielElement, quellenElement->getAnzahlNachfolger() );
+				// Variable für Anzahl der Nachfolger Inkrementieren
+				quellenElement->setAnzahlNachfolger( quellenElement->getAnzahlNachfolger() + 1 );
+				// Variable für Anzahl der Eingangssignale des Ziels Inkrementieren
+				zielElement->setAnzahlEingangssignale( zielElement->getAnzahlEingangssignale() + 1 );
+			}
 		}
 	}
 }

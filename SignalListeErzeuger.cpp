@@ -93,7 +93,7 @@ void SignalListeErzeuger::clockAuslesen() {
 // Bestimmung der Signaltypen
 void SignalListeErzeuger::signalTypenErkennung() {
 	string name;
-	signale[0].setSignalTyp( signale[0].unbekannt );
+	signale[0].setSignalTyp( signale[0].eingang );
 	for( int i = 1; i < anzahlSignale; i++ ) {
 		name = 's' + to_string(i);
 		if( name.length() < 4 ) {
