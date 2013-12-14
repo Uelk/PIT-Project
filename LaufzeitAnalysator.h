@@ -2,7 +2,9 @@
 #define LAUFZEITANALYSATOR_H
 
 #include <iostream>
+#include <map>
 #include "ListenElement.h"
+#include "SchaltwerkElement.h"
 #include "GraphErzeuger.h"
 #include "Faktoren.h"
 #include "Bibliothek.h"
@@ -12,18 +14,20 @@ class LaufzeitAnalysator {
 private:
 	Faktoren* faktoren;
 	ListenElement* startElement;
+	struct DFS_Daten;
+	map<SchaltwerkElement*, DFS_Daten> DFS_Zwischenspeicher;
 	long frequenz;
 	string uebergangspfad;
 	string ausgangspfad;
 	double laufzeitUebergangspfad;
 	double laufzeitAusgangspfad;
 	void berechneLaufzeitEinzelgatter();
-	SchaltwerkElement* SWE;
-
+	void DFS();
+	void DFS_Visit();
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
-	void setSchaltwerkElement(SchaltwerkElement*);
+	void starteAnalyse();
 	void setFaktoren (Faktoren*);
 	void ausgabeErgebnis();
 };

@@ -13,8 +13,8 @@ SchaltwerkElement::SchaltwerkElement( GatterTyp* gTyp ) {
 	nachfolgerElemente[3] = NULL;
 	nachfolgerElemente[4] = NULL;
 	anzahlNachfolger = 0;
-	isEingangsElement = NULL;
-	isAusgangsElement = NULL;
+	isEingangsElement = false;
+	isAusgangsElement = false;
 	anzahlEingangssignale = 0.0;
 }
 

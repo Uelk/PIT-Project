@@ -1,5 +1,4 @@
 #include "GraphErzeuger.h"
-#include "GatterTyp.h"
 using namespace std;
 
 GraphErzeuger::GraphErzeuger() {
@@ -20,7 +19,6 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 void GraphErzeuger::erzeugeGraph() {
 	erzeugeListe();
 	gatterZieleHinzufuegen();
-	clkZieleEintragen();
 	ueberpruefungUnbenutzesSignal();
 	ueberpruefungGatterBeschaltung();
 }
@@ -52,6 +50,8 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 			for( int j = 0; j < signale[i].getAnzahlZiele(); j++ ) {
 				SchaltwerkElement* zielElement = findeSchaltwerkElement( signale[i].getZiel(j) );
 				zielElement->setAnzahlEingangssignale( zielElement->getAnzahlEingangssignale() + 1 );
+				// Merker fuer Eingangselement setzen
+				zielElement->setIsEingangsElement( true );
 			}
 		} else { // Interne Signale mit Quelle und Ziel
 			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );
@@ -62,15 +62,12 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 				quellenElement->setAnzahlNachfolger( quellenElement->getAnzahlNachfolger() + 1 );
 				// Variable für Anzahl der Eingangssignale des Ziels Inkrementieren
 				zielElement->setAnzahlEingangssignale( zielElement->getAnzahlEingangssignale() + 1 );
+				if( signale[i].getSignalTyp() == signale[i].ausgang ) {
+					// Merker fuer Ausgangselement Setzen
+					zielElement->setIsAusgangsElement( true );
+				}
 			}
 		}
-	}
-}
-
-void GraphErzeuger::clkZieleEintragen() {
-	for( int i = 0; i < signale[0].getAnzahlZiele(); i++ ) {
-		SchaltwerkElement* element = findeSchaltwerkElement( signale[0].getZiel(i) );
-		element->setAnzahlEingangssignale( element->getAnzahlEingangssignale() + 1 );
 	}
 }
 

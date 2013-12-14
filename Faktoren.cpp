@@ -141,8 +141,16 @@ short Faktoren::getProzess() {
 }
 
 // Faktorenwerte holen
-void Faktoren::getFaktoren( double spgFaktor, double tmpFaktor, double przFaktor ) {
+double Faktoren::getTemperaturFaktor() {
+	return temperaturFaktor;
+}
 
+double Faktoren::getSpannungFaktor() {
+	return spannungFaktor;
+}
+
+double Faktoren:: getProzessFaktor() {
+	return prozessFaktor;
 }
 
 // Spannung festlegen

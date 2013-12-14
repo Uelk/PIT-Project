@@ -4,7 +4,7 @@
 #include "Bibliothek.h"
 #include "SignalListeErzeuger.h"
 #include "GraphErzeuger.h"
-//#include "LaufzeitAnalysator.h"
+#include "LaufzeitAnalysator.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ Menue::Menue() {
 	meineBibliothek = new Bibliothek();
 	meinSignalListeErzeuger = new SignalListeErzeuger();
 	meinGraphErzeuger = new GraphErzeuger();
-    //meinLaufzeitAnalysator = new LaufzeitAnalysator();
+    meinLaufzeitAnalysator = new LaufzeitAnalysator();
 }
 
 Menue::~Menue () {
@@ -55,18 +55,22 @@ void Menue::start() {
 		switch (menueEingabe) {
 			case 1:
 				faktorenMenue();
-                menueKopf ();
+                menueKopf();
 				break;
 			case 2:
 				bibliothekMenue();
-				menueKopf ();
+				menueKopf();
 				break;
 			case 3:
 				schaltwerkMenue();
-				menueKopf ();
+				menueKopf();
 				break;
 			case 4:
-				analyse();
+				meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
+				meinLaufzeitAnalysator->starteAnalyse();
+				meinLaufzeitAnalysator->ausgabeErgebnis();
+				system( "pause" );
+				menueKopf();
 				break;
 			case 5:
 				exit(1);
@@ -262,22 +266,4 @@ void Menue::schaltwerkMenue() {
 		system("pause");
 		break;
 	}
-}
-
-// Ausgabe der Schaltwerkanalyse
-void Menue::analyse() {
-	cout << "Analyse: " << endl;
-	cout << "--------" << endl;
-	cout << "Laengster Pfad im Ueberfuehrungsschaltnetz: " << endl;
-	/* add Algorithmus */
-	cout << "Maximale Laufzeit der Pfade im Ueberfuehrungsschaltnetz: " /*<<  add Algorithmus */ << " ps" << endl;
-	cout << endl;
-	cout << "Laengster Pfad im Ausgangsschaltnetz: " << endl;
-	/* add Algorithmus */
-	cout << "Maximale Laufzeit der Pfade im Ausgangsschaltnetz: " /* add Algorithmus */ << " ps" << endl;
-	cout << endl;
-	cout << "------------------------------------------------------------------" << endl;
-	cout << endl;
-	cout << "Die maximal zulaessige Frequenz fuer das Schaltnetz/-werk betraegt: " /*<< add Algorithmus */ << " MHz" << endl;
-	cout << endl;
 }

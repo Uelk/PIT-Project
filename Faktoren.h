@@ -25,7 +25,9 @@ public:
 	double getSpannung();
 	double getTemperatur();
 	short getProzess();
-	void getFaktoren( double, double, double );
+	double getTemperaturFaktor();
+	double getSpannungFaktor();
+	double getProzessFaktor();
 	bool setSpannung( double );
 	bool setTemperatur( double );
 	bool setProzess( short );

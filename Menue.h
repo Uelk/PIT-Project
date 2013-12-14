@@ -18,7 +18,6 @@ private:
     void faktorenMenue();
 	void bibliothekMenue();
 	void schaltwerkMenue();
-	void analyse();
 	void menueKopf();
 public:
 	Menue();

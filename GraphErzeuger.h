@@ -23,7 +23,6 @@ public:
 	void erzeugeGraph();
 	void erzeugeListe();
 	void gatterZieleHinzufuegen();
-	void clkZieleEintragen();
 	Signal* findeSignal( string );
 	SchaltwerkElement* findeSchaltwerkElement( string );
 	void ueberpruefungUnbenutzesSignal();
