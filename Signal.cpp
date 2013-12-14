@@ -16,27 +16,27 @@ Signal::Signal() {
 Signal::~Signal() {
 }
 
-// Rückgabe Anzahl Ziele
+// Rueckgabe Anzahl Ziele
 int Signal::getAnzahlZiele() {
 	return anzahlZiele;
 }
 
-// Rückgabe Signaltyp
+// Rueckgabe Signaltyp
 Signal::signalTypen Signal::getSignalTyp() {
     return signalTyp;
 }
 
-// Rückgabe Quelle
+// Rueckgabe Quelle
 string Signal::getQuelle() {
     return quelle;
 }
 
-// Rückgabe Quellentyp
+// Rueckgabe Quellentyp
 string Signal::getQuellenTyp() {
     return quellenTyp;
 }
 
-// Rückgabe Ziel
+// Rueckgabe Ziel
 string Signal::getZiel( int pos ) {
     return ziele [pos];
 }
@@ -61,7 +61,7 @@ void Signal::setQuellenTyp( string GatterTyp ) {
     quellenTyp = GatterTyp;
 }
 
-// Ziel hinzufügen
+// Ziel hinzufuegen
 void Signal::zielHinzufuegen( string gatterName, int pos ) {
     ziele [pos] = gatterName;
 }

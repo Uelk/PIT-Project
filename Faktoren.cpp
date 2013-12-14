@@ -78,7 +78,7 @@ bool Faktoren::berechneProzessFaktor( short prz ) {
 	return false;
 }
 
-// übergebenes Array nach Wert untersuchen
+// uebergebenes Array nach Wert untersuchen
 double Faktoren::berechneFaktor( double value, double arr[][2], int laenge ) {
     // Wert im Array vorhanden
 	for( int i = 0; i < laenge; i++ ) {
@@ -91,7 +91,7 @@ double Faktoren::berechneFaktor( double value, double arr[][2], int laenge ) {
 	double y1;
 	double x2;
 	double y2;
-    // wert im Array nicht vorhanden
+    // Wert im Array nicht vorhanden
 	for( int i = 0; i < laenge; i++ ) {
 		if( arr[i][0] <= value ) {
 			x1_pos = i; 

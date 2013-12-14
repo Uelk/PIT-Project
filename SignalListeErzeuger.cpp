@@ -31,7 +31,7 @@ void SignalListeErzeuger::dateiAuslesen() {
 	file.close();
 }
 
-// Rückgabe Anzahl Signale
+// Rueckgabe Anzahl Signale
 int SignalListeErzeuger::getAnzahlSignale() {
 	return anzahlSignale;
 }
@@ -170,7 +170,7 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 	return false;
 }
 
-// Überprüfen, ob Dateiauslesen möglich
+// Ueberpruefen, ob Dateiauslesen moeglich
 bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
 	if( !file.fail()) {
@@ -183,7 +183,7 @@ bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	file.close();
 }
 
-// Datei zurückgeben
+// Datei zurueckgeben
 string SignalListeErzeuger::getDateiPfad() {
 	return datei;
 }
