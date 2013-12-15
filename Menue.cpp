@@ -203,6 +203,7 @@ void Menue::bibliothekMenue() {
 			case 2:
 			  // Anzeigen der Bibliothekdatei
 				meineBibliothek->dateiAusgabe();
+				meineBibliothek->dateiAuswerten();
 				meineBibliothek->openError();
 				meineBibliothek->readError();
 				system("pause");
