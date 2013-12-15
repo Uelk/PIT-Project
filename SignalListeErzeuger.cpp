@@ -1,6 +1,10 @@
 #include "SignalListeErzeuger.h"
 using namespace std;
 
+SignalListeErzeuger::SignalListeErzeuger( void ) {
+	this->datei = "c:\\csd.txt"; //Standardpfad
+}
+
 // Datei auslesen; Leseschnittpunkte festlegen
 void SignalListeErzeuger::dateiAuslesen() {
 	anzahlSignale = 0;
@@ -170,7 +174,7 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 	return false;
 }
 
-// Ueberpruefen, ob Dateiauslesen moeglich
+// Dateipfad setzen
 bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
 	if( !file.fail()) {

@@ -6,6 +6,7 @@
 #include "SignalListeErzeuger.h"
 #include "GraphErzeuger.h"
 #include "LaufzeitAnalysator.h"
+#include "helper.h"
 using namespace std;
 
 class Menue {

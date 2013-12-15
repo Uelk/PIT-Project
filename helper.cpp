@@ -20,9 +20,9 @@ char * NextToken( char * pArg ) {
     return strchr( pArg, '\0' ) + 1;  //search for char in string
 }
 
-/*
+
 //Funktion zur Ermittlung der Gültigkeit des gefundenen Zeichens
-bool CharIn(char ch,string Charset)
+bool CharIn(string ch,string Charset)
 {
 bool rc; //return code
   rc=false;
@@ -30,4 +30,4 @@ bool rc; //return code
 	rc=true;
   return rc;
 }
-*/
+

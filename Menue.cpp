@@ -49,39 +49,46 @@ void Menue::menueKopf() {
 // Auswahl Untermenue
 void Menue::start() {
 	menueKopf ();
-	int menueEingabe;
+	int menueEingabe = 0;
+	string input;
+
 	while (true) {
-		cin >> menueEingabe;
-		switch (menueEingabe) {
-			case 1:
-				faktorenMenue();
-                menueKopf();
-				break;
-			case 2:
-				bibliothekMenue();
-				menueKopf();
-				break;
-			case 3:
-				schaltwerkMenue();
-				menueKopf();
-				break;
-			case 4:
-				meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
-				meinLaufzeitAnalysator->starteAnalyse();
-				meinLaufzeitAnalysator->ausgabeErgebnis();
-				system( "pause" );
-				menueKopf();
-				break;
-			case 5:
-				exit(1);
-				break;
-			default:
-				cout << endl << "Ungueltige Eingabe!" << endl;
-				break;
-		}
+		cin >> input;
+		menueEingabe= atoi(input.c_str()); 
+	
+		if(menueEingabe){
+				
+			switch (menueEingabe) {
+				case 1:
+					faktorenMenue();
+					menueKopf();
+					break;
+				case 2:
+					bibliothekMenue();
+					menueKopf();
+					break;
+				case 3:
+					schaltwerkMenue();
+					menueKopf();
+					break;
+				case 4:
+					meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
+					meinLaufzeitAnalysator->starteAnalyse();
+					meinLaufzeitAnalysator->ausgabeErgebnis();
+					system( "pause" );
+					menueKopf();
+					break;
+				case 5:
+					exit(1);
+					break;
+				default:
+					cout << endl << "Ungueltige Eingabe!" << endl;
+					system( "pause" );
+					break;
+			}
+		} else {std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;}
 	}
 }
-
 // Ausgabe Untermenue Aeussere Faktoren
 void Menue::faktorenMenue () {
 	system("cls");
@@ -100,53 +107,61 @@ void Menue::faktorenMenue () {
 	cout << endl;
 	cout << endl;
 	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
+	
+	int menueEingabe = 0;
+	string input;
+	cin >> input;
+	menueEingabe= atoi(input.c_str()); 
 
-	int menueEingabe;
-	cin >> menueEingabe;
-
-	switch(menueEingabe) {
-	case 1:
-        // Spannung festlegen
-		double spannung;
-		cout << "Geben Sie den neuen Spannungswert ein: ";
-		cin >> spannung;
-		meineFaktoren->setSpannung(spannung);
-		faktorenMenue();
-		break;
-	case 2:
-        // Temperatur festlegen
-		double temperatur;
-		cout << "Geben Sie einen neuen Temperaturwert ein: ";
-		cin >> temperatur;
-		meineFaktoren->setTemperatur(temperatur);
-		faktorenMenue();
-		break;
-	case 3:
-        // Prozesstyp festlegen
-		short prozess;
-		cout << "Geben Sie einen neuen Prozesstyp ein: ";
-		cin >> prozess;
-		if(prozess == 1 || prozess == 2 || prozess == 3) {
-			meineFaktoren->setProzess(prozess);
-		} else {
-			cerr << "Ungueltige Eingabe!" << endl;
+	if(menueEingabe){
+		switch(menueEingabe) {
+		case 1:
+			// Spannung festlegen
+			double spannung;
+			cout << "Geben Sie den neuen Spannungswert ein: ";
+			cin >> spannung;
+			meineFaktoren->setSpannung(spannung);
+			faktorenMenue();
+			break;
+		case 2:
+		    // Temperatur festlegen
+			double temperatur;
+			cout << "Geben Sie einen neuen Temperaturwert ein: ";
+			cin >> temperatur;
+			meineFaktoren->setTemperatur(temperatur);
+			faktorenMenue();
+			break;
+		case 3:
+		   // Prozesstyp festlegen
+			short prozess;
+			cout << "Geben Sie einen neuen Prozesstyp ein: ";
+			cin >> prozess;
+			if(prozess == 1 || prozess == 2 || prozess == 3) {
+				meineFaktoren->setProzess(prozess);
+			} else {
+				cerr << "Ungueltige Eingabe!" << endl;
+				system("pause");
+			}
+			faktorenMenue();
+			break;
+		case 4:
+			// Ausgabe errechneter Faktoren
+			meineFaktoren->ausgabeFaktoren();
 			system("pause");
+			faktorenMenue();
+			break;
+		case 5:
+			// zurueck zum Hauptmenue
+			break;
+		default:
+			cout << endl << "Ungueltige Eingabe!" << endl;
+			system("pause");
+			break;
 		}
-		faktorenMenue();
-		break;
-	case 4:
-        // Ausgabe errechneter Faktoren
-		meineFaktoren->ausgabeFaktoren();
+	} else {
+		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
 		system("pause");
 		faktorenMenue();
-		break;
-	case 5:
-        // zurueck zum Hauptmenue
-		break;
-	default:
-		cout << endl << "Ungueltige Eingabe!" << endl;
-		system("pause");
-		break;
 	}
 }
 
@@ -165,40 +180,50 @@ void Menue::bibliothekMenue() {
 	cout << endl;
 	cout << endl;
 	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
-
-	int menueEingabe;
+	
 	string dateiPfad;
-	cin >> menueEingabe;
+	int menueEingabe = 0;
+	string input;
+	cin >> input;
+	menueEingabe= atoi(input.c_str());
 
-	switch(menueEingabe) {
-	case 1:
-        // Eingabe Dateipfad
-		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
-		cin >> dateiPfad;
-		if(!meineBibliothek->pfadEinlesen(dateiPfad)) {
-			cout << "Ungueltiger Dateipfad" << endl;
-			system("pause");
-		}
-		bibliothekMenue();
-		break;
-	case 2:
-        // Anzeigen der Bibliothekdatei
-		meineBibliothek->dateiAusgabe();
-		meineBibliothek->openError();
-		meineBibliothek->readError();
+	if(menueEingabe){
+	
+		switch(menueEingabe) {
+			case 1:
+				// Eingabe Dateipfad
+				cout << "Geben Sie einen neuen Dateipfad an:" << endl;
+				cin >> dateiPfad;
+				if(!meineBibliothek->pfadEinlesen(dateiPfad)) {
+					cout << "Ungueltiger Dateipfad" << endl;
+					system("pause");
+				}
+				bibliothekMenue();
+				break;
+			case 2:
+			  // Anzeigen der Bibliothekdatei
+				meineBibliothek->dateiAusgabe();
+				meineBibliothek->openError();
+				meineBibliothek->readError();
+				system("pause");
+				bibliothekMenue();
+				break;
+			case 3:
+			   // zurueck zum Hauptmenue
+				break;
+			default:
+				cout << endl << "Ungueltige Eingabe!" << endl;
+				system("pause");
+				bibliothekMenue();
+				break;
+			}
+	} else {
+		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
 		system("pause");
 		bibliothekMenue();
-		break;
-	case 3:
-        // zurueck zum Hauptmenue
-		break;
-	default:
-		cout << endl << "Ungueltige Eingabe!" << endl;
-		system("pause");
-		bibliothekMenue();
-		break;
 	}
 }
+
 
 // Ausgabe Untermenue Schaltwerkmenue
 void Menue::schaltwerkMenue() {
@@ -218,52 +243,63 @@ void Menue::schaltwerkMenue() {
 	cout << endl;
 	cout << "Waehle einen Menuepunkt und bestaetige mit Enter: ";
 
-	int menueEingabe;
 	string dateiPfad;
-	cin >> menueEingabe;
-	switch (menueEingabe) {
-	case 1:
-        // Eingabe Dateipfad
-		cout << "Geben Sie einen neuen Dateipfad an:" << endl;
-		cin >> dateiPfad;
-		if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
-			cout << "Ungueltiger Dateipfad" << endl;
-			system("pause");
-		} else {
-			//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
-			meinGraphErzeuger->setBibliothek( meineBibliothek );
-			meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
-			meinGraphErzeuger->erzeugeGraph();
+	int menueEingabe=0;
+	string input;
+
+	cin >> input;
+	menueEingabe= atoi(input.c_str());
+
+	if(menueEingabe){
+	
+		switch (menueEingabe) {
+			case 1:
+			  // Eingabe Dateipfad
+				cout << "Geben Sie einen neuen Dateipfad an:" << endl;
+				cin >> dateiPfad;
+				if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
+					cout << "Ungueltiger Dateipfad" << endl;
+					system("pause");
+				} else {
+					//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
+					meinGraphErzeuger->setBibliothek( meineBibliothek );
+					meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
+					meinGraphErzeuger->erzeugeGraph();
+				}
+				schaltwerkMenue();
+				break;
+			case 2:
+			    // Anzeigen der Schaltwerkdatei
+				cout << endl;
+				cout << "Dateiausgabe:" << endl;
+				cout << endl;
+				meinSignalListeErzeuger->ausgabeDatei();
+				system("pause");
+				schaltwerkMenue();
+				break;
+			case 3:
+			   // Ausgabe Signale
+				meinSignalListeErzeuger->ausgabeSignale();
+				system("pause");
+				schaltwerkMenue();
+				break;
+			case 4:
+				// Ausgabe Graphenstruktur
+				meinGraphErzeuger->ausgabeGraph();
+				system("pause");
+				schaltwerkMenue();
+				break;
+			case 5:
+			   // zurueck zum Hauptmenue
+				break;
+			default:
+				cout << endl << "Ungueltige Eingabe!" << endl;
+				system("pause");
+				break;
 		}
-		schaltwerkMenue();
-		break;
-	case 2:
-        // Anzeigen der Schaltwerkdatei
-		cout << endl;
-		cout << "Dateiausgabe:" << endl;
-		cout << endl;
-		meinSignalListeErzeuger->ausgabeDatei();
+	} else {
+		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
 		system("pause");
 		schaltwerkMenue();
-		break;
-	case 3:
-        // Ausgabe Signale
-		meinSignalListeErzeuger->ausgabeSignale();
-		system("pause");
-		schaltwerkMenue();
-		break;
-	case 4:
-		// Ausgabe Graphenstruktur
-		meinGraphErzeuger->ausgabeGraph();
-		system("pause");
-		schaltwerkMenue();
-		break;
-	case 5:
-        // zurueck zum Hauptmenue
-		break;
-	default:
-		cout << endl << "Ungueltige Eingabe!" << endl;
-		system("pause");
-		break;
 	}
 }

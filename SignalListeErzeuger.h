@@ -30,6 +30,7 @@ private:
 	bool isOutput( string );
 	bool isSignal( string );
 public:
+	SignalListeErzeuger();
 	int getAnzahlSignale();
 	bool setDateiPfad( string );
 	string getDateiPfad();

@@ -3,6 +3,7 @@
 Bibliothek::Bibliothek( void ) {
     this->errFileNotFound = false;
     this->errFileRead = false;
+	this->datei = "c:\\bib.txt"; //Standardpfad
 }
 
 Bibliothek::~Bibliothek( void ) {
@@ -38,6 +39,7 @@ void Bibliothek::dateiAusgabe() {
 
 // Bib-Datei auswerten
 void Bibliothek::dateiAuswerten() {
+	bibElemente.clear(); //Vector zu Beginn der FKT leeren
 	ifstream file( datei );
 	string line;
     if( file.is_open()) {
@@ -51,7 +53,7 @@ void Bibliothek::dateiAuswerten() {
 					} else {
 						bibElemente.push_back( new GatterTyp() );
 					}
-					bibElemente.back()->setName( line );
+					bibElemente.back()->setName( line ); //Name der einzelnen Bauelementr im Vector speichern
 					getline ( file, line );
 				}
 				//Entitaeten auslesen bis Dateiende
