@@ -39,6 +39,7 @@ void LaufzeitAnalysator::DFS() {
 }
 
 void LaufzeitAnalysator::DFS_Visit() {
+	
 }
 
 void LaufzeitAnalysator::ausgabeErgebnis() {
