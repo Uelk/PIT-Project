@@ -24,6 +24,7 @@ GatterTyp* Bibliothek::getBibElement( string typ ) {
 	return NULL;
 }
 
+
 // Bib-Datei ausgeben
 void Bibliothek::dateiAusgabe() {
     string line;
@@ -39,6 +40,9 @@ void Bibliothek::dateiAusgabe() {
 
 // Bib-Datei auswerten
 void Bibliothek::dateiAuswerten() {
+    for( int i = 0; i < bibElemente.size() ; i++ ) {
+	  delete bibElemente[i];
+	}
 	bibElemente.clear(); //Vector zu Beginn der FKT leeren
 	ifstream file( datei );
 	string line;
@@ -135,7 +139,7 @@ bool Bibliothek::pfadEinlesen( string pfad ) {
     ifstream file( pfad );
     if( file.is_open()) {
 		datei = pfad;
-		dateiAuswerten();
+//		dateiAuswerten();
 	    return true;
        } else {
         return false;
