@@ -18,8 +18,8 @@ public:
     short getSetupTime();
     short getHoldTime();
 	short getLastKapazitaetClock();
-	void setSetupTime( short st );
-	void setHoldTime( short ht );
-	void setLastKapazitaetClock( short lkc );
+	void setSetupTime( short );
+	void setHoldTime( short );
+	void setLastKapazitaetClock( short );
 };
 #endif

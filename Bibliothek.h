@@ -21,10 +21,10 @@ public:
     
     //Methoden
     string getPfad(); //Pfad und Dateinamen auslesen
-	GatterTyp* getBibElement( string typ );
+	GatterTyp* getBibElement( string );
 	void dateiAusgabe(); //Ausgabe der Datei auf den Bildschirm
 	void dateiAuswerten(); //Einlesen und Auswerten der Bib-Datei
-	bool pfadEinlesen ( string pfad ); //Pfad zur Bib-Datei in Attribut spreichern
+	bool pfadEinlesen ( string ); //Pfad zur Bib-Datei in Attribut spreichern
 	void openError(); //Fehler beim šffnen der Datei
 	void readError(); //Fehler beim Lesen der Datei
 };

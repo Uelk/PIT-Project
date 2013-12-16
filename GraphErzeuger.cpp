@@ -24,7 +24,7 @@ void GraphErzeuger::erzeugeGraph() {
 }
 
 void GraphErzeuger::erzeugeListe() {
-	for( int i = 0; i < this->anzahlSignale; i++ ) {    
+	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( !signale[i].getQuelle().empty() ) {
 			if( startElement == NULL ) { // erstes Listenelement samt SchaltwerkElement hinzufuegen
 				startElement = new ListenElement();

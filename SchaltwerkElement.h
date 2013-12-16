@@ -18,21 +18,21 @@ private:
 public:
 	SchaltwerkElement( void );
 	~SchaltwerkElement( void );
-	SchaltwerkElement( GatterTyp* gTyp );
+	SchaltwerkElement( GatterTyp* );
 	string getName();
 	GatterTyp* getTyp();
 	double getLaufzeitEinzelgatter();
-	SchaltwerkElement* getNachfolger( int pos );
+	SchaltwerkElement* getNachfolger( int );
 	int getAnzahlNachfolger();
 	short getAnzahlEingangssignale();
 	bool getIsEingangsElement();
 	bool getIsAusgangsElement();
 	void setName( string n );
-	void nachfolgerHinzufuegen( SchaltwerkElement* schaltwerkElement, int pos );
+	void nachfolgerHinzufuegen( SchaltwerkElement*, int );
 	void setAnzahlNachfolger( int anzahlN );
-	void setAnzahlEingangssignale( short anzahlE );
-	void setIsEingangsElement( bool isEingangsEl );
-	void setIsAusgangsElement( bool isAusgangsEl );
-	void setLaufzeitEinzelgatter( double lfz );
+	void setAnzahlEingangssignale( short );
+	void setIsEingangsElement( bool );
+	void setIsAusgangsElement( bool );
+	void setLaufzeitEinzelgatter( double );
 };
 #endif

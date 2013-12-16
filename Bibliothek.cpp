@@ -3,7 +3,6 @@
 Bibliothek::Bibliothek( void ) {
     this->errFileNotFound = false;
     this->errFileRead = false;
-	this->datei = "c:\\bib.txt"; //Standardpfad
 }
 
 Bibliothek::~Bibliothek( void ) {
@@ -18,18 +17,17 @@ string Bibliothek::getPfad() {
 GatterTyp* Bibliothek::getBibElement( string typ ) {
     for( int i = 0; i < bibElemente.size() ; i++ ) {
 		if( bibElemente[i]->getName().find(typ) != -1 ) {
-			return this->bibElemente[i];
+			return bibElemente[i];
 		}
 	}
 	return NULL;
 }
 
-
 // Bib-Datei ausgeben
 void Bibliothek::dateiAusgabe() {
     string line;
     int i;
-    ifstream infile( this->datei );
+    ifstream infile( datei );
     if( infile.is_open()) {
         i = 1;
         while( getline ( infile, line )) {
@@ -46,7 +44,7 @@ void Bibliothek::dateiAuswerten() {
 	bibElemente.clear(); //Vector zu Beginn der FKT leeren
 	ifstream file( datei );
 	string line;
-    if( file.is_open()) {
+    if( file.is_open() ) {
 		while( getline ( file, line )) {
 			if( line.find( "[[Bausteine]]" ) != -1 ) {
 				getline ( file, line );
@@ -139,11 +137,11 @@ bool Bibliothek::pfadEinlesen( string pfad ) {
     ifstream file( pfad );
     if( file.is_open()) {
 		datei = pfad;
-//		dateiAuswerten();
-	    return true;
-       } else {
-        return false;
-    } 
+		dateiAuswerten();
+		return true;
+	} else {
+		return false;
+    }
     file.close(); 
 }
 

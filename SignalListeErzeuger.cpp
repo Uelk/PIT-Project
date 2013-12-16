@@ -2,7 +2,6 @@
 using namespace std;
 
 SignalListeErzeuger::SignalListeErzeuger( void ) {
-	this->datei = "c:\\csd.txt"; //Standardpfad
 }
 
 // Datei auslesen; Leseschnittpunkte festlegen
@@ -55,7 +54,7 @@ void SignalListeErzeuger::inputsAuslesen() {
 // Outputsignale auswerten
 void SignalListeErzeuger::outputsAuslesen() {
 	line = line.substr( 7 );
-	output = line.substr( 0, line.find( ';' ));
+	output = line.substr( 0, line.find( ';' ) );
 	for( int i = 0 ; i < output.length() ; i++ ) {
 		if( output.at( i ) == 's' ) {
 			anzahlSignale++;
@@ -66,7 +65,7 @@ void SignalListeErzeuger::outputsAuslesen() {
 // Signale auswerten
 void SignalListeErzeuger::signalsAuslesen() {
 	line = line.substr( 8 );
-	signals = line.substr( 0, line.find( ';' ));
+	signals = line.substr( 0, line.find( ';' ) );
 	for( int i = 0 ; i < signals.length() ; i++ ) {
 		if( signals.at( i ) == 's' ) {
 			anzahlSignale++;
@@ -82,7 +81,7 @@ void SignalListeErzeuger::clockAuslesen() {
 	clockName = line.substr( 0, pos );
 	line = line.substr( pos + 2 );
 	pos = line.find( ' ' );
-	frequenz = atof( line.substr( 0, pos ).c_str());
+	frequenz = atof( line.substr( 0, pos ).c_str() );
 	line = line.substr( pos + 1 );
 	pos = line.find( ';' );
 	line = line.substr( pos );

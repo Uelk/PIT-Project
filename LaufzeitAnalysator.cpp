@@ -21,6 +21,14 @@ void LaufzeitAnalysator::setFaktoren(Faktoren* fakt){
         faktoren = fakt;
 }
 
+void LaufzeitAnalysator::setStartElement(ListenElement* start) {
+	startElement = start;
+}
+
+void LaufzeitAnalysator::setFrequenz( long f ) {
+	frequenz = f;
+}
+
 void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 	for( ListenElement* temporLE = startElement; temporLE != NULL; temporLE = temporLE->getNextElement() ) {
 		GatterTyp* gatterTyp = temporLE->getSchaltwerkElement()->getTyp();
@@ -34,7 +42,7 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 	}
 }
 
-void LaufzeitAnalysator::DFS() {
+void LaufzeitAnalysator::DFS(ListenElement* start) {
 
 }
 

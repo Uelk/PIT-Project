@@ -13,41 +13,41 @@ bool GatterTyp::getIsFlipFlop() {
 }
 
 string GatterTyp::getName() {
-	return this->name;
+	return name;
 }
 
 double GatterTyp::getGrundLaufzeit() {
-		return this->grundLaufzeit;
+		return grundLaufzeit;
 }
 
 short GatterTyp::getLastFaktor() {
-		return this->lastFaktor;
+		return lastFaktor;
 }
 
 short GatterTyp::getLastKapazitaet() {
-		return this->lastKapazitaet;
+		return lastKapazitaet;
 }
 
 short GatterTyp::getEingaenge() {
-		return this->eingaenge;
+		return eingaenge;
 }
 
 void GatterTyp::setName( string n ) {
-		this->name = n;
+		name = n;
 }
 
 void GatterTyp::setGrundLaufzeit( double gl ) {
-		this->grundLaufzeit = gl;
+		grundLaufzeit = gl;
 }
 
 void GatterTyp::setLastFaktor( short lf ) {
-		this->lastFaktor = lf;
+		lastFaktor = lf;
 }
 
 void GatterTyp::setLastKapazitaet( short lk ) {
-	    this->lastKapazitaet = lk;
+	    lastKapazitaet = lk;
 }
 
 void GatterTyp::setEingaenge( short ei ) {
-		this->eingaenge = ei;
+		eingaenge = ei;
 }

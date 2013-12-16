@@ -21,7 +21,7 @@ Menue::~Menue () {
 
 // Ausgabe des Hauptmenues
 void Menue::menueKopf() {
-	system("cls");
+	system( "cls" );
 	cout << "******************************************" << endl;
 	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
 	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
@@ -55,10 +55,8 @@ void Menue::start() {
 	while (true) {
 		cin >> input;
 		menueEingabe= atoi(input.c_str()); 
-	
-		if(menueEingabe){
-				
-			switch (menueEingabe) {
+		if( menueEingabe ){
+			switch ( menueEingabe ) {
 				case 1:
 					faktorenMenue();
 					menueKopf();
@@ -86,12 +84,17 @@ void Menue::start() {
 					system( "pause" );
 					break;
 			}
-		} else {std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;}
+		} else {
+			cout << endl << "Ungueltige Eingabe!" << endl;
+			system( "pause" );
+			menueKopf();
+		}
 	}
 }
+
 // Ausgabe Untermenue Aeussere Faktoren
 void Menue::faktorenMenue () {
-	system("cls");
+	system( "cls" );
 	cout << "******************************************" << endl;
 	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
 	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
@@ -112,21 +115,23 @@ void Menue::faktorenMenue () {
 	string input;
     string inputWert;
 	cin >> input;
-	menueEingabe= atoi(input.c_str()); 
+	menueEingabe= atoi( input.c_str() ); 
 
 	if(menueEingabe){
 		switch(menueEingabe) {
 		case 1:
 			// Spannung festlegen
 			double spannung;
-			cout << "Geben Sie den neuen Spannungswert ein: ";
+			cout << "Geben Sie einen neuen Spannungswert ein: ";
 			cin >> inputWert;
-			if (IsDouble(inputWert))
+			if ( isDouble( inputWert ) )
 			{
-				spannung = atof(inputWert.c_str());
-				meineFaktoren->setSpannung(spannung);
-			} else {cout << "Gib eine Zahl ein!"<<endl; system("pause");}
-
+				spannung = atof( inputWert.c_str() );
+				meineFaktoren->setSpannung( spannung );
+			} else {
+				cout << endl << "Ungueltige Eingabe!" << endl;
+				system( "pause" );
+			}
 			faktorenMenue();
 			break;
 		case 2:
@@ -134,11 +139,13 @@ void Menue::faktorenMenue () {
 			double temperatur;
 			cout << "Geben Sie einen neuen Temperaturwert ein: ";
 			cin >> inputWert;
-			if (IsDouble(inputWert)) {
-				temperatur = atof(inputWert.c_str());
-				meineFaktoren->setTemperatur(temperatur);
-			} else {cout << "Gib eine Zahl ein!"<<endl; system("pause");}
-
+			if ( isDouble( inputWert ) ) {
+				temperatur = atof( inputWert.c_str() );
+				meineFaktoren->setTemperatur( temperatur );
+			} else {
+				cout << endl << "Ungueltige Eingabe!" << endl;
+				system( "pause" );
+			}
 			faktorenMenue();
 			break;
 		case 3:
@@ -146,18 +153,18 @@ void Menue::faktorenMenue () {
 			short prozess;
 			cout << "Geben Sie einen neuen Prozesstyp ein: ";
 			cin >> prozess;
-			if(prozess == 1 || prozess == 2 || prozess == 3) {
-				meineFaktoren->setProzess(prozess);
+			if( prozess == 1 || prozess == 2 || prozess == 3 ) {
+				meineFaktoren->setProzess( prozess );
 			} else {
 				cerr << "Ungueltige Eingabe!" << endl;
-				system("pause");
+				system( "pause" );
 			}
 			faktorenMenue();
 			break;
 		case 4:
 			// Ausgabe errechneter Faktoren
 			meineFaktoren->ausgabeFaktoren();
-			system("pause");
+			system( "pause" );
 			faktorenMenue();
 			break;
 		case 5:
@@ -165,19 +172,19 @@ void Menue::faktorenMenue () {
 			break;
 		default:
 			cout << endl << "Ungueltige Eingabe!" << endl;
-			system("pause");
+			system( "pause" );
 			break;
 		}
 	} else {
-		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
-		system("pause");
+		cout << endl << "Ungueltige Eingabe!" << endl;
+		system( "pause" );
 		faktorenMenue();
 	}
 }
 
 // Ausgabe Untermenue Bibliothek
 void Menue::bibliothekMenue() {
-	system("cls");
+	system( "cls" );
 	cout << "******************************************" << endl;
 	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
 	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
@@ -195,18 +202,17 @@ void Menue::bibliothekMenue() {
 	int menueEingabe = 0;
 	string input;
 	cin >> input;
-	menueEingabe= atoi(input.c_str());
+	menueEingabe= atoi( input.c_str() );
 
-	if(menueEingabe){
-	
+	if(menueEingabe) {
 		switch(menueEingabe) {
 			case 1:
 				// Eingabe Dateipfad
 				cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 				cin >> dateiPfad;
-				if(!meineBibliothek->pfadEinlesen(dateiPfad)) {
+				if( !meineBibliothek->pfadEinlesen( dateiPfad )) {
 					cout << "Ungueltiger Dateipfad" << endl;
-					system("pause");
+					system( "pause" );
 				}
 				bibliothekMenue();
 				break;
@@ -216,7 +222,7 @@ void Menue::bibliothekMenue() {
 				meineBibliothek->dateiAuswerten();
 				meineBibliothek->openError();
 				meineBibliothek->readError();
-				system("pause");
+				system( "pause" );
 				bibliothekMenue();
 				break;
 			case 3:
@@ -224,13 +230,13 @@ void Menue::bibliothekMenue() {
 				break;
 			default:
 				cout << endl << "Ungueltige Eingabe!" << endl;
-				system("pause");
+				system( "pause" );
 				bibliothekMenue();
 				break;
 			}
 	} else {
-		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
-		system("pause");
+		cout << endl << "Ungueltige Eingabe!" << endl;
+		system( "pause" );
 		bibliothekMenue();
 	}
 }
@@ -238,7 +244,7 @@ void Menue::bibliothekMenue() {
 
 // Ausgabe Untermenue Schaltwerkmenue
 void Menue::schaltwerkMenue() {
-	system("cls");
+	system( "cls" );
 	cout << "******************************************" << endl;
 	cout << "*     IT-Projektpraktikum WS2013/2014    *" << endl;
 	cout << "* Laufzeitanalyse synchroner Schaltwerke *" << endl;
@@ -261,16 +267,15 @@ void Menue::schaltwerkMenue() {
 	cin >> input;
 	menueEingabe= atoi(input.c_str());
 
-	if(menueEingabe){
-	
-		switch (menueEingabe) {
+	if( menueEingabe ){
+		switch( menueEingabe ) {
 			case 1:
 			  // Eingabe Dateipfad
 				cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 				cin >> dateiPfad;
 				if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
 					cout << "Ungueltiger Dateipfad" << endl;
-					system("pause");
+					system( "pause" );
 				} else {
 					//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
 					meinGraphErzeuger->setBibliothek( meineBibliothek );
@@ -285,19 +290,19 @@ void Menue::schaltwerkMenue() {
 				cout << "Dateiausgabe:" << endl;
 				cout << endl;
 				meinSignalListeErzeuger->ausgabeDatei();
-				system("pause");
+				system( "pause" );
 				schaltwerkMenue();
 				break;
 			case 3:
 			   // Ausgabe Signale
 				meinSignalListeErzeuger->ausgabeSignale();
-				system("pause");
+				system( "pause" );
 				schaltwerkMenue();
 				break;
 			case 4:
 				// Ausgabe Graphenstruktur
 				meinGraphErzeuger->ausgabeGraph();
-				system("pause");
+				system( "pause" );
 				schaltwerkMenue();
 				break;
 			case 5:
@@ -305,12 +310,16 @@ void Menue::schaltwerkMenue() {
 				break;
 			default:
 				cout << endl << "Ungueltige Eingabe!" << endl;
-				system("pause");
+				system( "pause" );
 				break;
 		}
 	} else {
-		std::cout << endl << "Es wurde keine gueltige Zahl eingegeben!" << endl << "Versuche es erneut!"<< endl;
-		system("pause");
+		cout << endl << "Ungueltige Eingabe!" << endl;
+		system( "pause" );
 		schaltwerkMenue();
 	}
+}
+
+bool Menue::isDouble(string s) {
+	return true;
 }
