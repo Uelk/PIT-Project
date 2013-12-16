@@ -320,6 +320,3 @@ void Menue::schaltwerkMenue() {
 	}
 }
 
-bool Menue::isDouble(string s) {
-	return true;
-}
