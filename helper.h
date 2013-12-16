@@ -8,3 +8,4 @@ char * NextToken( char * pArg );
 
  bool CharIn(char ch,string Charset);
 
+ bool IsDouble(string s);

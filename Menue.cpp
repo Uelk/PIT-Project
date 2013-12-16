@@ -110,6 +110,7 @@ void Menue::faktorenMenue () {
 	
 	int menueEingabe = 0;
 	string input;
+    string inputWert;
 	cin >> input;
 	menueEingabe= atoi(input.c_str()); 
 
@@ -119,16 +120,25 @@ void Menue::faktorenMenue () {
 			// Spannung festlegen
 			double spannung;
 			cout << "Geben Sie den neuen Spannungswert ein: ";
-			cin >> spannung;
-			meineFaktoren->setSpannung(spannung);
+			cin >> inputWert;
+			if (IsDouble(inputWert))
+			{
+				spannung = atof(inputWert.c_str());
+				meineFaktoren->setSpannung(spannung);
+			} else {cout << "Gib eine Zahl ein!"<<endl; system("pause");}
+
 			faktorenMenue();
 			break;
 		case 2:
 		    // Temperatur festlegen
 			double temperatur;
 			cout << "Geben Sie einen neuen Temperaturwert ein: ";
-			cin >> temperatur;
-			meineFaktoren->setTemperatur(temperatur);
+			cin >> inputWert;
+			if (IsDouble(inputWert)) {
+				temperatur = atof(inputWert.c_str());
+				meineFaktoren->setTemperatur(temperatur);
+			} else {cout << "Gib eine Zahl ein!"<<endl; system("pause");}
+
 			faktorenMenue();
 			break;
 		case 3:

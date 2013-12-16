@@ -22,7 +22,7 @@ char * NextToken( char * pArg ) {
 
 
 //Funktion zur Ermittlung der Gültigkeit des gefundenen Zeichens
-bool CharIn(string ch,string Charset)
+bool CharIn(char ch,string Charset)
 {
 bool rc; //return code
   rc=false;
@@ -31,3 +31,7 @@ bool rc; //return code
   return rc;
 }
 
+bool IsDouble(string s)
+{
+    return !s.empty() && std::find_if(s.begin(), s.end(), [](char c) { return !CharIn(c,"0123456789."); }) == s.end();
+}
