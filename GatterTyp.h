@@ -20,11 +20,11 @@ public:
 	short getLastKapazitaet();
 	short getEingaenge();
 	virtual	bool getIsFlipFlop();
-	void setName( string n );
-	void setGrundLaufzeit( double gl );
-	void setLastFaktor( short lf );
-	void setEingaenge( short ei );
-	void setLastKapazitaet( short lk );
+	void setName( string );
+	void setGrundLaufzeit( double );
+	void setLastFaktor( short );
+	void setEingaenge( short );
+	void setLastKapazitaet( short );
 protected:
     //Attribute:
 	string name;

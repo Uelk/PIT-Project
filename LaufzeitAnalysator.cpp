@@ -25,7 +25,7 @@ void LaufzeitAnalysator::setStartElement(ListenElement* start) {
 	startElement = start;
 }
 
-void LaufzeitAnalysator::setFrequenz(long f) {
+void LaufzeitAnalysator::setFrequenz( long f ) {
 	frequenz = f;
 }
 

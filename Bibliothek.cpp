@@ -44,7 +44,7 @@ void Bibliothek::dateiAuswerten() {
 	bibElemente.clear(); //Vector zu Beginn der FKT leeren
 	ifstream file( datei );
 	string line;
-    if( file.is_open()) {
+    if( file.is_open() ) {
 		while( getline ( file, line )) {
 			if( line.find( "[[Bausteine]]" ) != -1 ) {
 				getline ( file, line );

@@ -20,7 +20,7 @@ private:
 	void bibliothekMenue();
 	void schaltwerkMenue();
 	void menueKopf();
-	bool isDouble(string);
+	bool isDouble( string );
 public:
 	Menue();
 	~Menue();
