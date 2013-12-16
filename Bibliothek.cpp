@@ -17,7 +17,7 @@ string Bibliothek::getPfad() {
 GatterTyp* Bibliothek::getBibElement( string typ ) {
     for( int i = 0; i < bibElemente.size() ; i++ ) {
 		if( bibElemente[i]->getName().find(typ) != -1 ) {
-			return this->bibElemente[i];
+			return bibElemente[i];
 		}
 	}
 	return NULL;
@@ -27,7 +27,7 @@ GatterTyp* Bibliothek::getBibElement( string typ ) {
 void Bibliothek::dateiAusgabe() {
     string line;
     int i;
-    ifstream infile( this->datei );
+    ifstream infile( datei );
     if( infile.is_open()) {
         i = 1;
         while( getline ( infile, line )) {
@@ -137,11 +137,11 @@ bool Bibliothek::pfadEinlesen( string pfad ) {
     ifstream file( pfad );
     if( file.is_open()) {
 		datei = pfad;
-//		dateiAuswerten();
-	    return true;
-       } else {
-        return false;
-    } 
+		dateiAuswerten();
+		return true;
+	} else {
+		return false;
+    }
     file.close(); 
 }
 
