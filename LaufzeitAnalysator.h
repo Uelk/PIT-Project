@@ -14,16 +14,22 @@ class LaufzeitAnalysator {
 private:
 	Faktoren* faktoren;
 	ListenElement* startElement;
+	Bibliothek* bib;
 	struct DFS_Daten;
 	map<SchaltwerkElement*, DFS_Daten> DFS_Zwischenspeicher;
 	long frequenz;
+	long maximaleFrequenz;
 	string uebergangspfad;
 	string ausgangspfad;
 	double laufzeitUebergangspfad;
 	double laufzeitAusgangspfad;
 	void berechneLaufzeitEinzelgatter();
 	void DFS( ListenElement* );
-	void DFS_Visit();
+	void DFS_Visit( SchaltwerkElement*, SchaltwerkElement* );
+	bool zyklensuche( SchaltwerkElement* );
+	string generierePfadBesuchterGatter(SchaltwerkElement*, SchaltwerkElement*, SchaltwerkElement*);
+	void berechnneMaximaleFrequenz();
+	bool zyklusMerker;
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
