@@ -54,7 +54,7 @@ void Menue::start() {
 
 	while (true) {
 		cin >> input;
-		menueEingabe= atoi(input.c_str()); 
+		menueEingabe= atoi( input.c_str() ); 
 		if( menueEingabe ){
 			switch ( menueEingabe ) {
 				case 1:
@@ -71,6 +71,9 @@ void Menue::start() {
 					break;
 				case 4:
 					meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
+					meinLaufzeitAnalysator->setBibliothek( meineBibliothek );
+					meinLaufzeitAnalysator->setFrequenz( meinSignalListeErzeuger->getFrequenz() );
+					meinLaufzeitAnalysator->setStartElement( meinGraphErzeuger->getStartElement() );
 					meinLaufzeitAnalysator->starteAnalyse();
 					meinLaufzeitAnalysator->ausgabeErgebnis();
 					system( "pause" );
@@ -265,7 +268,7 @@ void Menue::schaltwerkMenue() {
 	string input;
 
 	cin >> input;
-	menueEingabe= atoi(input.c_str());
+	menueEingabe= atoi( input.c_str() );
 
 	if( menueEingabe ){
 		switch( menueEingabe ) {
@@ -319,4 +322,3 @@ void Menue::schaltwerkMenue() {
 		schaltwerkMenue();
 	}
 }
-

@@ -16,6 +16,10 @@ void GraphErzeuger::setSignale( Signal* sig, short anz ) {
 	anzahlSignale = anz;
 }
 
+ListenElement* GraphErzeuger::getStartElement() {
+	return startElement;
+}
+
 void GraphErzeuger::erzeugeGraph() {
 	erzeugeListe();
 	gatterZieleHinzufuegen();
@@ -53,7 +57,13 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 				// Merker fuer Eingangselement setzen
 				zielElement->setIsEingangsElement( true );
 			}
-		} else { // Interne Signale mit Quelle und Ziel
+		}
+		if( signale[i].getSignalTyp() == signale[i].ausgang ) {
+			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );
+			// Merker fuer Ausgangselement Setzen
+			quellenElement->setIsAusgangsElement(true);
+		}
+		if( signale[i].getSignalTyp() == signale[i].intern ) { // Interne Signale mit Quelle und Ziel
 			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );
 			for( int j = 0; j < signale[i].getAnzahlZiele(); j++ ) {
 				SchaltwerkElement* zielElement = findeSchaltwerkElement( signale[i].getZiel(j) );
@@ -62,10 +72,6 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 				quellenElement->setAnzahlNachfolger( quellenElement->getAnzahlNachfolger() + 1 );
 				// Variable für Anzahl der Eingangssignale des Ziels Inkrementieren
 				zielElement->setAnzahlEingangssignale( zielElement->getAnzahlEingangssignale() + 1 );
-				if( signale[i].getSignalTyp() == signale[i].ausgang ) {
-					// Merker fuer Ausgangselement Setzen
-					zielElement->setIsAusgangsElement( true );
-				}
 			}
 		}
 	}

@@ -156,18 +156,21 @@ double Faktoren:: getProzessFaktor() {
 // Spannung festlegen
 bool Faktoren::setSpannung( double spannung ) {
 	Faktoren::spannung = spannung;
+	berechneSpannungFaktor( spannung );
 	return true;
 }
 
 // Temperatur festlegen
 bool Faktoren::setTemperatur( double temperatur ) {
 	Faktoren::temperatur = temperatur;
+	berechneTemperaturFaktor( temperatur );
 	return true;
 }
 
 // Prozess festlegen
 bool Faktoren::setProzess( short prozess ) {
 	Faktoren::prozess = prozess;
+	berechneProzessFaktor( prozess );
 	return true;
 }
 

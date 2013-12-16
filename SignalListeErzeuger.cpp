@@ -207,14 +207,18 @@ Signal* SignalListeErzeuger::getSignalListe() {
 	return signale;
 }
 
+long SignalListeErzeuger::getFrequenz() {
+	return frequenz;
+}
+
 // Ausgabe der Signalauswertung in der Konsole
 void SignalListeErzeuger::ausgabeSignale() {
 	cout << "Signale: " << endl;
 	cout << "--------" << endl;
 	cout << "Signalname: " << clockName << endl;
-	cout << "Signaltyp: Unbekannt" << endl;
+	cout << "Signaltyp: Eingang" << endl;
 	cout << "Signalquelle: keine" << endl;
-	cout << "--> DasSignal hat " << signale[0].getAnzahlZiele() << " Ziele" << endl;
+	cout << "--> Das Signal hat " << signale[0].getAnzahlZiele() << " Ziele" << endl;
 	cout << "Ziel-Gatter: ";
 	for( int i = 0; i < signale[0].getAnzahlZiele(); i++ ) {
 		cout << signale[0].getZiel(i) << " ";

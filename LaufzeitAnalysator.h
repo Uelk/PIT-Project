@@ -14,7 +14,7 @@ class LaufzeitAnalysator {
 private:
 	Faktoren* faktoren;
 	ListenElement* startElement;
-	Bibliothek* bib;
+	Bibliothek* bibliothek;
 	struct DFS_Daten;
 	map<SchaltwerkElement*, DFS_Daten> DFS_Zwischenspeicher;
 	long frequenz;
@@ -35,6 +35,7 @@ public:
 	~LaufzeitAnalysator();
 	void starteAnalyse();
 	void setFaktoren (Faktoren*);
+	void setBibliothek(Bibliothek*);
 	void setStartElement(ListenElement*);
 	void setFrequenz( long );
 	void ausgabeErgebnis();

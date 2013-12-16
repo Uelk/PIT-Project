@@ -37,5 +37,6 @@ public:
 	void ausgabeDatei();
 	Signal* getSignalListe();
 	void ausgabeSignale();
+	long getFrequenz();
 };
 #endif

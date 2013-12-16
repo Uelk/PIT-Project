@@ -20,6 +20,7 @@ public:
 	~GraphErzeuger();
 	void setBibliothek( Bibliothek* );
 	void setSignale( Signal*, short );
+	ListenElement* getStartElement();
 	void erzeugeGraph();
 	void erzeugeListe();
 	void gatterZieleHinzufuegen();
