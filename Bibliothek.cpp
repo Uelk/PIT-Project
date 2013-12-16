@@ -3,7 +3,6 @@
 Bibliothek::Bibliothek( void ) {
     this->errFileNotFound = false;
     this->errFileRead = false;
-	this->datei = "c:\\bib.txt"; //Standardpfad
 }
 
 Bibliothek::~Bibliothek( void ) {
@@ -23,7 +22,6 @@ GatterTyp* Bibliothek::getBibElement( string typ ) {
 	}
 	return NULL;
 }
-
 
 // Bib-Datei ausgeben
 void Bibliothek::dateiAusgabe() {

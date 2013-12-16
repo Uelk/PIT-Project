@@ -22,13 +22,15 @@ private:
 	double laufzeitUebergangspfad;
 	double laufzeitAusgangspfad;
 	void berechneLaufzeitEinzelgatter();
-	void DFS();
+	void DFS(ListenElement*);
 	void DFS_Visit();
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
 	void starteAnalyse();
 	void setFaktoren (Faktoren*);
+	void setStartElement(ListenElement*);
+	void setFrequenz(long);
 	void ausgabeErgebnis();
 };
 #endif
