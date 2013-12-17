@@ -27,16 +27,16 @@ private:
 	void DFS( ListenElement* );
 	void DFS_Visit( SchaltwerkElement*, SchaltwerkElement* );
 	bool zyklensuche( SchaltwerkElement* );
-	string generierePfadBesuchterGatter(SchaltwerkElement*, SchaltwerkElement*, SchaltwerkElement*);
+	string generierePfadBesuchterGatter( SchaltwerkElement*, SchaltwerkElement*, SchaltwerkElement* );
 	void berechnneMaximaleFrequenz();
 	bool zyklusMerker;
 public:
 	LaufzeitAnalysator();
 	~LaufzeitAnalysator();
 	void starteAnalyse();
-	void setFaktoren (Faktoren*);
-	void setBibliothek(Bibliothek*);
-	void setStartElement(ListenElement*);
+	void setFaktoren ( Faktoren* );
+	void setBibliothek( Bibliothek* );
+	void setStartElement( ListenElement* );
 	void setFrequenz( long );
 	void ausgabeErgebnis();
 };
