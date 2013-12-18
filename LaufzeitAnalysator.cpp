@@ -12,15 +12,15 @@ struct LaufzeitAnalysator::DFS_Daten {
 	double PfadLaufzeit;
 };
 
-void LaufzeitAnalysator::setFaktoren(Faktoren* fakt){
+void LaufzeitAnalysator::setFaktoren( Faktoren* fakt ){
         faktoren = fakt;
 }
 
-void LaufzeitAnalysator::setBibliothek(Bibliothek* bib) {
+void LaufzeitAnalysator::setBibliothek( Bibliothek* bib ) {
 	bibliothek = bib;
 }
 
-void LaufzeitAnalysator::setStartElement(ListenElement* start) {
+void LaufzeitAnalysator::setStartElement( ListenElement* start ) {
 	startElement = start;
 }
 
@@ -87,10 +87,11 @@ void LaufzeitAnalysator::DFS( ListenElement* startKnoten ) {
 
 // Funktion der Tiefensuche
 void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s ) {
-	SchaltwerkElement* v = NULL;
-	/*if(zyklusMerker) {
+	SchaltwerkElement* v;
+	if(zyklusMerker) {
 		return;
-	}*/
+	}
+
 	for( int i = 0; i < k->getAnzahlNachfolger(); i++ ) {
 		v = k->getNachfolger(i);
 		if( v->getTyp()->getIsFlipFlop() ) { // FlipFlop ist Endelement eines Uebergangspfades
@@ -100,7 +101,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 			}
 		} else {
 			if( DFS_Zwischenspeicher[v].PfadLaufzeit < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() ) {
-				if( ((DFS_Zwischenspeicher[v].PfadLaufzeit != 0) || (v == s)) && (DFS_Zwischenspeicher[v].VaterElement != k) ) {
+				if( (( DFS_Zwischenspeicher[v].PfadLaufzeit != 0 ) || ( v == s )) && ( DFS_Zwischenspeicher[v].VaterElement != k ) ) {
 					DFS_Zwischenspeicher[v].VaterElement = k;
 					if( zyklensuche( v ) ) {
 						cout << "Zyklus an Gatter gefunden: " << v->getName() << endl;
@@ -115,7 +116,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 		}
 	}
 
-	if( k->getIsAusgangsElement() && (laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
+	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
 		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
 		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
@@ -125,7 +126,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 bool LaufzeitAnalysator::zyklensuche( SchaltwerkElement* schaltwerkElement ) {
 	SchaltwerkElement* temp = schaltwerkElement;
 	// alle Vaterelemente untersuchen
-	for( SchaltwerkElement* temp = schaltwerkElement; temp != NULL; DFS_Zwischenspeicher[temp].VaterElement) {
+	for( SchaltwerkElement* temp = schaltwerkElement; temp != NULL; DFS_Zwischenspeicher[temp].VaterElement ) {
 		// aktuelles Element ist sein eigener Vorgaenger, so folgt vorhandener Zyklus
 		if( temp == schaltwerkElement ) {
 			zyklusMerker = true;
@@ -136,7 +137,7 @@ bool LaufzeitAnalysator::zyklensuche( SchaltwerkElement* schaltwerkElement ) {
 }
 
 // erstellt den String der besuchten Gatter
-string LaufzeitAnalysator::generierePfadBesuchterGatter(SchaltwerkElement* s, SchaltwerkElement* k, SchaltwerkElement* v) {
+string LaufzeitAnalysator::generierePfadBesuchterGatter( SchaltwerkElement* s, SchaltwerkElement* k, SchaltwerkElement* v ) {
 	/*string pfad = "";
 	// Folgeknoten eintragen falls vorhanden
 	if(v != NULL) {
@@ -153,12 +154,12 @@ string LaufzeitAnalysator::generierePfadBesuchterGatter(SchaltwerkElement* s, Sc
 
 	string pfad = "";
 	SchaltwerkElement* temp = k;
-	while(temp != s) {
-		pfad.insert(0, temp->getName() + "->");
-		temp = DFS_Zwischenspeicher.find(temp)->second.VaterElement;
+	while( temp != s ) {
+		pfad.insert( 0, temp->getName() + "->" );
+		temp = DFS_Zwischenspeicher.find( temp )->second.VaterElement;
 	}
-	pfad.insert(0, "->" + s->getName() + "->");
-	if(v != NULL) {
+	pfad.insert( 0, "->" + s->getName() + "->" );
+	if( v != NULL ) {
 		pfad = pfad + v->getName() + "->";
 	}
 	return pfad;
@@ -168,7 +169,7 @@ void LaufzeitAnalysator::berechnneMaximaleFrequenz() {
 	double setupTime = 0;
 	// Ueberpruefen, ob Uebergangspfad vorhanden
 	if( uebergangspfad.length() != 0 ) {
-		setupTime = ( (FlipFlop*) bibliothek->getBibElement("dff") )->getSetupTime();
+		setupTime = (( FlipFlop* ) bibliothek->getBibElement( "dff" ))->getSetupTime();
 	}
 	maximaleFrequenz = 1 / ( laufzeitUebergangspfad + setupTime ) * 1000000; //Frequenz in MHz
 }
