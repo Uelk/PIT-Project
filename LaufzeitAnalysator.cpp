@@ -87,7 +87,7 @@ void LaufzeitAnalysator::DFS( ListenElement* startKnoten ) {
 
 // Funktion der Tiefensuche
 void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s ) {
-	SchaltwerkElement* v;
+	SchaltwerkElement* v = NULL;
 	/*if(zyklusMerker) {
 		return;
 	}*/
@@ -113,11 +113,11 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 				DFS_Visit(v, s);
 			}
 		}
+	}
 
-		if( k->getIsAusgangsElement() && (laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
-			laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
-			ausgangspfad = generierePfadBesuchterGatter( s, k, v );
-		}
+	if( k->getIsAusgangsElement() && (laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
+		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
+		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
 }
 
