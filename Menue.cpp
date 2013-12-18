@@ -54,7 +54,7 @@ void Menue::start() {
 
 	while (true) {
 		cin >> input;
-		menueEingabe= atoi( input.c_str() ); 
+		menueEingabe = atoi( input.c_str() ); 
 		if( menueEingabe ){
 			switch ( menueEingabe ) {
 				case 1:

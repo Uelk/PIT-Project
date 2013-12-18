@@ -8,7 +8,7 @@ Bibliothek::Bibliothek( void ) {
 Bibliothek::~Bibliothek( void ) {
 }
 
-// Pfad und Datei auslesen
+// Pfad auslesen
 string Bibliothek::getPfad() {
 	return datei;
 }
