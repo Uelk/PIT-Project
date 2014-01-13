@@ -61,7 +61,7 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 		if( signale[i].getSignalTyp() == signale[i].ausgang ) {
 			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );
 			// Merker fuer Ausgangselement Setzen
-			quellenElement->setIsAusgangsElement(true);
+			quellenElement->setIsAusgangsElement( true );
 		}
 		if( signale[i].getSignalTyp() == signale[i].intern ) { // Interne Signale mit Quelle und Ziel
 			SchaltwerkElement* quellenElement = findeSchaltwerkElement( signale[i].getQuelle() );

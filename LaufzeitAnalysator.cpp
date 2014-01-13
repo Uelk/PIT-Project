@@ -88,12 +88,12 @@ void LaufzeitAnalysator::DFS( ListenElement* startKnoten ) {
 // Funktion der Tiefensuche
 void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s ) {
 	SchaltwerkElement* v;
-	/*if(zyklusMerker) {
+	if(zyklusMerker) {
 		return;
-	}*/
+	}
+
 	for( int i = 0; i < k->getAnzahlNachfolger(); i++ ) {
 		v = k->getNachfolger(i);
-		
 		if( v->getTyp()->getIsFlipFlop() ) { // FlipFlop ist Endelement eines Uebergangspfades
 			if( laufzeitUebergangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() ) {
 				laufzeitUebergangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
@@ -114,11 +114,11 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 				DFS_Visit(v, s);
 			}
 		}
+	}
 
-		if( k->getIsAusgangsElement() && ( laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
-			laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
-			ausgangspfad = generierePfadBesuchterGatter( s, k, v );
-		}
+	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
+		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
+		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
 }
 
@@ -175,10 +175,14 @@ void LaufzeitAnalysator::berechnneMaximaleFrequenz() {
 }
 
 void LaufzeitAnalysator::ausgabeErgebnis() {
+	cout << endl;
+	cout << "Analyseergebnis:" << endl;
+	cout << endl;
 	cout << "Laengster Pfad im Ueberfuehrungsschaltnetz:" << endl;
 	cout << uebergangspfad << endl;
 	cout << "Maximale Laufzeit der Pfade im Ueberfuehrungsschaltnetz: ";
 	cout << laufzeitUebergangspfad << " ps" << endl;
+	cout << endl;
 	cout << "Laengster Pfad im Ausgangsschaltnetz:" << endl;
 	cout << ausgangspfad << endl;
 	cout << "Maximale Laufzeit der Pfade im Ausgangsschaltnetz: ";
@@ -188,5 +192,14 @@ void LaufzeitAnalysator::ausgabeErgebnis() {
 	cout << endl;
 	cout << "Die maximal zulaessige Frequenz fuer das Schaltnetz/-werk betraegt: ";
 	cout << maximaleFrequenz << " MHz" <<endl;
+	cout << endl;
+	if( maximaleFrequenz > frequenz ) {
+		cout << "Bedingung fuer die Taktfrequenz des Schaltnetz/-werks IST erfuellt!" << endl;
+	} else {
+		cout << "Bedingung fuer die Taktfrequenz des Schaltnetz/-werks IST NICHT erfuellt!" << endl;
+		cout << "Die Taktfrequenz " << frequenz << " MHz ist " << frequenz - maximaleFrequenz;
+		cout << " MHz groesser als die maximale Frequenz!" << endl;
+	}
+	cout << endl;
 	cout << "-----------------------------------" << endl;
 }

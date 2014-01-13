@@ -186,7 +186,7 @@ bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	file.close();
 }
 
-// Datei zurueckgeben
+// Dateipfad zurueckgeben
 string SignalListeErzeuger::getDateiPfad() {
 	return datei;
 }
