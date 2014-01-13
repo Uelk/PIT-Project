@@ -41,7 +41,7 @@ void GraphErzeuger::erzeugeListe() {
 				endElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
 			}
-		} else {
+		} else { //<<<<<<<<< Fehlermeldung
 			
 		}
 	}
@@ -78,7 +78,7 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 }
 
 // Zum Gatter zugehoeriges Ausgangssignal finden
-Signal* GraphErzeuger::findeSignal( string gatterName ) {
+Signal* GraphErzeuger::findeSignal( string gatterName ) {  //<<<<<< Gattername bei findeSignal() und findeSWE()?
 	for( int i = 0; i<anzahlSignale; i++ ) {
 		if( signale[i].getQuelle().find( gatterName ) != -1 ) {
 			return &signale[i];
