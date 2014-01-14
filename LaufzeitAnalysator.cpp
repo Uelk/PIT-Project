@@ -138,20 +138,6 @@ bool LaufzeitAnalysator::zyklensuche( SchaltwerkElement* schaltwerkElement ) {
 
 // erstellt den String der besuchten Gatter
 string LaufzeitAnalysator::generierePfadBesuchterGatter( SchaltwerkElement* s, SchaltwerkElement* k, SchaltwerkElement* v ) {
-	/*string pfad = "";
-	// Folgeknoten eintragen falls vorhanden
-	if(v != NULL) {
-		pfad = v->getName();
-		pfad = "->" + pfad;
-	}
-	// Knoten eintragen
-	for( SchaltwerkElement* temporSW = k; temporSW != s; temporSW = DFS_Zwischenspeicher[temporSW].VaterElement) {
-		pfad = temporSW->getName();
-		pfad = "->" + pfad;
-	}
-	pfad = s->getName() + pfad; // Startknoten eintragen
-	return pfad;*/
-
 	string pfad = "";
 	SchaltwerkElement* temp = k;
 	while( temp != s ) {
