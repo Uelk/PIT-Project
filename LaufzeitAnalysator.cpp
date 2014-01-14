@@ -88,7 +88,7 @@ void LaufzeitAnalysator::DFS( ListenElement* startKnoten ) {
 // Funktion der Tiefensuche
 void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s ) {
 	SchaltwerkElement* v;
-	if(zyklusMerker) {
+	if( zyklusMerker ) {
 		return;
 	}
 
