@@ -41,7 +41,7 @@ void GraphErzeuger::erzeugeListe() {
 				endElement->setSchaltwerkElement( new SchaltwerkElement( bibliothek->getBibElement( signale[i].getQuellenTyp() )));
 				endElement->getSchaltwerkElement()->setName( signale[i].getQuelle() );
 			}
-		} else {
+		} else { //<<<<<<<<< Fehlermeldung
 			
 		}
 	}
@@ -78,7 +78,7 @@ void GraphErzeuger::gatterZieleHinzufuegen() {
 }
 
 // Zum Gatter zugehoeriges Ausgangssignal finden
-Signal* GraphErzeuger::findeSignal( string gatterName ) {
+Signal* GraphErzeuger::findeSignal( string gatterName ) {  //<<<<<< Gattername bei findeSignal() und findeSWE()?
 	for( int i = 0; i<anzahlSignale; i++ ) {
 		if( signale[i].getQuelle().find( gatterName ) != -1 ) {
 			return &signale[i];
@@ -102,7 +102,7 @@ void GraphErzeuger::ueberpruefungUnbenutzesSignal() {
 	for( int i = 0; i < anzahlSignale; i++ ) {
 		if( signale[i].getAnzahlZiele() == 0 && signale[i].getSignalTyp() != signale[i].ausgang) {
 			cout << "Unbenutzes Signal Gefunden!" << endl;
-			system("pause");
+			system( "pause" );
 		}
 	}
 }
@@ -116,11 +116,11 @@ void GraphErzeuger::ueberpruefungGatterBeschaltung() {
 		anzahlBeschalteterGatterEingaenge = temporLE->getSchaltwerkElement()->getAnzahlEingangssignale();
 		if( anzahlBeschalteterGatterEingaenge == 0 ) { // voellig unbeschaltet
 			cout << "Gaenzlich unbeschaltetes Gatter gefunden:" << temporLE->getSchaltwerkElement()->getName() << endl;
-			system("pause");
+			system( "pause" );
 		} else {
 			if( anzahlBeschalteterGatterEingaenge < anzahlGatterEingaenge ) { // teilweise unbeschaltet
 				cout << "Teilweise unbeschaltetes Gatter gefunden:" << temporLE->getSchaltwerkElement()->getName() << endl;
-				system("pause");
+				system( "pause" );
 			}
 		}
 	}
@@ -132,7 +132,7 @@ void GraphErzeuger::ausgabeGraph() {
 		cout << "GatterTyp: " << temporLE->getSchaltwerkElement()->getTyp()->getName() << endl;
 		cout << "--> Das Gatter hat " << temporLE->getSchaltwerkElement()->getAnzahlNachfolger() << " Ziele" << endl;
 		cout << "Angeschlossene Gatter:";
-		for (int i = 0; i < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); i++) {
+		for ( int i = 0; i < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); i++ ) {
 			cout << " " << temporLE->getSchaltwerkElement()->getNachfolger(i)->getName();
 		}
 		cout << endl << endl;

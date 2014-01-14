@@ -29,7 +29,7 @@ short GatterTyp::getLastKapazitaet() {
 }
 
 short GatterTyp::getEingaenge() {
-		return this->eingaenge;
+		return eingaenge;
 }
 
 void GatterTyp::setName( string n ) {

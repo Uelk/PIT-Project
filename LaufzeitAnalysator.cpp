@@ -71,7 +71,7 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 			c_last += temporLE->getSchaltwerkElement()->getNachfolger(i)->getTyp()->getLastKapazitaet();
 		}
 		// Division durch 1000 zur Umwandlung in ps
-		temporLE->getSchaltwerkElement()->setLaufzeitEinzelgatter( ( tpd + kl * c_last / 1000 ) * kt * kv * kp );
+		temporLE->getSchaltwerkElement()->setLaufzeitEinzelgatter(( tpd + kl * c_last / 1000 ) * kt * kv * kp );
 	}
 }
 
@@ -101,9 +101,9 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 			}
 		} else {
 			if( DFS_Zwischenspeicher[v].PfadLaufzeit < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() ) {
-				if( (( DFS_Zwischenspeicher[v].PfadLaufzeit != 0 ) || ( v == s )) && ( DFS_Zwischenspeicher[v].VaterElement != k ) ) {
+				if((( DFS_Zwischenspeicher[v].PfadLaufzeit != 0 ) || ( v == s )) && ( DFS_Zwischenspeicher[v].VaterElement != k )) {
 					DFS_Zwischenspeicher[v].VaterElement = k;
-					if( zyklensuche( v ) ) {
+					if( zyklensuche( v )) {
 						cout << "Zyklus an Gatter gefunden: " << v->getName() << endl;
 						system( "pause" );
 						//break;
@@ -116,7 +116,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 		}
 	}
 
-	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter())) {
+	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() )) {
 		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
 		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
