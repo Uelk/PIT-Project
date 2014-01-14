@@ -119,7 +119,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 		}
 	}
 
-	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() )) {
+	if( k->getIsAusgangsElement() && ( laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() )) {
 		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
 		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
