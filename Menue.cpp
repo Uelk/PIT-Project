@@ -207,8 +207,8 @@ void Menue::bibliothekMenue() {
 	cin >> input;
 	menueEingabe= atoi( input.c_str() );
 
-	if(menueEingabe) {
-		switch(menueEingabe) {
+	if( menueEingabe ) {
+		switch( menueEingabe ) {
 			case 1:
 				// Eingabe Dateipfad
 				cout << "Geben Sie einen neuen Dateipfad an:" << endl;

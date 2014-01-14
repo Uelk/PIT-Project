@@ -42,7 +42,7 @@ int SignalListeErzeuger::getAnzahlSignale() {
 // Inputsignale auswerten
 void SignalListeErzeuger::inputsAuslesen() {
 	line = line.substr( 6 );
-	input = line.substr( 0, line.find( ';' ) );
+	input = line.substr( 0, line.find( ';' ));
 	
 	for( int i = 0; i < input.length(); i++ ) {
 		if( input.at( i ) == 's' ) {
@@ -54,7 +54,7 @@ void SignalListeErzeuger::inputsAuslesen() {
 // Outputsignale auswerten
 void SignalListeErzeuger::outputsAuslesen() {
 	line = line.substr( 7 );
-	output = line.substr( 0, line.find( ';' ) );
+	output = line.substr( 0, line.find( ';' ));
 	for( int i = 0 ; i < output.length() ; i++ ) {
 		if( output.at( i ) == 's' ) {
 			anzahlSignale++;
@@ -65,7 +65,7 @@ void SignalListeErzeuger::outputsAuslesen() {
 // Signale auswerten
 void SignalListeErzeuger::signalsAuslesen() {
 	line = line.substr( 8 );
-	signals = line.substr( 0, line.find( ';' ) );
+	signals = line.substr( 0, line.find( ';' ));
 	for( int i = 0 ; i < signals.length() ; i++ ) {
 		if( signals.at( i ) == 's' ) {
 			anzahlSignale++;
@@ -122,7 +122,7 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 	string GatterTyp = line.substr( 0, line.find( '(' )); // GatterTyp bestimmen
 	line = line.substr( line.find( '(' ) + 1 );
 	string ausgangName = line.substr( line.find_last_of( ',' ) + 1 ); // Outputsignal finden
-	line = line.substr( 0, line.find_last_of( ',' ) );
+	line = line.substr( 0, line.find_last_of( ',' ));
 	int signalNummer = atoi( ausgangName.substr( 1, 3 ).c_str());
 	signale[signalNummer].setQuelle( gatterName ); // Quelle festlegen
 	signale[signalNummer].setQuellenTyp( GatterTyp ); // Quellentyp festlegen
@@ -132,7 +132,7 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 			signale[0].setAnzahlZiele( signale[0].getAnzahlZiele() + 1 );
 			line = line.substr( line.find( ',' ) + 1 );
 		} else {
-			signalNummer = atoi( line.substr( 1, 3 ).c_str());
+			signalNummer = atoi( line.substr( 1, 3 ).c_str() );
 			signale[signalNummer].zielHinzufuegen( gatterName, signale[signalNummer].getAnzahlZiele());
 			signale[signalNummer].setAnzahlZiele( signale[signalNummer].getAnzahlZiele() + 1 );
 			line = line.substr( 5 );
@@ -144,7 +144,7 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 		signale[0].setAnzahlZiele( signale[0].getAnzahlZiele() + 1 );
 	} else {
 		signalNummer = atoi( line.substr( 1, 3 ).c_str() );
-		signale[signalNummer].zielHinzufuegen( gatterName, signale[signalNummer].getAnzahlZiele());
+		signale[signalNummer].zielHinzufuegen( gatterName, signale[signalNummer].getAnzahlZiele() );
 		signale[signalNummer].setAnzahlZiele( signale[signalNummer].getAnzahlZiele() + 1 );
 	}
 }
@@ -176,7 +176,7 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 // Dateipfad setzen
 bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
-	if( !file.fail()) {
+	if( !file.fail() ) {
 		datei = pfad;
 		dateiAuslesen();
 		return true;
@@ -252,7 +252,7 @@ void SignalListeErzeuger::ausgabeSignale() {
 		cout << endl;
 		cout << "Signaltyp: " << signale[i].getSignalTyp() << endl;
 		cout << "Signalquelle: ";
-		if( signale[i].getQuelle().length() == 0) {
+		if( signale[i].getQuelle().length() == 0 ) {
 			cout << "keine";
 		} else {
 			cout << signale[i].getQuelle();

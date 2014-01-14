@@ -118,11 +118,11 @@ Faktoren::Faktoren() {
 	spannungFaktor = 0.0;
 	temperaturFaktor = 0.0;
 	prozessFaktor = 0.0;
-	DevPtr = ItivDev_GetConfigByName("Global\\ITIV_WindowsDevice");
+	DevPtr = ItivDev_GetConfigByName( "Global\\ITIV_WindowsDevice" );
 }
 
 Faktoren::~Faktoren() {
-	ItivDev_ReleaseDevice(DevPtr);
+	ItivDev_ReleaseDevice( DevPtr );
 }
 
 // Spannungswert holen

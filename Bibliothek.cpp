@@ -50,7 +50,7 @@ void Bibliothek::dateiAuswerten() {
 				getline ( file, line );
 				//Gatterelemente der Liste hinzufuegen
 				while( !line.empty() ) {
-					if( line.find("dff") != -1 ) {
+					if( line.find( "dff" ) != -1 ) {
 						bibElemente.push_back( new FlipFlop() );
 					} else {
 						bibElemente.push_back( new GatterTyp() );
@@ -63,7 +63,7 @@ void Bibliothek::dateiAuswerten() {
 					getline ( file, line );
 					line = line.substr( 1 );
 					string name = line.substr( 0, line.length() - 1 );
-					if( name.find("dff") == -1) { //Eigenschaften der nicht D-Flip-Flops auslesen und speichern
+					if( name.find( "dff" ) == -1 ) { //Eigenschaften der nicht D-Flip-Flops auslesen und speichern
 						for( int i = 0; i < 4; i++ ) {
 							getline ( file, line );
 							if( line.find( "tpd0" ) != -1 ) {
