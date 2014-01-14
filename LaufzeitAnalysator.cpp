@@ -47,7 +47,7 @@ void LaufzeitAnalysator::starteAnalyse() {
 
 	// Abbruch der Analyse bei existierendem Zyklus
 	if( zyklusMerker ) {
-		//return;
+		return;
 	}
 
 	berechnneMaximaleFrequenz();
@@ -106,7 +106,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 					if( zyklensuche( v )) {
 						cout << "Zyklus an Gatter gefunden: " << v->getName() << endl;
 						system( "pause" );
-						//break;
+						break;
 					}
 				}
 				DFS_Zwischenspeicher[v].PfadLaufzeit = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
