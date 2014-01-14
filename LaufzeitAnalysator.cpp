@@ -143,7 +143,6 @@ bool LaufzeitAnalysator::zyklensuche( SchaltwerkElement* schaltwerkElement ) {
 
 // erstellt den String der besuchten Gatter
 string LaufzeitAnalysator::generierePfadBesuchterGatter( SchaltwerkElement* s, SchaltwerkElement* k, SchaltwerkElement* v ) {
-
 	string pfad = "";
 	SchaltwerkElement* temp = k;
 	while( temp != s ) {
