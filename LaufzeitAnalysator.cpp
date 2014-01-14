@@ -49,8 +49,8 @@ void LaufzeitAnalysator::starteAnalyse() {
 	if( zyklusMerker ) {
 
 		cout << "Es wurde ein Zyklus gefunden" << endl;
-
-		//return;
+		system( "pause" );
+		return;
 	}
 
 	berechnneMaximaleFrequenz();
@@ -109,7 +109,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 					if( zyklensuche( v )) {
 						cout << "Zyklus an Gatter gefunden: " << v->getName() << endl;
 						system( "pause" );
-						//break;
+						break;
 					}
 				}
 				DFS_Zwischenspeicher[v].PfadLaufzeit = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
@@ -119,7 +119,7 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 		}
 	}
 
-	if( k->getIsAusgangsElement() &&(laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() )) {
+	if( k->getIsAusgangsElement() && ( laufzeitAusgangspfad < DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter() )) {
 		laufzeitAusgangspfad = DFS_Zwischenspeicher[k].PfadLaufzeit + k->getLaufzeitEinzelgatter();
 		ausgangspfad = generierePfadBesuchterGatter( s, k, v );
 	}
