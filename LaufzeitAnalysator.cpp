@@ -177,7 +177,7 @@ void LaufzeitAnalysator::ausgabeErgebnis() {
 	cout << "Laengster Pfad im Ausgangsschaltnetz:" << endl;
 	cout << ausgangspfad << endl;
 	cout << "Maximale Laufzeit der Pfade im Ausgangsschaltnetz: ";
-	cout << laufzeitAusgangspfad << endl;
+	cout << laufzeitAusgangspfad << " ps" << endl;
 	cout << endl;
 	cout << "-----------------------------------" << endl;
 	cout << endl;

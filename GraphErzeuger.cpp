@@ -21,6 +21,8 @@ ListenElement* GraphErzeuger::getStartElement() {
 }
 
 void GraphErzeuger::erzeugeGraph() {
+	startElement = NULL;
+	endElement = NULL;
 	erzeugeListe();
 	gatterZieleHinzufuegen();
 	ueberpruefungUnbenutzesSignal();
