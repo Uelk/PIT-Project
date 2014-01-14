@@ -47,6 +47,9 @@ void LaufzeitAnalysator::starteAnalyse() {
 
 	// Abbruch der Analyse bei existierendem Zyklus
 	if( zyklusMerker ) {
+
+		cout << "Es wurde ein Zyklus gefunden" << endl;
+
 		//return;
 	}
 
@@ -87,7 +90,7 @@ void LaufzeitAnalysator::DFS( ListenElement* startKnoten ) {
 
 // Funktion der Tiefensuche
 void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s ) {
-	SchaltwerkElement* v;
+	SchaltwerkElement* v = NULL;
 	if(zyklusMerker) {
 		return;
 	}
@@ -124,14 +127,16 @@ void LaufzeitAnalysator::DFS_Visit( SchaltwerkElement* k, SchaltwerkElement* s )
 
 // Ueberprueft, ob ein Zyklus an einem SchaltwerkElement vorliegt
 bool LaufzeitAnalysator::zyklensuche( SchaltwerkElement* schaltwerkElement ) {
-	SchaltwerkElement* temp = schaltwerkElement;
 	// alle Vaterelemente untersuchen
-	for( SchaltwerkElement* temp = schaltwerkElement; temp != NULL; DFS_Zwischenspeicher[temp].VaterElement ) {
+	int i = 0;
+
+	for( SchaltwerkElement* temp = schaltwerkElement ; temp != NULL; DFS_Zwischenspeicher[temp].VaterElement) {
 		// aktuelles Element ist sein eigener Vorgaenger, so folgt vorhandener Zyklus
-		if( temp == schaltwerkElement ) {
+		if( temp == schaltwerkElement && i != 0 ) {
 			zyklusMerker = true;
 			return true;
-		}
+		} 
+		i++;
 	}
 	return false;
 }
