@@ -33,5 +33,5 @@ bool rc; //return code
 
 bool isDouble(string s)
 {
-    return !s.empty() && std::find_if(s.begin(), s.end(), [](char c) { return !CharIn(c,"0123456789."); }) == s.end();
+    return !s.empty() && std::find_if(s.begin(), s.end(), [](char c) { return !CharIn(c,"0123456789.-"); }) == s.end();
 }
