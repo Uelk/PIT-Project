@@ -14,6 +14,8 @@ Menue::Menue() {
 	meinSignalListeErzeuger = new SignalListeErzeuger();
 	meinGraphErzeuger = new GraphErzeuger();
     meinLaufzeitAnalysator = new LaufzeitAnalysator();
+	isBibSet = false;
+	isCircuitSet = false;
 }
 
 Menue::~Menue () {
@@ -70,13 +72,19 @@ void Menue::start() {
 					menueKopf();
 					break;
 				case 4:
-					meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
-					meinLaufzeitAnalysator->setBibliothek( meineBibliothek );
-					meinLaufzeitAnalysator->setFrequenz( meinSignalListeErzeuger->getFrequenz() );
-					meinLaufzeitAnalysator->setStartElement( meinGraphErzeuger->getStartElement() );
-					meinLaufzeitAnalysator->starteAnalyse();
-					meinLaufzeitAnalysator->ausgabeErgebnis();
-					system( "pause" );
+					if( isBibSet && isCircuitSet ) {
+						meinLaufzeitAnalysator->setFaktoren( meineFaktoren );
+						meinLaufzeitAnalysator->setBibliothek( meineBibliothek );
+						meinLaufzeitAnalysator->setFrequenz( meinSignalListeErzeuger->getFrequenz() );
+						meinLaufzeitAnalysator->setStartElement( meinGraphErzeuger->getStartElement() );
+						meinLaufzeitAnalysator->starteAnalyse();
+						meinLaufzeitAnalysator->ausgabeErgebnis();
+						system( "pause" );
+					} else {
+						cout << "Bibkiothek oder Schaltwerk wurde noch nicht angegeben!" << endl;
+						system( "pause" );
+					}
+					
 					menueKopf();
 					break;
 				case 5:
@@ -216,6 +224,8 @@ void Menue::bibliothekMenue() {
 				if( !meineBibliothek->pfadEinlesen( dateiPfad )) {
 					cout << "Ungueltiger Dateipfad" << endl;
 					system( "pause" );
+				} else {
+					isBibSet = true;
 				}
 				bibliothekMenue();
 				break;
@@ -276,14 +286,20 @@ void Menue::schaltwerkMenue() {
 			  // Eingabe Dateipfad
 				cout << "Geben Sie einen neuen Dateipfad an:" << endl;
 				cin >> dateiPfad;
-				if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
-					cout << "Ungueltiger Dateipfad" << endl;
-					system( "pause" );
+				if( isBibSet ) {
+					if( !meinSignalListeErzeuger->setDateiPfad( dateiPfad ) ) {
+						cout << "Ungueltiger Dateipfad" << endl;
+						system( "pause" );
+					} else {
+						//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
+						meinGraphErzeuger->setBibliothek( meineBibliothek );
+						meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
+						meinGraphErzeuger->erzeugeGraph();
+						isCircuitSet = true;
+					}
 				} else {
-					//Bei erfolgreicher Signallisten-Erzeugung Graphen generieren
-					meinGraphErzeuger->setBibliothek( meineBibliothek );
-					meinGraphErzeuger->setSignale( meinSignalListeErzeuger->getSignalListe(), meinSignalListeErzeuger->getAnzahlSignale() );
-					meinGraphErzeuger->erzeugeGraph();
+					cout << "Bibliothek wurde noch nicht generiert!" << endl;
+					system( "pause" );
 				}
 				schaltwerkMenue();
 				break;

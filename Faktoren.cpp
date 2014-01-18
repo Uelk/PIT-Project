@@ -1,6 +1,25 @@
 #include "Faktoren.h"
 using namespace std;
 
+Faktoren::Faktoren() {
+	spannung = 0.0;
+	temperatur = 0.0;
+	prozess = 0.0;
+	spannungFaktor = 0.0;
+	temperaturFaktor = 0.0;
+	prozessFaktor = 0.0;
+	DevPtr = ItivDev_GetConfigByName( "Global\\ITIV_WindowsDevice" );
+	if(debug) {
+		readFactorFromDevice();
+	}
+}
+
+Faktoren::~Faktoren() {
+	if(DevPtr != NULL) {
+		ItivDev_ReleaseDevice( DevPtr );
+	}
+}
+
 // Berechnung Spannungsfaktor
 bool Faktoren::berechneSpannungFaktor( double spg ) {
 	const int laenge = 7;
@@ -111,20 +130,6 @@ double Faktoren::interpolation( double value, double x1, double x2, double y1, d
 	return y1 + ( steigung * deltaX );
 }
 
-Faktoren::Faktoren() {
-	spannung = 0.0;
-	temperatur = 0.0;
-	prozess = 0.0;
-	spannungFaktor = 0.0;
-	temperaturFaktor = 0.0;
-	prozessFaktor = 0.0;
-	DevPtr = ItivDev_GetConfigByName( "Global\\ITIV_WindowsDevice" );
-}
-
-Faktoren::~Faktoren() {
-	ItivDev_ReleaseDevice( DevPtr );
-}
-
 // Spannungswert holen
 double Faktoren::getSpannung() {
 	return spannung;
@@ -183,4 +188,44 @@ void Faktoren::ausgabeFaktoren() {
 	cout << " |KP: ";
 	cout << Faktoren::prozessFaktor;
 	cout << endl;
+}
+
+// Messwerte des ITIV-Device auslesen und Abspeichern
+void Faktoren::readFactorFromDevice() {
+	if(DevPtr != NULL) {
+		// Kanal auf Spannung setzen
+		*( (int*) (DevPtr->BaseAddress + CTRL_REG) ) = 0x00000001;
+		if( startDeviceMeasurement() ) {
+			setSpannung( *( (double*) (DevPtr->BaseAddress + DATA_REG)) );
+		}
+
+		// Kanal auf Temperatur setzen
+		*( (int*) (DevPtr->BaseAddress + CTRL_REG) ) = 0x00000002;
+		if( startDeviceMeasurement() ) {
+			setTemperatur( *( (int*) (DevPtr->BaseAddress + DATA_REG)) );
+		}
+
+		// Kanal auf Prozessfaktor setzen
+		*( (int*) (DevPtr->BaseAddress + CTRL_REG) ) = 0x00000003;
+		if( startDeviceMeasurement() ) {
+			setProzess( *( (int*) (DevPtr->BaseAddress + DATA_REG)) );
+		}
+	} else {
+		cout << "ITIV-Device konnte nicht gestartet werden!" << endl;
+		system("pause");
+	}
+}
+
+bool Faktoren::startDeviceMeasurement() {
+	// Warten auf Betriebsbereitschaft
+	while( !(*( (int*) (DevPtr->BaseAddress + STAT_REG + 3)) & 0x00000001) );
+	// Messung starten
+	*( (int*) (DevPtr->BaseAddress + CTRL_REG + 1)) = 0x00000001;
+	// Warten bis Messung Beendet
+	while( !(*( (int*) (DevPtr->BaseAddress + STAT_REG + 2)) & 0x00000001) );
+	// Ueberpruefung, auf Fehler
+	if( !(*( (int*) (DevPtr->BaseAddress + STAT_REG)) & 0x00000001) ) {
+		return true;
+	}
+	return false;
 }

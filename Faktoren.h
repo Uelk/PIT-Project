@@ -19,6 +19,9 @@ private:
 	double berechneFaktor( double, double [][2], int );
 	double interpolation( double, double, double, double, double );
 	ItivDev_Config* DevPtr;
+	bool debug;
+	void readFactorFromDevice();
+	bool startDeviceMeasurement();
 public:
 	Faktoren();
 	~Faktoren();
