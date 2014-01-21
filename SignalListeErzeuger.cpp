@@ -10,7 +10,7 @@ void SignalListeErzeuger::dateiAuslesen() {
 	anzahlSignale = 0;
 	ifstream file( datei );
 	while( getline( file, line )) {
-		if( line.find( "ARCHITECTURE" ) == 1 ) {
+		if( line.find( "ARCHITECTURE" ) != -1 ) {
 			validFile = true;
 		}
 		if( line.find( "INPUT" ) != -1 ) {
