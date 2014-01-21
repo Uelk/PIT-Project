@@ -46,6 +46,10 @@ void Bibliothek::dateiAuswerten() {
 	string line;
     if( file.is_open() ) {
 		while( getline ( file, line )) {
+			if( line.find( "ARCHITECTURE" ) != -1 ) {
+				this->errFileRead = true;
+				break;
+			}
 			if( line.find( "[[Bausteine]]" ) != -1 ) {
 				getline ( file, line );
 				//Gatterelemente der Liste hinzufuegen
@@ -127,6 +131,8 @@ void Bibliothek::dateiAuswerten() {
 			if( file.fail() ) {
 				readError();
 			}
+
+			this->errFileRead = false;
         }
     }
     file.close();
@@ -138,6 +144,10 @@ bool Bibliothek::pfadEinlesen( string pfad ) {
     if( file.is_open()) {
 		datei = pfad;
 		dateiAuswerten();
+		if( this->errFileRead == true ) {
+			datei = "";
+			return false;
+		}
 		return true;
 	} else {
 		return false;

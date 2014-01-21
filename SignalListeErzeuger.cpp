@@ -6,9 +6,13 @@ SignalListeErzeuger::SignalListeErzeuger( void ) {
 
 // Datei auslesen; Leseschnittpunkte festlegen
 void SignalListeErzeuger::dateiAuslesen() {
+	validFile = false;
 	anzahlSignale = 0;
 	ifstream file( datei );
 	while( getline( file, line )) {
+		if( line.find( "INPUT" ) != -1 ) {
+			validFile = true;
+		}
 		if( line.find( "INPUT" ) != -1 ) {
 			inputsAuslesen();
 		}
@@ -27,8 +31,12 @@ void SignalListeErzeuger::dateiAuslesen() {
 			getline( file, line );
 			while( line.find( "END" ) == -1 ) {
 				schaltnetzwerkBeschreibungAuslesen();
+				if( kurzschluss ) {
+					break;
+				}
 				getline( file, line );
 			}
+			
 		}
 	}
 	file.close();
@@ -123,9 +131,16 @@ void SignalListeErzeuger::schaltnetzwerkBeschreibungAuslesen() {
 	line = line.substr( line.find( '(' ) + 1 );
 	string ausgangName = line.substr( line.find_last_of( ',' ) + 1 ); // Outputsignal finden
 	line = line.substr( 0, line.find_last_of( ',' ));
-	int signalNummer = atoi( ausgangName.substr( 1, 3 ).c_str());
-	signale[signalNummer].setQuelle( gatterName ); // Quelle festlegen
-	signale[signalNummer].setQuellenTyp( GatterTyp ); // Quellentyp festlegen
+	int signalNummer = atoi( ausgangName.substr( 1, 3 ).c_str() );
+	// Kurzschlussueberpruefung
+	if( signale[signalNummer].getQuelle() == "" ) {
+		signale[signalNummer].setQuelle( gatterName ); // Quelle festlegen
+		signale[signalNummer].setQuellenTyp( GatterTyp ); // Quellentyp festlegen
+	} else {
+		cout << "Kurzschluss gefunden!" << endl;
+		system( "pause" );
+		kurzschluss = true;
+	}
 	while( line.find( ',' ) != -1 ) { // Eingangssignale abarbeiten
 		if( line.substr( 0, line.find( ',' )).find( clockName ) != -1 ) {
 			signale[0].zielHinzufuegen( gatterName, signale[0].getAnzahlZiele() );
@@ -177,10 +192,23 @@ bool SignalListeErzeuger::isSignal( string signal ) {
 bool SignalListeErzeuger::setDateiPfad( string pfad ) {
 	ifstream file( pfad );
 	if( !file.fail() ) {
+		kurzschluss = false;
 		datei = pfad;
 		dateiAuslesen();
-		return true;
+		if( !validFile ) {
+			cout << "Ungueltige Datei!" << endl;
+			system( "pause" );
+			datei = "";
+			return false;
+		}
+		if( !kurzschluss ) {
+			return true;
+		} else {
+			datei = "";
+			return false;
+		}
 	} else {
+		datei = "";
 		return false;
 	}
 	file.close();

@@ -208,7 +208,7 @@ void Faktoren::readFactorFromDevice() {
 		// Kanal auf Prozessfaktor setzen
 		*( (int*) (DevPtr->BaseAddress + CTRL_REG) ) = 0x00000003;
 		if( startDeviceMeasurement() ) {
-			setProzess( *( (int*) (DevPtr->BaseAddress + DATA_REG)) );
+			setProzess( *( (int*) (DevPtr->BaseAddress + DATA_REG)) + 1 );
 		}
 	} else {
 		cout << "ITIV-Device konnte nicht gestartet werden!" << endl;

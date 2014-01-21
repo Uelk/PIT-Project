@@ -29,6 +29,8 @@ private:
 	bool isInput( string );
 	bool isOutput( string );
 	bool isSignal( string );
+	bool validFile;
+	bool kurzschluss;
 public:
 	SignalListeErzeuger();
 	int getAnzahlSignale();
