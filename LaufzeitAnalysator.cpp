@@ -68,7 +68,7 @@ void LaufzeitAnalysator::berechneLaufzeitEinzelgatter() {
 		gatterTyp = temporLE->getSchaltwerkElement()->getTyp();
 		tpd = gatterTyp->getGrundLaufzeit();
 		kl = gatterTyp->getLastFaktor();
-		c_last = 0;
+		c_last = 0; //reset
 		// Lastkapazitaet der Nachfolger aufsummieren
 		for( int i = 0; i < temporLE->getSchaltwerkElement()->getAnzahlNachfolger(); i++ ) {
 			c_last += temporLE->getSchaltwerkElement()->getNachfolger(i)->getTyp()->getLastKapazitaet();
